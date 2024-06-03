@@ -4,11 +4,20 @@ import Tabs from '@mui/joy/Tabs';
 import TabList from '@mui/joy/TabList';
 import Tab, { tabClasses } from '@mui/joy/Tab';
 import TabPanel from '@mui/joy/TabPanel';
-import Typography from '@mui/joy/Typography';
 import TabsForm from "./TabsForm"
 import TabsForm2 from "./TabsForm2"
+import Link from '@mui/joy/Link';
+import Typography from '@mui/joy/Typography';
 export default function TabsPricingExample() {
   return (
+
+    < >
+    <Typography level="h1">WELCOME TO OPEN CRYPTO EXCHANGE</Typography>
+    <Typography level="body-lg">Anonymous P2P deals on your terms. Trade globally.<br/>
+Using any payment system. For any currency.</Typography>
+<Link href="#levels" level="title-md">
+        View all available offers
+      </Link>
     <Tabs
       variant="soft"
      
@@ -19,6 +28,7 @@ export default function TabsPricingExample() {
         borderRadius: 'lg',
         boxShadow: 'xl',
         overflow: 'auto',
+        mt:3,
       }}
     >
       <TabList
@@ -65,5 +75,6 @@ export default function TabsPricingExample() {
       </TabPanel>
       
     </Tabs>
+    </>
   );
 }

@@ -78,12 +78,16 @@
   padding: 0;
   margin: 0;
 }
-
+* {
+  scroll-behavior: smooth;
+}
 html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
 }
+
+
 
 body {
   color: rgb(var(--foreground-rgb));
@@ -128,4 +132,8 @@ a {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #e0e0e0; 
+}
+
+.MuiAccordion-root .MuiAccordionSummary-content p{
+  font-size:90px
 }

@@ -74,10 +74,13 @@ export default function Header() {
   const [open, setOpen] = React.useState(false);
   return (
     <Box
+    style={{position: 'fixed' ,}}
       sx={{
         display: 'flex',
         flexGrow: 1,
         justifyContent: 'space-between',
+        zIndex: 1300,
+      
       }}
     >
       <Stack
