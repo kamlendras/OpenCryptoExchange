@@ -38,29 +38,21 @@ export default function CountrySelect() {
           autoComplete: 'new-password', // disable autocomplete and autofill
         },
       }}
-      // sx={{ width: 600 }}
+
       options={countries}
       autoHighlight
       getOptionLabel={(option) => option.code}
       renderOption={(props, option) => (
         <AutocompleteOption {...props}>
-          {/* <ListItemDecorator>
-            <img
-              loading="lazy"
-              width="20"
-              srcSet={`https://flagcdn.com/w40/${option.code.toLowerCase()}.png 2x`}
-              src={`https://flagcdn.com/w20/${option.code.toLowerCase()}.png`}
-              alt=""
-            />
-          </ListItemDecorator> */}
+      
           <ListItemContent sx={{ fontSize: 'xl' }}>
             <Typography level="title-lg">
-              {/* {option.label}  */}
+          
               {option.code}
            
             <Typography level="body-sm" sx={{ fontSize: 'xl' }}>
 
-              {/* ({option.code}) + */}
+        
               {option.phone}
             </Typography>
             </Typography>

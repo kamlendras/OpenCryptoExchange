@@ -1,8 +1,12 @@
 // import Link from "next/link";
+import Box from '@mui/joy/Box';
 import Link from '@mui/joy/Link';
 import Grid from '@mui/joy/Grid';
 import Stack from "@mui/joy/Stack";
+import IconButton, { IconButtonProps } from '@mui/joy/IconButton';
 import Typography from "@mui/joy/Typography";
+import BadgeRoundedIcon from '@mui/icons-material/BadgeRounded';
+
 const Footer = () => {
   return (
     <>
@@ -105,6 +109,11 @@ const Footer = () => {
         </Stack>
       </Grid>
     </Grid>
+    <Box component="footer" sx={{ py: 3 }}>
+            <Typography level="body-xs" textAlign="center">
+              GPL-3.0 LICENSED | Open Crypto Exchange | {new Date().getFullYear()}
+            </Typography>
+          </Box>
     </>
   );
 };

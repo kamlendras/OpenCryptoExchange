@@ -24,7 +24,6 @@ import ListDivider from '@mui/joy/ListDivider';
 import Drawer from '@mui/joy/Drawer';
 import ModalClose from '@mui/joy/ModalClose';
 import DialogTitle from '@mui/joy/DialogTitle';
-
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
 import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
@@ -37,6 +36,11 @@ import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import Search from "./search"
 import ColorSchemeToggle from './ColorSchemeToggle';
+import Alert from '@mui/joy/Alert';
+import Radio from '@mui/joy/Radio';
+import RadioGroup from '@mui/joy/RadioGroup';
+import Sheet from '@mui/joy/Sheet';
+import { VariantProp } from '@mui/joy/styles';
 // import Navigation from './Navigation';
 
 // function ColorSchemeToggle() {
@@ -99,8 +103,13 @@ export default function Header() {
             borderRadius: '50%',
           }}
         > */}
-       <img src="./icon.svg"  width={169} height={67.6}/>
-        {/* </IconButton> */}
+        <div style={{display:"flex"}}>
+       <img src="/icon.svg"  width={169} height={67.6}/>
+       {/* <Typography level="h4" noWrap>OPEN CRYPTO EXCHANGE</Typography> */}
+      
+       </div> 
+       <Button variant="plain" size="md">Sell BTC</Button>
+        <Button variant="plain" size="md">Buy BTC</Button> {/* </IconButton> */}
         {/* <Button
           variant="plain"
           color="neutral"
@@ -158,10 +167,13 @@ export default function Header() {
           alignItems: 'center',
         }}
       >
-        <Search/>
-        <Filters />
+        {/* <Search/> */}
+        {/* <Filters /> */}
+
+        <Button variant="outlined" size="md">Log in</Button>
+        <Button size="md">Sign up</Button>
         
-          <IconButton
+          {/* <IconButton
             size="sm"
             variant="plain"
             color="neutral"
@@ -171,10 +183,10 @@ export default function Header() {
           >
 
             < DrawOutlinedIcon/> Write
-          </IconButton>
+          </IconButton> */}
         
         
-          <IconButton
+          {/* <IconButton
             size="sm"
             variant="plain"
             color="neutral"
@@ -183,10 +195,10 @@ export default function Header() {
             sx={{ alignSelf: 'center' }}
           >
             <NotificationsNoneOutlinedIcon />
-          </IconButton>
+          </IconButton> */}
        
         <ColorSchemeToggle />
-        <Dropdown>
+        {/* <Dropdown>
           <MenuButton
             variant="plain"
             size="sm"
@@ -230,7 +242,7 @@ export default function Header() {
                 </Box>
               </Box>
             </MenuItem>
-            <ListDivider /> */}
+            <ListDivider /> 
             <MenuItem>
               <Person2OutlinedIcon />
               Profile
@@ -296,8 +308,15 @@ export default function Header() {
 
 
           </Menu>
-        </Dropdown>
+        </Dropdown> */}
       </Box>
+{/* 
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, width: '100%' }}>
+    <Alert sx={{mt:10}} variant="solid" color="primary" >
+          Primary
+        </Alert>
+        </Box> */}
+
     </Box>
   );
 }

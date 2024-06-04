@@ -8,7 +8,9 @@ import Intropage from "./intropage"
 import { CssVarsProvider, useColorScheme } from '@mui/joy/styles';
 import FAQ from "./FAQ"
 import Footer from './footer';
+
 export default function C() {
+
   return (
     <>
    
@@ -19,7 +21,7 @@ export default function C() {
 
 <CssVarsProvider disableTransitionOnChange theme={framesxTheme}>
       <CssBaseline />
-   
+      
       <Box
         sx={{
           height: '100vh',
@@ -30,6 +32,7 @@ export default function C() {
           },
         }}
       >
+     
         <Intropage />
         <div id="exchange">
         <Grid

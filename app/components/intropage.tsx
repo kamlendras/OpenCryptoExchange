@@ -9,6 +9,10 @@ import Link from "next/link";
 
 export default function HeroLeft08() {
   return (
+    <>
+   
+
+  
     <TwoSidedLayout>
       <Typography
         level="h1"
@@ -95,5 +99,6 @@ export default function HeroLeft08() {
         HeroLeft08
       </Typography> */}
     </TwoSidedLayout>
+    </>
   );
 }
