@@ -11,7 +11,6 @@ import Option from "@mui/joy/Option";
 import axios from "axios";
 import Stack from "@mui/joy/Stack";
 import Divider from "@mui/joy/Divider";
-import Input from "@mui/joy/Input";
 import Grid from "@mui/joy/Grid";
 import Avatar from "@mui/joy/Avatar";
 import Table from "@mui/joy/Table";
@@ -31,6 +30,73 @@ import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import { visuallyHidden } from "@mui/utils";
+import { styled } from '@mui/joy/styles';
+import Input from '@mui/joy/Input';
+import CheckCircleOutlined from '@mui/icons-material/CheckCircleOutlined';
+
+const StyledInput = styled('input')({
+  border: 'none', // remove the native input border
+  minWidth: 0, // remove the native input width
+  outline: 0, // remove the native input outline
+  padding: 0, // remove the native input padding
+  paddingTop: '1em',
+  flex: 1,
+  color: 'inherit',
+  backgroundColor: 'transparent',
+  fontFamily: 'inherit',
+  fontSize: 'inherit',
+  fontStyle: 'inherit',
+  fontWeight: 'inherit',
+  lineHeight: 'inherit',
+  textOverflow: 'ellipsis',
+  '&::placeholder': {
+    opacity: 0,
+    transition: '0.1s ease-out',
+  },
+  '&:focus::placeholder': {
+    opacity: 1,
+  },
+  '&:focus ~ label, &:not(:placeholder-shown) ~ label, &:-webkit-autofill ~ label': {
+    top: '0.5rem',
+    fontSize: '0.75rem',
+  },
+  '&:focus ~ label': {
+    color: 'var(--Input-focusedHighlight)',
+  },
+  '&:-webkit-autofill': {
+    alignSelf: 'stretch', // to fill the height of the root slot
+  },
+  '&:-webkit-autofill:not(* + &)': {
+    marginInlineStart: 'calc(-1 * var(--Input-paddingInline))',
+    paddingInlineStart: 'var(--Input-paddingInline)',
+    borderTopLeftRadius:
+      'calc(var(--Input-radius) - var(--variant-borderWidth, 0px))',
+    borderBottomLeftRadius:
+      'calc(var(--Input-radius) - var(--variant-borderWidth, 0px))',
+  },
+});
+
+const StyledLabel = styled('label')(({ theme }) => ({
+  position: 'absolute',
+  lineHeight: 1,
+  top: 'calc((var(--Input-minHeight) - 1em) / 2)',
+  color: theme.vars.palette.text.tertiary,
+  fontWeight: theme.vars.fontWeight.md,
+  transition: 'all 150ms cubic-bezier(0.4, 0, 0.2, 1)',
+}));
+
+const InnerInput = React.forwardRef<
+  HTMLInputElement,
+  JSX.IntrinsicElements['input']
+>(function InnerInput(props, ref) {
+  const id = React.useId();
+  return (
+    <React.Fragment>
+      <StyledInput {...props} ref={ref} id={id} />
+      <StyledLabel htmlFor={id}>Crypto Currency Address</StyledLabel>
+    </React.Fragment>
+  );
+});
 
 // b
 interface Data {
@@ -395,22 +461,22 @@ export default function C() {
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
   // c
-
   const [currency, setCurrency] = React.useState("inr");
+  const [currency1, setCurrency1] = React.useState("btc");
   // const [selected, setSelected] = React.useState("");
   const [selected0, setSelected0] = React.useState("");
   return (
     <>
       <Box sx={{ m: 10 }}>
-        <Typography level="h1">BUY BITCOIN</Typography>
+        <Typography level="h1">OFFER TO BUY BITCOIN</Typography>
 
-        <Typography level="body-lg">
+        {/* <Typography level="body-lg">
           Buy Bitcoin from other users using any payment method and currency{" "}
           <Link sx={{ m: 5 }} href="#basics">
             How to start?{" "}
           </Link>
           <Button size="sm">Create offer</Button>
-        </Typography>
+        </Typography> */}
         <Sheet
           variant="soft"
           aria-label="Pricing plan"
@@ -426,7 +492,7 @@ export default function C() {
           color="neutral"
           //  sx={{ p: 4 }}
         >
-          <Grid container spacing={2} sx={{ flexGrow: 1 }}>
+          {/* <Grid container spacing={2} sx={{ flexGrow: 1 }}>
             <Grid xs={1.5}>
               <Select defaultValue="sfg1">
                 {options.map((option) => {
@@ -521,8 +587,8 @@ export default function C() {
                 <Option value="1">Clear all </Option>
               </Select>
             </Grid>
-          </Grid>
-
+          </Grid> */}
+{/* ppip */}
           {/*  */}
           {/* <EnhancedTableToolbar numSelected={selected.length} />
           <Table
@@ -684,8 +750,8 @@ export default function C() {
             </tfoot>
           </Table> */}
           {/*  */}
-          <Table hoverRow>
-            <thead>
+          <Table >
+            {/* <thead>
               <tr>
                 <th>Seller</th>
                 <th>Price</th>
@@ -697,7 +763,7 @@ export default function C() {
                 </th>
                 <th>Offer details</th>
               </tr>
-            </thead>
+            </thead> */}
             {/* </Table>
       <Table
       aria-label="table with ellipsis texts"
@@ -952,7 +1018,150 @@ export default function C() {
              
             </tbody>
           </Table>
-          <Pig />
+          {/* <Pig /> */}
+        </Sheet>
+        <Sheet
+          variant="soft"
+          aria-label="Pricing plan"
+          defaultValue={0}
+          sx={{
+            //    width: 750,
+            borderRadius: "lg",
+            boxShadow: "xl",
+            overflow: "auto",
+            mt: 3,
+            p: 4,
+          }}
+          color="neutral"
+          //  sx={{ p: 4 }}
+        >
+<Typography level="body-xs">I want to buy BTC for</Typography>
+<Stack spacing={1.5}>
+                <Input
+                type="number"
+                  placeholder="Amount"
+                  startDecorator={
+                    { inr: " ₹", dollar: "$", eur: "€", yen: "¥" }[currency]
+                  }
+                  endDecorator={
+                    <React.Fragment>
+                      <Divider orientation="vertical" />
+                      <Select
+                        variant="plain"
+                        value={currency}
+                        onChange={(_, value) => setCurrency(value!)}
+                        slotProps={{
+                          listbox: {
+                            variant: "outlined",
+                          },
+                        }}
+                        sx={{ mr: -1.5, "&:hover": { bgcolor: "transparent" } }}
+                      >
+                        <Option value="inr">INR</Option>
+                        <Option value="dollar">USD</Option>
+                        <Option value="eur">EUR</Option>
+                        <Option value="yen">YEN</Option>
+                      </Select>
+                    </React.Fragment>
+                  }
+                  // sx={{ width: 600 }}
+                />
+              </Stack>=
+              <Stack spacing={1.5}>
+                <Input
+                  placeholder="Amount"
+                  type="number"
+                  startDecorator={
+                    { btc: " ₿", etc: "Ξ", ltc: "Ł", xmr: "ɱ" ,xno: "Ӿ", dash: "Đ"}[currency1]
+                  }
+                  endDecorator={
+                    <React.Fragment>
+                      <Divider orientation="vertical" />
+                      <Select
+                        variant="plain"
+                        value={currency1}
+                        onChange={(_, value) => setCurrency1(value!)}
+                        slotProps={{
+                          listbox: {
+                            variant: "outlined",
+                          },
+                        }}
+                        sx={{ mr: -1.5, "&:hover": { bgcolor: "transparent" } }}
+                      >
+                        <Option value="btc">BTC</Option>
+                        <Option value="etc">ETC</Option>
+                        <Option value="ltc">LTC</Option>
+                        <Option value="xmr">XMR</Option>
+                        <Option value="xno">XNO</Option>
+                        <Option value="dash">DASH</Option>
+                      </Select>
+                    </React.Fragment>
+                  }
+                  // sx={{ width: 600 }}
+                />
+              </Stack>
+              <Typography level="body-xs">Enter the amount you are looking to buy</Typography>
+              <Typography level="body-xs"> Bitcoin address</Typography>
+              <Input
+      endDecorator={<CheckCircleOutlined />}
+      slots={{ input: InnerInput }}
+      slotProps={{ input: { placeholder: '', type: 'text' } }}
+      sx={{
+        '--Input-minHeight': '56px',
+        '--Input-radius': '6px',
+      }}
+    />
+        <Typography level="body-xs"> Payment method</Typography>
+        <Select defaultValue="11">
+                {options2.map((option) => {
+                  return (
+                    <Option value={option.id}>
+                      <Typography level="title-md">
+                        {option.label}
+
+                        <Typography level="body-md" sx={{ fontSize: "xl" }}>
+                          {option.phone}
+                        </Typography>
+                      </Typography>
+                    </Option>
+                  );
+                })}
+
+              </Select>
+<Button size="lg" fullWidth>Accept offer</Button>
+
+<Sheet
+          variant="soft"
+          aria-label="Pricing plan"
+          defaultValue={0}
+          sx={{
+            //    width: 750,
+            borderRadius: "lg",
+            boxShadow: "xl",
+            overflow: "auto",
+            mt: 3,
+            p: 4,
+          }}
+          color="neutral"
+          //  sx={{ p: 4 }}
+        >
+  <Typography level="body-xs"> Amount to buy </Typography>
+  <Typography sx={{mb:2}} level="title-md"> 0 BTC ≈ 0 INR </Typography>
+  <Divider />
+  <Typography  sx={{mt:2}} level="body-xs">  Trading fee</Typography>
+  <Typography sx={{mb:2}} level="title-md">  0 BTC ≈ 0 INR</Typography>
+  <Divider />
+  <Typography sx={{mt:2}} level="body-xs"> Amount to be received, excluding transaction fee </Typography>
+  <Typography sx={{mb:2}} level="title-md">  0 BTC ≈ 0 INR</Typography>
+  <Divider />
+  <Typography sx={{mt:2}} level="body-xs">  Intermediary fee</Typography>
+  <Typography sx={{mb:2}} level="title-md">  0 BTC ≈ 0 INR</Typography>
+  <Divider />
+  <Typography sx={{mt:2}} level="body-xs">Estimated transaction fee  </Typography>
+  <Typography level="title-md">0.00011616 BTC ≈790.84 INR  </Typography>
+
+
+        </Sheet>
         </Sheet>
       </Box>
     </>
@@ -1486,82 +1695,83 @@ const datatable = [
     PaymentMethod5: "Binance USD (BUSD)",
     PaymentMethodsNo: "+3",
     offer: "NO KYC‼️Notifications On - 24/7 ✅",
-  },{
-  id:2 ,
-  name: "alexender",
-  rate:100 ,
-  trades:64 ,
-  price:"69,108.22 USD" ,
-  limitscurrency: "1,000 - 67,777 USD",
-  limitscrypto: "0.01447006 - 0.98073710 BTC",
-  PaymentMethod1: "PayPal",
-  PaymentMethod2: "Any national bank",
-  PaymentMethod3: "Google pay",
-  PaymentMethod4: "Amazon pay",
-  PaymentMethod5: "Paytm",
-  PaymentMethodsNo: "+6",
-  offer: "If I don't respond for more than 2 minutes contact me at tg OTCPlatform where I respond instantly. ",
-},{
-  id:3 ,
-  name: "jajafk",
-  rate:100 ,
-  trades: 537,
-  price:"69,733.75 USD" ,
-  limitscurrency: "700 - 50,000 USD",
-  limitscrypto: "0.01003818 - 0.71701294 BTC",
-  PaymentMethod1: "TRON",
-  PaymentMethod2: "Cardano",
-  PaymentMethod3: "Bitcoin Cash",
-  PaymentMethod4: "Binance Coin (BNB)",
-  PaymentMethod5: "Dogecoin",
-  PaymentMethodsNo: "+9",
-  offer: "XMR ETH SOL USDT USDC and any other coin!!",
-}, {
-  id: 4,
-  name: "chickenwing",
-  rate: 100,
-  trades: 195,
-  price: "70507.19 USD",
-  limitscurrency: "2,000 - 150,000 USD",
-  limitscrypto: "0.02836590 - 2.12744270 BTC",
-  PaymentMethod1: "Binance Coin (BNB)",
-  PaymentMethod2: "Ethereum",
-  PaymentMethod3: "DAI",
-  PaymentMethod4: "Tether",
-  PaymentMethod5: "Binance USD (BUSD)",
-  PaymentMethodsNo: "+3",
-  offer: "NO KYC‼️Notifications On - 24/7 ✅",
-},{
-id:5 ,
-name: "alexender",
-rate:100 ,
-trades:64 ,
-price:"69,108.22 USD" ,
-limitscurrency: "1,000 - 67,777 USD",
-limitscrypto: "0.01447006 - 0.98073710 BTC",
-PaymentMethod1: "PayPal",
-PaymentMethod2: "Any national bank",
-PaymentMethod3: "Google pay",
-PaymentMethod4: "Amazon pay",
-PaymentMethod5: "Paytm",
-PaymentMethodsNo: "+6",
-offer: "If I don't respond for more than 2 minutes contact me at tg OTCPlatform where I respond instantly. ",
-},{
-id:6 ,
-name: "jajafk",
-rate:100 ,
-trades: 537,
-price:"69,733.75 USD" ,
-limitscurrency: "700 - 50,000 USD",
-limitscrypto: "0.01003818 - 0.71701294 BTC",
-PaymentMethod1: "TRON",
-PaymentMethod2: "Cardano",
-PaymentMethod3: "Bitcoin Cash",
-PaymentMethod4: "Binance Coin (BNB)",
-PaymentMethod5: "Dogecoin",
-PaymentMethodsNo: "+9",
-offer: "XMR ETH SOL USDT USDC and any other coin!!",
-}
+  }
+//   },{
+//   id:2 ,
+//   name: "alexender",
+//   rate:100 ,
+//   trades:64 ,
+//   price:"69,108.22 USD" ,
+//   limitscurrency: "1,000 - 67,777 USD",
+//   limitscrypto: "0.01447006 - 0.98073710 BTC",
+//   PaymentMethod1: "PayPal",
+//   PaymentMethod2: "Any national bank",
+//   PaymentMethod3: "Google pay",
+//   PaymentMethod4: "Amazon pay",
+//   PaymentMethod5: "Paytm",
+//   PaymentMethodsNo: "+6",
+//   offer: "If I don't respond for more than 2 minutes contact me at tg OTCPlatform where I respond instantly. ",
+// },{
+//   id:3 ,
+//   name: "jajafk",
+//   rate:100 ,
+//   trades: 537,
+//   price:"69,733.75 USD" ,
+//   limitscurrency: "700 - 50,000 USD",
+//   limitscrypto: "0.01003818 - 0.71701294 BTC",
+//   PaymentMethod1: "TRON",
+//   PaymentMethod2: "Cardano",
+//   PaymentMethod3: "Bitcoin Cash",
+//   PaymentMethod4: "Binance Coin (BNB)",
+//   PaymentMethod5: "Dogecoin",
+//   PaymentMethodsNo: "+9",
+//   offer: "XMR ETH SOL USDT USDC and any other coin!!",
+// }, {
+//   id: 4,
+//   name: "chickenwing",
+//   rate: 100,
+//   trades: 195,
+//   price: "70507.19 USD",
+//   limitscurrency: "2,000 - 150,000 USD",
+//   limitscrypto: "0.02836590 - 2.12744270 BTC",
+//   PaymentMethod1: "Binance Coin (BNB)",
+//   PaymentMethod2: "Ethereum",
+//   PaymentMethod3: "DAI",
+//   PaymentMethod4: "Tether",
+//   PaymentMethod5: "Binance USD (BUSD)",
+//   PaymentMethodsNo: "+3",
+//   offer: "NO KYC‼️Notifications On - 24/7 ✅",
+// },{
+// id:5 ,
+// name: "alexender",
+// rate:100 ,
+// trades:64 ,
+// price:"69,108.22 USD" ,
+// limitscurrency: "1,000 - 67,777 USD",
+// limitscrypto: "0.01447006 - 0.98073710 BTC",
+// PaymentMethod1: "PayPal",
+// PaymentMethod2: "Any national bank",
+// PaymentMethod3: "Google pay",
+// PaymentMethod4: "Amazon pay",
+// PaymentMethod5: "Paytm",
+// PaymentMethodsNo: "+6",
+// offer: "If I don't respond for more than 2 minutes contact me at tg OTCPlatform where I respond instantly. ",
+// },{
+// id:6 ,
+// name: "jajafk",
+// rate:100 ,
+// trades: 537,
+// price:"69,733.75 USD" ,
+// limitscurrency: "700 - 50,000 USD",
+// limitscrypto: "0.01003818 - 0.71701294 BTC",
+// PaymentMethod1: "TRON",
+// PaymentMethod2: "Cardano",
+// PaymentMethod3: "Bitcoin Cash",
+// PaymentMethod4: "Binance Coin (BNB)",
+// PaymentMethod5: "Dogecoin",
+// PaymentMethodsNo: "+9",
+// offer: "XMR ETH SOL USDT USDC and any other coin!!",
+// }
 
 
 ];
