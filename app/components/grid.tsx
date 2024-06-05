@@ -76,9 +76,9 @@ export default function C() {
   sx={{ minHeight: '100vh' }}
 > */}
 
-      <Footer/>
+    
       {/* </Grid> */}
-
+<Footer/>
       </Box>
     </CssVarsProvider>
 

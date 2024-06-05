@@ -32,6 +32,7 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import { visuallyHidden } from "@mui/utils";
 
+
 // b
 interface Data {
   calories: number;
@@ -781,157 +782,157 @@ export default function C() {
                               // const checked = selected0 === name;
                               return (
                                 <>
-                                <Chip
-                                  style={{ size: "1rem" }}
-                                  key={name}
-                                  variant="plain"
-                          
-                                  // startDecorator={
-                                  //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
-                                  // }
-                                >
-                                  <Radio
-                                    variant="outlined"
-                                  
-                                    disableIcon
-                                    overlay
-                                    label={option.PaymentMethod1}
-                                    value={name}
-                               
-                                    // onChange={(event) => {
-                                    //   if (event.target.checked) {
-                                    //     setSelected0(name);
-                                    //   }
-                                    // }}
-                                  />
-                              
-                                </Chip>
-                                 <Chip
-                                 style={{ size: "1rem" }}
-                                 key={name}
-                                 variant="plain"
-                                //  color={checked ? "primary" : "neutral"}
-                                 // startDecorator={
-                                 //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
-                                 // }
-                               >
-                                 <Radio
-                                   variant="outlined"
-                                  //  color={checked ? "primary" : "neutral"}
-                                   disableIcon
-                                   overlay
-                                   label={option.PaymentMethod2}
-                                   value={name}
-                                  //  checked={checked}
-                                  //  onChange={(event) => {
-                                  //    if (event.target.checked) {
-                                  //      setSelected0(name);
-                                  //    }
-                                  //  }}
-                                 />
-                             
-                               </Chip>
-                               <Chip
-                                 style={{ size: "1rem" }}
-                                 key={name}
-                                 variant="plain"
-                                //  color={checked ? "primary" : "neutral"}
-                                 // startDecorator={
-                                 //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
-                                 // }
-                               >
-                                 <Radio
-                                   variant="outlined"
-                                  //  color={checked ? "primary" : "neutral"}
-                                   disableIcon
-                                   overlay
-                                   label={option.PaymentMethod3}
-                                   value={name}
-                                  //  checked={checked}
-                                  //  onChange={(event) => {
-                                  //    if (event.target.checked) {
-                                  //      setSelected0(name);
-                                  //    }
-                                  //  }}
-                                 />
-                             
-                               </Chip>
-                               <Chip
-                                 style={{ size: "1rem" }}
-                                 key={name}
-                                 variant="plain"
-                                //  color={checked ? "primary" : "neutral"}
-                                 // startDecorator={
-                                 //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
-                                 // }
-                               >
-                                 <Radio
-                                   variant="outlined"
-                                  //  color={checked ? "primary" : "neutral"}
-                                   disableIcon
-                                   overlay
-                                   label={option.PaymentMethod4}
-                                   value={name}
-                                  //  checked={checked}
-                                  //  onChange={(event) => {
-                                  //    if (event.target.checked) {
-                                  //      setSelected0(name);
-                                  //    }
-                                  //  }}
-                                 />
-                             
-                               </Chip>
-                               <Chip
-                                 style={{ size: "1rem" }}
-                                 key={name}
-                                 variant="plain"
-                                //  color={checked ? "primary" : "neutral"}
-                                 // startDecorator={
-                                 //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
-                                 // }
-                               >
-                                 <Radio
-                                   variant="outlined"
-                                  //  color={checked ? "primary" : "neutral"}
-                                   disableIcon
-                                   overlay
-                                   label={option.PaymentMethod5}
-                                   value={name}
-                                  //  checked={checked}
-                                  //  onChange={(event) => {
-                                  //    if (event.target.checked) {
-                                  //      setSelected0(name);
-                                  //    }
-                                  //  }}
-                                 />
-                             
-                               </Chip>
-                               <Chip
-                                 style={{ size: "1rem" }}
-                                 key={name}
-                                 variant="plain"
-                                //  color={checked ? "primary" : "neutral"}
-                                 // startDecorator={
-                                 //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
-                                 // }
-                               >
-                                 <Radio
-                                   variant="outlined"
-                                  //  color={checked ? "primary" : "neutral"}
-                                   disableIcon
-                                   overlay
-                                   label={option.PaymentMethodsNo}
-                                   value={name}
-                                  //  checked={checked}
-                                  //  onChange={(event) => {
-                                  //    if (event.target.checked) {
-                                  //      setSelected0(name);
-                                  //    }
-                                  //  }}
-                                 />
-                             
-                               </Chip>
-                               </>
+                                  <Chip
+                                    style={{ size: "1rem" }}
+                                    key={name}
+                                    variant="plain"
+                                 
+
+                                    // startDecorator={
+                                    //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
+                                    // }
+                                  >
+                                    <Radio
+                                      variant="outlined"
+                                      color={option.ColorPaymentMethord1}
+                                      disableIcon
+                                      overlay
+                                      label={option.PaymentMethod1}
+                                      value={name}
+
+                                      // onChange={(event) => {
+                                      //   if (event.target.checked) {
+                                      //     setSelected0(name);
+                                      //   }
+                                      // }}
+                                    />
+                                  </Chip>
+                                  <Chip
+                                    style={{ size: "1rem" }}
+                                    key={name}
+                                    variant="plain"
+                                    //  color={checked ? "primary" : "neutral"}
+                                    // startDecorator={
+                                    //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
+                                    // }
+                                  >
+                                    <Radio
+                                      variant="outlined"
+                                      //  color={checked ? "primary" : "neutral"}
+                                      disableIcon
+                                      overlay
+                                      color={option.ColorPaymentMethord2}
+                                      label={option.PaymentMethod2}
+                                      value={name}
+                                      //  checked={checked}
+                                      //  onChange={(event) => {
+                                      //    if (event.target.checked) {
+                                      //      setSelected0(name);
+                                      //    }
+                                      //  }}
+                                    />
+                                  </Chip>
+                                  <Chip
+                                    style={{ size: "1rem" }}
+                                    key={name}
+                                    variant="plain"
+                                    //  color={checked ? "primary" : "neutral"}
+                                    // startDecorator={
+                                    //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
+                                    // }
+                                  >
+                                    <Radio
+                                      variant="outlined"
+                                      //  color={checked ? "primary" : "neutral"}
+                                      disableIcon
+                                      overlay
+                                      color={option.ColorPaymentMethord3}
+                                      label={option.PaymentMethod3}
+                                      value={name}
+                                      //  checked={checked}
+                                      //  onChange={(event) => {
+                                      //    if (event.target.checked) {
+                                      //      setSelected0(name);
+                                      //    }
+                                      //  }}
+                                    />
+                                  </Chip>
+                                  <Chip
+                                    style={{ size: "1rem" }}
+                                    key={name}
+                                    variant="plain"
+                                    //  color={checked ? "primary" : "neutral"}
+                                    // startDecorator={
+                                    //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
+                                    // }
+                                  >
+                                    <Radio
+                                      variant="outlined"
+                                      //  color={checked ? "primary" : "neutral"}
+                                      disableIcon
+                                      overlay
+                                      label={option.PaymentMethod4}
+                                      color={option.ColorPaymentMethord4}
+                                      value={name}
+                                      //  checked={checked}
+                                      //  onChange={(event) => {
+                                      //    if (event.target.checked) {
+                                      //      setSelected0(name);
+                                      //    }
+                                      //  }}
+                                    />
+                                  </Chip>
+                                  <Chip
+                                    style={{ size: "1rem" }}
+                                    key={name}
+                                    variant="plain"
+                                    //  color={checked ? "primary" : "neutral"}
+                                    // startDecorator={
+                                    //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
+                                    // }
+                                  >
+                                    <Radio
+                                      variant="outlined"
+                                      //  color={checked ? "primary" : "neutral"}
+                                      disableIcon
+                                      overlay
+                                      label={option.PaymentMethod5}
+                                      color={option.ColorPaymentMethord5}
+                                      value={name}
+                                      //  checked={checked}
+                                      //  onChange={(event) => {
+                                      //    if (event.target.checked) {
+                                      //      setSelected0(name);
+                                      //    }
+                                      //  }}
+                                    />
+                                  </Chip>
+                                  <Chip
+                                    style={{ size: "1rem" }}
+                                    key={name}
+                                    variant="plain"
+                                    //  color={checked ? "primary" : "neutral"}
+                                    // startDecorator={
+                                    //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
+                                    // }
+                                  >
+                                    <Radio
+                                      variant="outlined"
+                                      //  color={checked ? "primary" : "neutral"}
+                                      disableIcon
+                                      overlay
+                                      label={option.PaymentMethodsNo}
+                                      color={option.ColorPaymentMethordsNo}
+                                      value={name}
+                                      //  checked={checked}
+                                      //  onChange={(event) => {
+                                      //    if (event.target.checked) {
+                                      //      setSelected0(name);
+                                      //    }
+                                      //  }}
+                                    />
+                                  </Chip>
+                                </>
                               );
                             })}
                           </RadioGroup>
@@ -1486,6 +1487,12 @@ const datatable = [
     PaymentMethod5: "Binance USD (BUSD)",
     PaymentMethodsNo: "+3",
     offer: "NO KYC‼️Notifications On - 24/7 ✅",
+    ColorPaymentMethord1:"warning",
+    ColorPaymentMethord2:"primary",
+    ColorPaymentMethord3:"warning",
+    ColorPaymentMethord4:"success",
+    ColorPaymentMethord5:"warning",
+    ColorPaymentMethordsNo:"warning",
   },{
   id:2 ,
   name: "alexender",
@@ -1500,6 +1507,12 @@ const datatable = [
   PaymentMethod4: "Amazon pay",
   PaymentMethod5: "Paytm",
   PaymentMethodsNo: "+6",
+  ColorPaymentMethord1:"warning",
+  ColorPaymentMethord2:"primary",
+  ColorPaymentMethord3:"warning",
+  ColorPaymentMethord4:"success",
+  ColorPaymentMethord5:"warning",
+  ColorPaymentMethordsNo:"warning",
   offer: "If I don't respond for more than 2 minutes contact me at tg OTCPlatform where I respond instantly. ",
 },{
   id:3 ,
@@ -1515,6 +1528,12 @@ const datatable = [
   PaymentMethod4: "Binance Coin (BNB)",
   PaymentMethod5: "Dogecoin",
   PaymentMethodsNo: "+9",
+  ColorPaymentMethord1:"warning",
+  ColorPaymentMethord2:"primary",
+  ColorPaymentMethord3:"warning",
+  ColorPaymentMethord4:"success",
+  ColorPaymentMethord5:"warning",
+  ColorPaymentMethordsNo:"warning",
   offer: "XMR ETH SOL USDT USDC and any other coin!!",
 }, {
   id: 4,
@@ -1530,6 +1549,12 @@ const datatable = [
   PaymentMethod4: "Tether",
   PaymentMethod5: "Binance USD (BUSD)",
   PaymentMethodsNo: "+3",
+  ColorPaymentMethord1:"warning",
+  ColorPaymentMethord2:"primary",
+  ColorPaymentMethord3:"warning",
+  ColorPaymentMethord4:"success",
+  ColorPaymentMethord5:"warning",
+  ColorPaymentMethordsNo:"warning",
   offer: "NO KYC‼️Notifications On - 24/7 ✅",
 },{
 id:5 ,
@@ -1545,6 +1570,12 @@ PaymentMethod3: "Google pay",
 PaymentMethod4: "Amazon pay",
 PaymentMethod5: "Paytm",
 PaymentMethodsNo: "+6",
+ColorPaymentMethord1:"warning",
+ColorPaymentMethord2:"primary",
+ColorPaymentMethord3:"warning",
+ColorPaymentMethord4:"success",
+ColorPaymentMethord5:"warning",
+ColorPaymentMethordsNo:"warning",
 offer: "If I don't respond for more than 2 minutes contact me at tg OTCPlatform where I respond instantly. ",
 },{
 id:6 ,
@@ -1560,6 +1591,12 @@ PaymentMethod3: "Bitcoin Cash",
 PaymentMethod4: "Binance Coin (BNB)",
 PaymentMethod5: "Dogecoin",
 PaymentMethodsNo: "+9",
+ColorPaymentMethord1:"warning",
+ColorPaymentMethord2:"primary",
+ColorPaymentMethord3:"warning",
+ColorPaymentMethord4:"success",
+ColorPaymentMethord5:"warning",
+ColorPaymentMethordsNo:"warning",
 offer: "XMR ETH SOL USDT USDC and any other coin!!",
 }
 

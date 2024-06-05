@@ -1,4 +1,5 @@
 "use client";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import { useState, useEffect } from "react";
 import * as React from "react";
 import Box from "@mui/joy/Box";
@@ -22,7 +23,7 @@ import Checkbox from "@mui/joy/Checkbox";
 import FormControl from "@mui/joy/FormControl";
 import FormLabel from "@mui/joy/FormLabel";
 import IconButton from "@mui/joy/IconButton";
-
+import StepIndicator from "@mui/joy/StepIndicator";
 import Tooltip from "@mui/joy/Tooltip";
 import DeleteIcon from "@mui/icons-material/Delete";
 import FilterListIcon from "@mui/icons-material/FilterList";
@@ -30,64 +31,67 @@ import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import { visuallyHidden } from "@mui/utils";
-import { styled } from '@mui/joy/styles';
-import Input from '@mui/joy/Input';
-import CheckCircleOutlined from '@mui/icons-material/CheckCircleOutlined';
-
-const StyledInput = styled('input')({
-  border: 'none', // remove the native input border
+import { styled } from "@mui/joy/styles";
+import Input from "@mui/joy/Input";
+import CheckCircleOutlined from "@mui/icons-material/CheckCircleOutlined";
+import Stepper from "@mui/joy/Stepper";
+import Step from "@mui/joy/Step";
+import Footer from "../footer";
+const StyledInput = styled("input")({
+  border: "none", // remove the native input border
   minWidth: 0, // remove the native input width
   outline: 0, // remove the native input outline
   padding: 0, // remove the native input padding
-  paddingTop: '1em',
+  paddingTop: "1em",
   flex: 1,
-  color: 'inherit',
-  backgroundColor: 'transparent',
-  fontFamily: 'inherit',
-  fontSize: 'inherit',
-  fontStyle: 'inherit',
-  fontWeight: 'inherit',
-  lineHeight: 'inherit',
-  textOverflow: 'ellipsis',
-  '&::placeholder': {
+  color: "inherit",
+  backgroundColor: "transparent",
+  fontFamily: "inherit",
+  fontSize: "inherit",
+  fontStyle: "inherit",
+  fontWeight: "inherit",
+  lineHeight: "inherit",
+  textOverflow: "ellipsis",
+  "&::placeholder": {
     opacity: 0,
-    transition: '0.1s ease-out',
+    transition: "0.1s ease-out",
   },
-  '&:focus::placeholder': {
+  "&:focus::placeholder": {
     opacity: 1,
   },
-  '&:focus ~ label, &:not(:placeholder-shown) ~ label, &:-webkit-autofill ~ label': {
-    top: '0.5rem',
-    fontSize: '0.75rem',
+  "&:focus ~ label, &:not(:placeholder-shown) ~ label, &:-webkit-autofill ~ label":
+    {
+      top: "0.5rem",
+      fontSize: "0.75rem",
+    },
+  "&:focus ~ label": {
+    color: "var(--Input-focusedHighlight)",
   },
-  '&:focus ~ label': {
-    color: 'var(--Input-focusedHighlight)',
+  "&:-webkit-autofill": {
+    alignSelf: "stretch", // to fill the height of the root slot
   },
-  '&:-webkit-autofill': {
-    alignSelf: 'stretch', // to fill the height of the root slot
-  },
-  '&:-webkit-autofill:not(* + &)': {
-    marginInlineStart: 'calc(-1 * var(--Input-paddingInline))',
-    paddingInlineStart: 'var(--Input-paddingInline)',
+  "&:-webkit-autofill:not(* + &)": {
+    marginInlineStart: "calc(-1 * var(--Input-paddingInline))",
+    paddingInlineStart: "var(--Input-paddingInline)",
     borderTopLeftRadius:
-      'calc(var(--Input-radius) - var(--variant-borderWidth, 0px))',
+      "calc(var(--Input-radius) - var(--variant-borderWidth, 0px))",
     borderBottomLeftRadius:
-      'calc(var(--Input-radius) - var(--variant-borderWidth, 0px))',
+      "calc(var(--Input-radius) - var(--variant-borderWidth, 0px))",
   },
 });
 
-const StyledLabel = styled('label')(({ theme }) => ({
-  position: 'absolute',
+const StyledLabel = styled("label")(({ theme }) => ({
+  position: "absolute",
   lineHeight: 1,
-  top: 'calc((var(--Input-minHeight) - 1em) / 2)',
+  top: "calc((var(--Input-minHeight) - 1em) / 2)",
   color: theme.vars.palette.text.tertiary,
   fontWeight: theme.vars.fontWeight.md,
-  transition: 'all 150ms cubic-bezier(0.4, 0, 0.2, 1)',
+  transition: "all 150ms cubic-bezier(0.4, 0, 0.2, 1)",
 }));
 
 const InnerInput = React.forwardRef<
   HTMLInputElement,
-  JSX.IntrinsicElements['input']
+  JSX.IntrinsicElements["input"]
 >(function InnerInput(props, ref) {
   const id = React.useId();
   return (
@@ -478,7 +482,7 @@ export default function C() {
           <Button size="sm">Create offer</Button>
         </Typography> */}
         <Sheet
-          variant="soft"
+          variant="plain"
           aria-label="Pricing plan"
           defaultValue={0}
           sx={{
@@ -588,7 +592,7 @@ export default function C() {
               </Select>
             </Grid>
           </Grid> */}
-{/* ppip */}
+          {/* ppip */}
           {/*  */}
           {/* <EnhancedTableToolbar numSelected={selected.length} />
           <Table
@@ -750,7 +754,7 @@ export default function C() {
             </tfoot>
           </Table> */}
           {/*  */}
-          <Table >
+          <Table>
             {/* <thead>
               <tr>
                 <th>Seller</th>
@@ -778,12 +782,8 @@ export default function C() {
           </th>
         </tr>
       </thead> */}
+
             <tbody>
-              
-
-
-
-
               {datatable.map((option) => {
                 return (
                   <tr>
@@ -810,19 +810,101 @@ export default function C() {
                     </td>
                     <td>
                       {" "}
-                      <Typography sx={{ fontSize: 28 }} level="title-md">
-                        {option.price} 
+                      <Typography sx={{ fontSize: 27.5 }} level="title-md">
+                        <Typography level="body-xs" sx={{ fontSize: 22 }}>
+                          {" "}
+                          Price{" "}
+                        </Typography>{" "}
+                        {option.price}
                       </Typography>
-                    </td>
-                    <td>
+                      {/* </td>
+                    <td> */}
                       <Typography sx={{ fontSize: 23 }} level="title-sm">
                         {" "}
-                        {option.limitscurrency} {" "}
+                        <Typography level="body-xs" sx={{ fontSize: 22 }}>
+                          {" "}
+                          Limits{" "}
+                        </Typography>
+                        {option.limitscurrency}{" "}
                       </Typography>
                       {"\n"}
                       <Typography level="body-md">
-                        {option.limitscrypto} 
+                        {option.limitscrypto}
                       </Typography>
+                    </td>
+
+                    <td>
+                      {" "}
+                      <Typography level="body-md">
+                        <Typography level="body-xs" sx={{ fontSize: 22 }}>
+                          {" "}
+                          Location{" "}
+                        </Typography>
+                        {option.Location} <br />
+                        <Typography level="body-xs" sx={{ fontSize: 22 }}>
+                          {" "}
+                          Payment window{" "}
+                          <Tooltip
+                        placement="top-start"
+                        variant="solid"
+                        arrow
+                        title={
+                          <Box
+                            sx={{
+                              display: "flex",
+                              flexDirection: "column",
+                              maxWidth: 320,
+                              justifyContent: "center",
+                              p: 1,
+                            }}
+                          >
+                            <Box
+                              sx={{
+                                display: "flex",
+                                // gap: 1,
+                                width: "100%",
+                                mt: 1,
+                              }}
+                            >
+                              <div>
+                                <Typography
+                                  sx={{ fontSize: 15, mb: 1 }}
+                                >
+                                  The payment window is the time within which
+                                  the Buyer must complete the payment. The
+                                  timeframe must reflect the selected payment
+                                  method. When the payment window runs out, the
+                                  Seller can cancel the contract or start the
+                                  dispute if the payment has been initiated but
+                                  not received.
+                                </Typography>
+                              </div>
+                            </Box>
+                          </Box>
+                        }
+                      >
+                        <HelpOutlineIcon fontSize="inherit" color="primary" />
+                      </Tooltip>
+                        </Typography>
+                        {/* <Tooltip
+                          size="sm"
+                          arrow
+                          open
+                          title="The payment window is the time within which  the Buyer must complete the payment. The timeframe must reflect the selected payment method. When the payment window runs out, the Seller can cancel the contract or start the dispute if the payment has been initiated but not received."
+                          variant="solid"
+                          placement="top-end"
+                        >
+                          <HelpOutlineIcon fontSize="inherit" color="primary" />
+                        </Tooltip> */}
+                        {option.paymentwindow} min.
+                        <br />
+                        <Typography level="body-xs" sx={{ fontSize: 22 }}>
+                          {" "}
+                          BTC confirmations
+                        </Typography>{" "}
+                        1
+                      </Typography>
+                 
                     </td>
                     <td>
                       <Box
@@ -834,194 +916,208 @@ export default function C() {
                         }}
                       >
                         <div>
+                          <Typography level="body-xs" sx={{ fontSize: 22 }}>
+                            {" "}
+                            Payment methods{" "}
+                          </Typography>
                           <RadioGroup
                             name="best-movie"
                             aria-labelledby="best-movie"
                             orientation="horizontal"
                             sx={{ flexWrap: "wrap", gap: 1 }}
                           >
-                            {[
-                              "Binance Coin (BNB)",
-                           
-                            ].map((name) => {
+                            {["Binance Coin (BNB)"].map((name) => {
                               // const checked = selected0 === name;
                               return (
                                 <>
-                                <Chip
-                                  style={{ size: "1rem" }}
-                                  key={name}
-                                  variant="plain"
-                          
-                                  // startDecorator={
-                                  //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
-                                  // }
-                                >
-                                  <Radio
-                                    variant="outlined"
-                                  
-                                    disableIcon
-                                    overlay
-                                    label={option.PaymentMethod1}
-                                    value={name}
-                               
-                                    // onChange={(event) => {
-                                    //   if (event.target.checked) {
-                                    //     setSelected0(name);
-                                    //   }
-                                    // }}
-                                  />
-                              
-                                </Chip>
-                                 <Chip
-                                 style={{ size: "1rem" }}
-                                 key={name}
-                                 variant="plain"
-                                //  color={checked ? "primary" : "neutral"}
-                                 // startDecorator={
-                                 //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
-                                 // }
-                               >
-                                 <Radio
-                                   variant="outlined"
-                                  //  color={checked ? "primary" : "neutral"}
-                                   disableIcon
-                                   overlay
-                                   label={option.PaymentMethod2}
-                                   value={name}
-                                  //  checked={checked}
-                                  //  onChange={(event) => {
-                                  //    if (event.target.checked) {
-                                  //      setSelected0(name);
-                                  //    }
-                                  //  }}
-                                 />
-                             
-                               </Chip>
-                               <Chip
-                                 style={{ size: "1rem" }}
-                                 key={name}
-                                 variant="plain"
-                                //  color={checked ? "primary" : "neutral"}
-                                 // startDecorator={
-                                 //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
-                                 // }
-                               >
-                                 <Radio
-                                   variant="outlined"
-                                  //  color={checked ? "primary" : "neutral"}
-                                   disableIcon
-                                   overlay
-                                   label={option.PaymentMethod3}
-                                   value={name}
-                                  //  checked={checked}
-                                  //  onChange={(event) => {
-                                  //    if (event.target.checked) {
-                                  //      setSelected0(name);
-                                  //    }
-                                  //  }}
-                                 />
-                             
-                               </Chip>
-                               <Chip
-                                 style={{ size: "1rem" }}
-                                 key={name}
-                                 variant="plain"
-                                //  color={checked ? "primary" : "neutral"}
-                                 // startDecorator={
-                                 //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
-                                 // }
-                               >
-                                 <Radio
-                                   variant="outlined"
-                                  //  color={checked ? "primary" : "neutral"}
-                                   disableIcon
-                                   overlay
-                                   label={option.PaymentMethod4}
-                                   value={name}
-                                  //  checked={checked}
-                                  //  onChange={(event) => {
-                                  //    if (event.target.checked) {
-                                  //      setSelected0(name);
-                                  //    }
-                                  //  }}
-                                 />
-                             
-                               </Chip>
-                               <Chip
-                                 style={{ size: "1rem" }}
-                                 key={name}
-                                 variant="plain"
-                                //  color={checked ? "primary" : "neutral"}
-                                 // startDecorator={
-                                 //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
-                                 // }
-                               >
-                                 <Radio
-                                   variant="outlined"
-                                  //  color={checked ? "primary" : "neutral"}
-                                   disableIcon
-                                   overlay
-                                   label={option.PaymentMethod5}
-                                   value={name}
-                                  //  checked={checked}
-                                  //  onChange={(event) => {
-                                  //    if (event.target.checked) {
-                                  //      setSelected0(name);
-                                  //    }
-                                  //  }}
-                                 />
-                             
-                               </Chip>
-                               <Chip
-                                 style={{ size: "1rem" }}
-                                 key={name}
-                                 variant="plain"
-                                //  color={checked ? "primary" : "neutral"}
-                                 // startDecorator={
-                                 //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
-                                 // }
-                               >
-                                 <Radio
-                                   variant="outlined"
-                                  //  color={checked ? "primary" : "neutral"}
-                                   disableIcon
-                                   overlay
-                                   label={option.PaymentMethodsNo}
-                                   value={name}
-                                  //  checked={checked}
-                                  //  onChange={(event) => {
-                                  //    if (event.target.checked) {
-                                  //      setSelected0(name);
-                                  //    }
-                                  //  }}
-                                 />
-                             
-                               </Chip>
-                               </>
+                                  <Chip
+                                    style={{ size: "1rem" }}
+                                    key={name}
+                                    variant="plain"
+                                 
+
+                                    // startDecorator={
+                                    //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
+                                    // }
+                                  >
+                                    <Radio
+                                      variant="outlined"
+                                      color={option.ColorPaymentMethord1}
+                                      disableIcon
+                                      overlay
+                                      label={option.PaymentMethod1}
+                                      value={name}
+
+                                      // onChange={(event) => {
+                                      //   if (event.target.checked) {
+                                      //     setSelected0(name);
+                                      //   }
+                                      // }}
+                                    />
+                                  </Chip>
+                                  <Chip
+                                    style={{ size: "1rem" }}
+                                    key={name}
+                                    variant="plain"
+                                    //  color={checked ? "primary" : "neutral"}
+                                    // startDecorator={
+                                    //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
+                                    // }
+                                  >
+                                    <Radio
+                                      variant="outlined"
+                                      //  color={checked ? "primary" : "neutral"}
+                                      disableIcon
+                                      overlay
+                                      color={option.ColorPaymentMethord2}
+                                      label={option.PaymentMethod2}
+                                      value={name}
+                                      //  checked={checked}
+                                      //  onChange={(event) => {
+                                      //    if (event.target.checked) {
+                                      //      setSelected0(name);
+                                      //    }
+                                      //  }}
+                                    />
+                                  </Chip>
+                                  <Chip
+                                    style={{ size: "1rem" }}
+                                    key={name}
+                                    variant="plain"
+                                    //  color={checked ? "primary" : "neutral"}
+                                    // startDecorator={
+                                    //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
+                                    // }
+                                  >
+                                    <Radio
+                                      variant="outlined"
+                                      //  color={checked ? "primary" : "neutral"}
+                                      disableIcon
+                                      overlay
+                                      color={option.ColorPaymentMethord3}
+                                      label={option.PaymentMethod3}
+                                      value={name}
+                                      //  checked={checked}
+                                      //  onChange={(event) => {
+                                      //    if (event.target.checked) {
+                                      //      setSelected0(name);
+                                      //    }
+                                      //  }}
+                                    />
+                                  </Chip>
+                                  <Chip
+                                    style={{ size: "1rem" }}
+                                    key={name}
+                                    variant="plain"
+                                    //  color={checked ? "primary" : "neutral"}
+                                    // startDecorator={
+                                    //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
+                                    // }
+                                  >
+                                    <Radio
+                                      variant="outlined"
+                                      //  color={checked ? "primary" : "neutral"}
+                                      disableIcon
+                                      overlay
+                                      label={option.PaymentMethod4}
+                                      color={option.ColorPaymentMethord4}
+                                      value={name}
+                                      //  checked={checked}
+                                      //  onChange={(event) => {
+                                      //    if (event.target.checked) {
+                                      //      setSelected0(name);
+                                      //    }
+                                      //  }}
+                                    />
+                                  </Chip>
+                                  <Chip
+                                    style={{ size: "1rem" }}
+                                    key={name}
+                                    variant="plain"
+                                    //  color={checked ? "primary" : "neutral"}
+                                    // startDecorator={
+                                    //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
+                                    // }
+                                  >
+                                    <Radio
+                                      variant="outlined"
+                                      //  color={checked ? "primary" : "neutral"}
+                                      disableIcon
+                                      overlay
+                                      label={option.PaymentMethod5}
+                                      color={option.ColorPaymentMethord5}
+                                      value={name}
+                                      //  checked={checked}
+                                      //  onChange={(event) => {
+                                      //    if (event.target.checked) {
+                                      //      setSelected0(name);
+                                      //    }
+                                      //  }}
+                                    />
+                                  </Chip>
+                                  {/* <Chip
+                                    style={{ size: "1rem" }}
+                                    key={name}
+                                    variant="plain"
+                                    //  color={checked ? "primary" : "neutral"}
+                                    // startDecorator={
+                                    //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
+                                    // }
+                                  >
+                                    <Radio
+                                      variant="outlined"
+                                      //  color={checked ? "primary" : "neutral"}
+                                      disableIcon
+                                      overlay
+                                      label={option.PaymentMethodsNo}
+                                      color={option.ColorPaymentMethordsNo}
+                                      value={name}
+                                      //  checked={checked}
+                                      //  onChange={(event) => {
+                                      //    if (event.target.checked) {
+                                      //      setSelected0(name);
+                                      //    }
+                                      //  }}
+                                    />
+                                  </Chip> */}
+                                </>
                               );
                             })}
                           </RadioGroup>
                         </div>
                       </Box>
-                    </td>
-                    <td>
-                      {" "}
+                    </td>  
+                    <Sheet
+                variant="soft"
+                aria-label="Pricing plan"
+                defaultValue={0}
+                sx={{
+                  //    width: 750,
+                  borderRadius: "lg",
+                  // boxShadow: "xl",
+                  overflow: "auto",
+                  mt: 3,
+                  p: 4,
+                }}
+                color="neutral"
+                //  sx={{ p: 4 }}
+              >
                       <Typography level="body-md">
                         {" "}
                         {option.offer}
                   
                       </Typography>
-                    </td>
+                </Sheet>
                   </tr>
+                
                 );
               })}
-             
             </tbody>
           </Table>
-          {/* <Pig /> */}
         </Sheet>
+
         <Sheet
-          variant="soft"
+          variant="plain"
           aria-label="Pricing plan"
           defaultValue={0}
           sx={{
@@ -1035,84 +1131,110 @@ export default function C() {
           color="neutral"
           //  sx={{ p: 4 }}
         >
-<Typography level="body-xs">I want to buy BTC for</Typography>
-<Stack spacing={1.5}>
-                <Input
-                type="number"
-                  placeholder="Amount"
-                  startDecorator={
-                    { inr: " ₹", dollar: "$", eur: "€", yen: "¥" }[currency]
-                  }
-                  endDecorator={
-                    <React.Fragment>
-                      <Divider orientation="vertical" />
-                      <Select
-                        variant="plain"
-                        value={currency}
-                        onChange={(_, value) => setCurrency(value!)}
-                        slotProps={{
-                          listbox: {
-                            variant: "outlined",
-                          },
-                        }}
-                        sx={{ mr: -1.5, "&:hover": { bgcolor: "transparent" } }}
-                      >
-                        <Option value="inr">INR</Option>
-                        <Option value="dollar">USD</Option>
-                        <Option value="eur">EUR</Option>
-                        <Option value="yen">YEN</Option>
-                      </Select>
-                    </React.Fragment>
-                  }
-                  // sx={{ width: 600 }}
-                />
-              </Stack>=
-              <Stack spacing={1.5}>
-                <Input
-                  placeholder="Amount"
-                  type="number"
-                  startDecorator={
-                    { btc: " ₿", etc: "Ξ", ltc: "Ł", xmr: "ɱ" ,xno: "Ӿ", dash: "Đ"}[currency1]
-                  }
-                  endDecorator={
-                    <React.Fragment>
-                      <Divider orientation="vertical" />
-                      <Select
-                        variant="plain"
-                        value={currency1}
-                        onChange={(_, value) => setCurrency1(value!)}
-                        slotProps={{
-                          listbox: {
-                            variant: "outlined",
-                          },
-                        }}
-                        sx={{ mr: -1.5, "&:hover": { bgcolor: "transparent" } }}
-                      >
-                        <Option value="btc">BTC</Option>
-                        <Option value="etc">ETC</Option>
-                        <Option value="ltc">LTC</Option>
-                        <Option value="xmr">XMR</Option>
-                        <Option value="xno">XNO</Option>
-                        <Option value="dash">DASH</Option>
-                      </Select>
-                    </React.Fragment>
-                  }
-                  // sx={{ width: 600 }}
-                />
-              </Stack>
-              <Typography level="body-xs">Enter the amount you are looking to buy</Typography>
-              <Typography level="body-xs"> Bitcoin address</Typography>
+          <Grid container  spacing={2} sx={{ flexGrow: 1 }}>
+            <Grid xs={6} md={6} lg={6} xl={6}>
+              <Typography level="body-xs">I want to buy BTC for</Typography>
+              <Stack spacing={1} direction="column">
+              <FormControl
+                sx={{ display: { sm: 'flex-column', md: 'flex-row' }, gap: 2 }}
+                >
+                  {/* <Stack spacing={1.5}> */}
+                    <Input
+                      type="number"
+                      placeholder="Amount"
+                      startDecorator={
+                        { inr: " ₹", dollar: "$", eur: "€", yen: "¥" }[currency]
+                      }
+                      endDecorator={
+                        <React.Fragment>
+                          <Divider orientation="vertical" />
+                          <Select
+                            variant="plain"
+                            value={currency}
+                            onChange={(_, value) => setCurrency(value!)}
+                            slotProps={{
+                              listbox: {
+                                variant: "outlined",
+                              },
+                            }}
+                            sx={{
+                              mr: -1.5,
+                              "&:hover": { bgcolor: "transparent" },
+                            }}
+                          >
+                            <Option value="inr">INR</Option>
+                            <Option value="dollar">USD</Option>
+                            <Option value="eur">EUR</Option>
+                            <Option value="yen">YEN</Option>
+                          </Select>
+                        </React.Fragment>
+                      }
+                    />
+                  {/* </Stack> */}
+               
+                {/* <Grid  xs={0.5} md={0.1} lg={0.1} xl={0.1}>
+            <Typography>=</Typography></Grid> */}
+         
+                  {/* <Stack spacing={1.5}> */}
+                    <Input
+                      placeholder="Amount"
+                      type="number"
+                      startDecorator={
+                        {
+                          btc: " ₿",
+                          etc: "Ξ",
+                          ltc: "Ł",
+                          xmr: "ɱ",
+                          xno: "Ӿ",
+                          dash: "Đ",
+                        }[currency1]
+                      }
+                      endDecorator={
+                        <React.Fragment>
+                          <Divider orientation="vertical" />
+                          <Select
+                            variant="plain"
+                            value={currency1}
+                            onChange={(_, value) => setCurrency1(value!)}
+                            slotProps={{
+                              listbox: {
+                                variant: "outlined",
+                              },
+                            }}
+                            sx={{
+                              mr: -1.5,
+                              "&:hover": { bgcolor: "transparent" },
+                            }}
+                          >
+                            <Option value="btc">BTC</Option>
+                            <Option value="etc">ETC</Option>
+                            <Option value="ltc">LTC</Option>
+                            <Option value="xmr">XMR</Option>
+                            <Option value="xno">XNO</Option>
+                            <Option value="dash">DASH</Option>
+                          </Select>
+                        </React.Fragment>
+                      }
+                      // sx={{ width: 600 }}
+                    />
+                  {/* </Stack> */}
+                  </FormControl>
+                  </Stack>
+              <Typography sx={{mt:1}} level="body-xs">
+                Enter the amount you are looking to buy
+              </Typography>
+              <Typography sx={{mt:2}} level="body-xs"> Bitcoin address</Typography>
               <Input
-      endDecorator={<CheckCircleOutlined />}
-      slots={{ input: InnerInput }}
-      slotProps={{ input: { placeholder: '', type: 'text' } }}
-      sx={{
-        '--Input-minHeight': '56px',
-        '--Input-radius': '6px',
-      }}
-    />
-        <Typography level="body-xs"> Payment method</Typography>
-        <Select defaultValue="11">
+                endDecorator={<CheckCircleOutlined />}
+                slots={{ input: InnerInput }}
+                slotProps={{ input: { placeholder: "", type: "text" } }}
+                sx={{
+                  "--Input-minHeight": "56px",
+                  "--Input-radius": "6px",
+                }}
+              />
+              <Typography sx={{mt:2}} level="body-xs"> Payment method</Typography>
+              <Select defaultValue="11">
                 {options2.map((option) => {
                   return (
                     <Option value={option.id}>
@@ -1126,44 +1248,120 @@ export default function C() {
                     </Option>
                   );
                 })}
-
               </Select>
-<Button size="lg" fullWidth>Accept offer</Button>
+              <Button sx={{mt:3}} size="lg" fullWidth>
+                Accept offer
+              </Button>
+            </Grid>
 
-<Sheet
-          variant="soft"
-          aria-label="Pricing plan"
-          defaultValue={0}
-          sx={{
-            //    width: 750,
-            borderRadius: "lg",
-            boxShadow: "xl",
-            overflow: "auto",
-            mt: 3,
-            p: 4,
-          }}
-          color="neutral"
-          //  sx={{ p: 4 }}
-        >
-  <Typography level="body-xs"> Amount to buy </Typography>
-  <Typography sx={{mb:2}} level="title-md"> 0 BTC ≈ 0 INR </Typography>
-  <Divider />
-  <Typography  sx={{mt:2}} level="body-xs">  Trading fee</Typography>
-  <Typography sx={{mb:2}} level="title-md">  0 BTC ≈ 0 INR</Typography>
-  <Divider />
-  <Typography sx={{mt:2}} level="body-xs"> Amount to be received, excluding transaction fee </Typography>
-  <Typography sx={{mb:2}} level="title-md">  0 BTC ≈ 0 INR</Typography>
-  <Divider />
-  <Typography sx={{mt:2}} level="body-xs">  Intermediary fee</Typography>
-  <Typography sx={{mb:2}} level="title-md">  0 BTC ≈ 0 INR</Typography>
-  <Divider />
-  <Typography sx={{mt:2}} level="body-xs">Estimated transaction fee  </Typography>
-  <Typography level="title-md">0.00011616 BTC ≈790.84 INR  </Typography>
+            <Grid xs={6} md={6} lg={6} xl={6}>
+              <Sheet
+                variant="soft"
+                aria-label="Pricing plan"
+                defaultValue={0}
+                sx={{
+                  //    width: 750,
+                  borderRadius: "lg",
+                  // boxShadow: "xl",
+                  overflow: "auto",
+                  mt: 3,
+                  p: 4,
+                }}
+                color="neutral"
+                //  sx={{ p: 4 }}
+              >
+                <Typography level="body-xs"> Amount to buy </Typography>
+                <Typography sx={{ mb: 2 }} level="title-md">
+                  {" "}
+                  0 BTC ≈ 0 INR{" "}
+                </Typography>
+                <Divider />
+                <Typography sx={{ mt: 2 }} level="body-xs">
+                  {" "}
+                  Trading fee
+                </Typography>
+                <Typography sx={{ mb: 2 }} level="title-md">
+                  {" "}
+                 <Chip  size="sm"
+        variant="solid"
+        color="warning">FEE 0%</Chip> 0 BTC ≈ 0 INR
+                </Typography>
+                <Divider />
+                <Typography sx={{ mt: 2 }} level="body-xs">
+                  {" "}
+                  Amount to be received, excluding transaction fee{" "}
+                </Typography>
+                <Typography sx={{ mb: 2 }} level="title-md">
+                  {" "}
+                  0 BTC ≈ 0 INR
+                </Typography>
+                <Divider />
+                <Typography sx={{ mt: 2 }} level="body-xs">
+                  {" "}
+                  Intermediary fee
+                </Typography>
+                <Typography sx={{ mb: 2 }} level="title-md">
+                  {" "}
+                  <Chip size="sm"
+        variant="solid"
+        color="warning">FEE 0%</Chip> 0 BTC ≈ 0 INR
+                </Typography>
+                <Divider />
+                <Typography sx={{ mt: 2 }} level="body-xs">
+                  Estimated transaction fee{" "}
+                </Typography>
+                <Typography level="title-md">
+                <Chip  size="sm"
+        variant="solid"
+        color="success">Low </Chip> 0.00011616 BTC ≈0 INR{" "}
+                </Typography>
+              </Sheet>
+            </Grid>
+          </Grid>
 
-
-        </Sheet>
+          <Stepper sx={{ mt: 4 }}>
+            <Step
+              orientation="vertical"
+              indicator={
+                <StepIndicator variant="solid" color="primary">
+                  1
+                </StepIndicator>
+              }
+            >
+              {" "}
+              <Typography style={{ color: "#1565c0" }}>
+                You are accepting an offer{" "}
+              </Typography>
+            </Step>
+            <Step
+              orientation="vertical"
+              indicator={<StepIndicator variant="outlined">2</StepIndicator>}
+            >
+              You are engaging in contract, generate escrow address by
+              confirming your payment password
+            </Step>
+            <Step
+              orientation="vertical"
+              indicator={<StepIndicator variant="outlined">3</StepIndicator>}
+            >
+              The Seller deposits Bitcoin in the multisig escrow
+            </Step>
+            <Step
+              orientation="vertical"
+              indicator={<StepIndicator variant="outlined">4</StepIndicator>}
+            >
+              The Buyer sends the payment to the Seller
+            </Step>
+            <Step
+              orientation="vertical"
+              indicator={<StepIndicator variant="outlined">5</StepIndicator>}
+            >
+              Contract is completed, the Buyer receives the Bitcoin
+            </Step>
+          </Stepper>
         </Sheet>
       </Box>
+      <Footer/>
     </>
   );
 }
@@ -1689,89 +1887,95 @@ const datatable = [
     limitscurrency: "2,000 - 150,000 USD",
     limitscrypto: "0.02836590 - 2.12744270 BTC",
     PaymentMethod1: "Binance Coin (BNB)",
+    ColorPaymentMethord1:"warning",
+    ColorPaymentMethord2:"primary",
+    ColorPaymentMethord3:"warning",
+    ColorPaymentMethord4:"success",
+    ColorPaymentMethord5:"warning",
+    ColorPaymentMethordsNo:"warning",
     PaymentMethod2: "Ethereum",
     PaymentMethod3: "DAI",
     PaymentMethod4: "Tether",
     PaymentMethod5: "Binance USD (BUSD)",
     PaymentMethodsNo: "+3",
     offer: "NO KYC‼️Notifications On - 24/7 ✅",
-  }
-//   },{
-//   id:2 ,
-//   name: "alexender",
-//   rate:100 ,
-//   trades:64 ,
-//   price:"69,108.22 USD" ,
-//   limitscurrency: "1,000 - 67,777 USD",
-//   limitscrypto: "0.01447006 - 0.98073710 BTC",
-//   PaymentMethod1: "PayPal",
-//   PaymentMethod2: "Any national bank",
-//   PaymentMethod3: "Google pay",
-//   PaymentMethod4: "Amazon pay",
-//   PaymentMethod5: "Paytm",
-//   PaymentMethodsNo: "+6",
-//   offer: "If I don't respond for more than 2 minutes contact me at tg OTCPlatform where I respond instantly. ",
-// },{
-//   id:3 ,
-//   name: "jajafk",
-//   rate:100 ,
-//   trades: 537,
-//   price:"69,733.75 USD" ,
-//   limitscurrency: "700 - 50,000 USD",
-//   limitscrypto: "0.01003818 - 0.71701294 BTC",
-//   PaymentMethod1: "TRON",
-//   PaymentMethod2: "Cardano",
-//   PaymentMethod3: "Bitcoin Cash",
-//   PaymentMethod4: "Binance Coin (BNB)",
-//   PaymentMethod5: "Dogecoin",
-//   PaymentMethodsNo: "+9",
-//   offer: "XMR ETH SOL USDT USDC and any other coin!!",
-// }, {
-//   id: 4,
-//   name: "chickenwing",
-//   rate: 100,
-//   trades: 195,
-//   price: "70507.19 USD",
-//   limitscurrency: "2,000 - 150,000 USD",
-//   limitscrypto: "0.02836590 - 2.12744270 BTC",
-//   PaymentMethod1: "Binance Coin (BNB)",
-//   PaymentMethod2: "Ethereum",
-//   PaymentMethod3: "DAI",
-//   PaymentMethod4: "Tether",
-//   PaymentMethod5: "Binance USD (BUSD)",
-//   PaymentMethodsNo: "+3",
-//   offer: "NO KYC‼️Notifications On - 24/7 ✅",
-// },{
-// id:5 ,
-// name: "alexender",
-// rate:100 ,
-// trades:64 ,
-// price:"69,108.22 USD" ,
-// limitscurrency: "1,000 - 67,777 USD",
-// limitscrypto: "0.01447006 - 0.98073710 BTC",
-// PaymentMethod1: "PayPal",
-// PaymentMethod2: "Any national bank",
-// PaymentMethod3: "Google pay",
-// PaymentMethod4: "Amazon pay",
-// PaymentMethod5: "Paytm",
-// PaymentMethodsNo: "+6",
-// offer: "If I don't respond for more than 2 minutes contact me at tg OTCPlatform where I respond instantly. ",
-// },{
-// id:6 ,
-// name: "jajafk",
-// rate:100 ,
-// trades: 537,
-// price:"69,733.75 USD" ,
-// limitscurrency: "700 - 50,000 USD",
-// limitscrypto: "0.01003818 - 0.71701294 BTC",
-// PaymentMethod1: "TRON",
-// PaymentMethod2: "Cardano",
-// PaymentMethod3: "Bitcoin Cash",
-// PaymentMethod4: "Binance Coin (BNB)",
-// PaymentMethod5: "Dogecoin",
-// PaymentMethodsNo: "+9",
-// offer: "XMR ETH SOL USDT USDC and any other coin!!",
-// }
-
-
+    Location: "Global",
+    paymentwindow: 80,
+  },
+  //   },{
+  //   id:2 ,
+  //   name: "alexender",
+  //   rate:100 ,
+  //   trades:64 ,
+  //   price:"69,108.22 USD" ,
+  //   limitscurrency: "1,000 - 67,777 USD",
+  //   limitscrypto: "0.01447006 - 0.98073710 BTC",
+  //   PaymentMethod1: "PayPal",
+  //   PaymentMethod2: "Any national bank",
+  //   PaymentMethod3: "Google pay",
+  //   PaymentMethod4: "Amazon pay",
+  //   PaymentMethod5: "Paytm",
+  //   PaymentMethodsNo: "+6",
+  //   offer: "If I don't respond for more than 2 minutes contact me at tg OTCPlatform where I respond instantly. ",
+  // },{
+  //   id:3 ,
+  //   name: "jajafk",
+  //   rate:100 ,
+  //   trades: 537,
+  //   price:"69,733.75 USD" ,
+  //   limitscurrency: "700 - 50,000 USD",
+  //   limitscrypto: "0.01003818 - 0.71701294 BTC",
+  //   PaymentMethod1: "TRON",
+  //   PaymentMethod2: "Cardano",
+  //   PaymentMethod3: "Bitcoin Cash",
+  //   PaymentMethod4: "Binance Coin (BNB)",
+  //   PaymentMethod5: "Dogecoin",
+  //   PaymentMethodsNo: "+9",
+  //   offer: "XMR ETH SOL USDT USDC and any other coin!!",
+  // }, {
+  //   id: 4,
+  //   name: "chickenwing",
+  //   rate: 100,
+  //   trades: 195,
+  //   price: "70507.19 USD",
+  //   limitscurrency: "2,000 - 150,000 USD",
+  //   limitscrypto: "0.02836590 - 2.12744270 BTC",
+  //   PaymentMethod1: "Binance Coin (BNB)",
+  //   PaymentMethod2: "Ethereum",
+  //   PaymentMethod3: "DAI",
+  //   PaymentMethod4: "Tether",
+  //   PaymentMethod5: "Binance USD (BUSD)",
+  //   PaymentMethodsNo: "+3",
+  //   offer: "NO KYC‼️Notifications On - 24/7 ✅",
+  // },{
+  // id:5 ,
+  // name: "alexender",
+  // rate:100 ,
+  // trades:64 ,
+  // price:"69,108.22 USD" ,
+  // limitscurrency: "1,000 - 67,777 USD",
+  // limitscrypto: "0.01447006 - 0.98073710 BTC",
+  // PaymentMethod1: "PayPal",
+  // PaymentMethod2: "Any national bank",
+  // PaymentMethod3: "Google pay",
+  // PaymentMethod4: "Amazon pay",
+  // PaymentMethod5: "Paytm",
+  // PaymentMethodsNo: "+6",
+  // offer: "If I don't respond for more than 2 minutes contact me at tg OTCPlatform where I respond instantly. ",
+  // },{
+  // id:6 ,
+  // name: "jajafk",
+  // rate:100 ,
+  // trades: 537,
+  // price:"69,733.75 USD" ,
+  // limitscurrency: "700 - 50,000 USD",
+  // limitscrypto: "0.01003818 - 0.71701294 BTC",
+  // PaymentMethod1: "TRON",
+  // PaymentMethod2: "Cardano",
+  // PaymentMethod3: "Bitcoin Cash",
+  // PaymentMethod4: "Binance Coin (BNB)",
+  // PaymentMethod5: "Dogecoin",
+  // PaymentMethodsNo: "+9",
+  // offer: "XMR ETH SOL USDT USDC and any other coin!!",
+  // }
 ];

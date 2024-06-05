@@ -11,9 +11,9 @@ const Footer = () => {
   return (
     <>
     <Grid container spacing={0}>
-    <Grid  sm={12} md={4} lg={4} xl={2} paddingLeft={5}>
+    <Grid  sm={12} md={4} lg={2} xl={2} paddingLeft={5}>
       <Stack spacing={2}>
-        <img src="./icon.svg"  width={169} height={67.6}/>
+        <img src="/icon.svg"  width={169} height={67.6}/>
         <Typography level="title-lg">
          OPEN CRYPTO<br/> EXCHANGE
         </Typography>
@@ -21,7 +21,7 @@ const Footer = () => {
        
         </Stack>
       </Grid>
-      <Grid sm={6} md={4} lg={4} xl={2} padding={5} >
+      <Grid sm={6} md={4} lg={2} xl={2} padding={5} >
       <Stack spacing={2}>
       <Typography level="title-lg">
         ABOUT
@@ -40,7 +40,7 @@ const Footer = () => {
         <Link href="https://github.com/universal-org/OpenCryptoExchange">Bounty program</Link>
         </Stack>
       </Grid>
-      <Grid  sm={6} md={4} lg={4} xl={2} padding={5}>
+      <Grid  sm={6} md={4} lg={2} xl={2} padding={5}>
       <Stack spacing={2}>
       <Typography level="title-lg">
           LEGAL
@@ -51,7 +51,7 @@ const Footer = () => {
         </Stack>
       </Grid>
 
-      <Grid  sm={6} md={4} lg={4} xl={2} padding={5}>
+      <Grid  sm={6} md={4} lg={2} xl={2} padding={5}>
       <Stack spacing={2}>
       <Typography level="title-lg">
           HELP
@@ -61,7 +61,7 @@ const Footer = () => {
 
         </Stack>
       </Grid>
-      <Grid  sm={6} md={4} lg={4} xl={2} padding={5}>
+      <Grid  sm={6} md={4} lg={2} xl={2} padding={5}>
       <Stack spacing={2}>
       <Typography level="title-lg">
           PRODUCTS
@@ -72,7 +72,7 @@ const Footer = () => {
         </Stack>
       </Grid>
 
-      <Grid  sm={6} md={4} lg={4} xl={2} padding={5}>
+      <Grid  sm={6} md={4} lg={2} xl={2} padding={5}>
       <Stack spacing={2}>
       <Typography level="title-lg">
           FOLLOW US
