@@ -67,7 +67,8 @@ export default function TwoSidedLayout({
         })}
       >
         <img
-          src="https://zebpay.com/in/wp-content/uploads/2024/03/Top-10-Cryptos-to-Invest-In-March-2024.jpg"
+          // src="https://zebpay.com/in/wp-content/uploads/2024/03/Top-10-Cryptos-to-Invest-In-March-2024.jpg"
+          src="https://static.simpleswap.io/blog/0b918565-1057-43ff-8aaf-ebf52ddf721a.png"
           alt=""
         />
       </AspectRatio>

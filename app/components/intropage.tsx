@@ -19,10 +19,10 @@ export default function HeroLeft08() {
         fontWeight="xl"
         fontSize="clamp(1.875rem, 1.3636rem + 2.1818vw, 3rem)"
       >
-        P2P BITCOIN TRADING PLATFORM
+        OPEN SOURCE P2P XMR TRADING PLATFORM
       </Typography>
       <Typography fontSize="lg" textColor="text.secondary" lineHeight="lg">
-      Non-custodial Bitcoin trading solution, we don’t hold your funds.
+      Non-custodial Monero trading solution, we don’t hold your funds.
       </Typography>
       <Box
         sx={{

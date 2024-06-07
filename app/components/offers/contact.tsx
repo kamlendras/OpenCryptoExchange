@@ -51,6 +51,7 @@ import CheckCircleOutlined from "@mui/icons-material/CheckCircleOutlined";
 import Stepper from "@mui/joy/Stepper";
 import Step from "@mui/joy/Step";
 import Footer from "../footer";
+import MyMessages from "./components/MyMessages";
 const StyledInput = styled("input")({
   border: "none", // remove the native input border
   minWidth: 0, // remove the native input width
@@ -111,7 +112,7 @@ const InnerInput = React.forwardRef<
   return (
     <React.Fragment>
       <StyledInput {...props} ref={ref} id={id} />
-      <StyledLabel htmlFor={id}>Crypto Currency Address</StyledLabel>
+      <StyledLabel htmlFor={id}>Currency Address</StyledLabel>
     </React.Fragment>
   );
 });
@@ -494,7 +495,7 @@ export default function C() {
   return (
     <>
       <Box sx={{ m: 10 }}>
-        <Typography level="h1">CONTRACT TO BUY BTC</Typography>
+        <Typography level="h1">CONTRACT TO BUY XMR</Typography>
 
         {/* <Typography level="body-lg">
           Buy Bitcoin from other users using any payment method and currency{" "}
@@ -504,7 +505,7 @@ export default function C() {
           <Button size="sm">Create offer</Button>
         </Typography> */}
         <Grid container spacing={2} sx={{ flexGrow: 1 }} >
-          <Grid sm={6} lg={6} xl={6}>
+          <Grid sm={7} lg={7} xl={7}>
         <Sheet
           variant="plain"
           aria-label="Pricing plan"
@@ -843,7 +844,7 @@ export default function C() {
                         <br />
                         <Typography level="body-xs" sx={{ fontSize: 22 }}>
                           {" "}
-                          Buy BTC{" "}
+                          Buy XMR{" "}
                         </Typography>{" "}
                         {option.BuyCrypto}
                         <br />
@@ -938,7 +939,7 @@ export default function C() {
                         <br />
                         <Typography level="body-xs" sx={{ fontSize: 22 }}>
                           {" "}
-                          BTC confirmations
+                          XMR confirmations
                         </Typography>{" "}
                         1 <br />
                         <Typography level="body-xs" sx={{ fontSize: 22 }}>
@@ -976,7 +977,7 @@ export default function C() {
                           sx={{ wordBreak: "break-word" }}
                         >
                           {" "}
-                          Bitcoin release address
+                          Monero release address
                           {/* {option.offer} */}
                           <Link>
                             <div
@@ -1036,16 +1037,16 @@ export default function C() {
         >
           <Stack direction="row">
             <Box sx={{m:1}}>
-<Typography level="body-sm">Price per BTC</Typography>
-<Typography level="title-sm">6,851,263.63 INR</Typography>
+<Typography level="body-sm">Price per XMR</Typography>
+<Typography level="title-sm">N/A USD</Typography>
 </Box>
 <Box sx={{m:1}}>
-<Typography level="body-sm">BTC to buy</Typography>
-<Typography level="title-sm">0.00583834 BTC</Typography>
+<Typography level="body-sm">XMR to buy</Typography>
+<Typography level="title-sm">N/A</Typography>
 </Box>
 <Box sx={{m:1}}>
 <Typography level="body-sm">Amount to pay</Typography>
-<Typography level="title-sm">40,000.01 INR</Typography>
+<Typography level="title-sm">40,000.01 USD</Typography>
 </Box>
 </Stack>
 </Sheet>
@@ -1063,7 +1064,7 @@ export default function C() {
           {/* </Typography> */}
           </DialogTitle>
           <DialogContent sx={{mt:1,}}><Typography level="body-md"> Please be respectful of your counterparty and avoid canceling the contract without an apparent reason. We carefully monitor canceled contracts. Excessive cancellations can result in the suspension of your account.</Typography></DialogContent>
-          <DialogContent sx={{mt:1,}}><Typography level="body-md"> Amount to be sent 40,000.01 INR</Typography></DialogContent>
+          <DialogContent sx={{mt:1,}}><Typography level="body-md"> Amount to be sent 40,000.01 USD</Typography></DialogContent>
           <DialogContent sx={{mt:1,}}>
           <Typography level="title-sm">
 <Button  sx={{mt:2}} size="lg" color="danger">Cancel contract</Button>
@@ -1075,7 +1076,7 @@ export default function C() {
 
       </Sheet>
       </Grid>
-      <Grid sm={6} md={6} xl={6} lg={6}>
+      <Grid sm={5} md={5} xl={5} lg={5}>
       <Sheet
           variant="plain"
           aria-label="Pricing plan"
@@ -1093,78 +1094,9 @@ export default function C() {
         >
 
 
-<FormControl>
-
-      <FormLabel>rajiv007         100% rate, 25 trades
-
-
-
-      </FormLabel>
-      <Textarea
-        placeholder="Type something here…"
-        minRows={17}
-        endDecorator={
-          <Box
-            sx={{
-              display: 'flex',
-              gap: 'var(--Textarea-paddingBlock)',
-              pt: 'var(--Textarea-paddingBlock)',
-              borderTop: '1px solid',
-              borderColor: 'divider',
-              flex: 'auto',
-            }}
-          >
-            <IconButton
-              variant="plain"
-              color="neutral"
-              onClick={(event) => setAnchorEl(event.currentTarget)}
-            >
-              <FormatBold />
-              <KeyboardArrowDown fontSize="md" />
-            </IconButton>
-            <Menu
-              anchorEl={anchorEl}
-              open={Boolean(anchorEl)}
-              onClose={() => setAnchorEl(null)}
-              size="sm"
-              placement="bottom-start"
-              sx={{ '--ListItemDecorator-size': '24px' }}
-            >
-              {['200', 'normal', 'bold'].map((weight) => (
-                <MenuItem
-                  key={weight}
-                  selected={fontWeight === weight}
-                  onClick={() => {
-                    setFontWeight(weight);
-                    setAnchorEl(null);
-                  }}
-                  sx={{ fontWeight: weight }}
-                >
-                  <ListItemDecorator>
-                    {fontWeight === weight && <Check fontSize="sm" />}
-                  </ListItemDecorator>
-                  {weight === '200' ? 'lighter' : weight}
-                </MenuItem>
-              ))}
-            </Menu>
-            <IconButton
-              variant={italic ? 'soft' : 'plain'}
-              color={italic ? 'primary' : 'neutral'}
-              aria-pressed={italic}
-              onClick={() => setItalic((bool) => !bool)}
-            >
-              <FormatItalic />
-            </IconButton>
-            <Button sx={{ ml: 'auto' }}>Send</Button>
-          </Box>
-        }
-        sx={{
-          minWidth: 300,
-          fontWeight,
-          fontStyle: italic ? 'italic' : 'initial',
-        }}
-      />
-    </FormControl>
+<Box component="main" className="MainContent" sx={{ flex: 1 }}>
+          <MyMessages />
+        </Box>
             </Sheet>
     </Grid>
 
@@ -1201,7 +1133,7 @@ export default function C() {
               orientation="vertical"
               indicator={<StepIndicator variant="outlined">3</StepIndicator>}
             >
-              The Seller deposits Bitcoin in the multisig escrow
+              The Seller deposits Monero in the multisig escrow
             </Step>
             <Step
               orientation="vertical"
@@ -1213,7 +1145,7 @@ export default function C() {
               orientation="vertical"
               indicator={<StepIndicator variant="outlined">5</StepIndicator>}
             >
-              Contract is completed, the Buyer receives the Bitcoin
+              Contract is completed, the Buyer receives the Monero
             </Step>
           </Stepper>
         
@@ -1759,8 +1691,8 @@ const datatable = [
     offer: "NO KYC‼️Notifications On - 24/7 ✅",
     Location: "Global",
     paymentwindow: 80,
-    CryptoCurrencyAddress: "bc1q0arjq5h3sze75rckr80glxzjud3jvph5905qwh",
-    BuyCrypto: "0.00583834 BTC",
+    CryptoCurrencyAddress: "46ZKbR2NAVnjp6zqpbGLuEEKf4xjNYGLvfny2gsCSbznKd3krjHxJAzMBiXJt665iF44NBarc9wDt4YB77os61PJ9qNhKsK",
+    BuyCrypto: "0.00583834 XMR",
     Pay: "40,000.01 INR",
     PaymentMethodSelected: "UPI",
     ColorPaymentMethodSelected: "warning",

@@ -108,8 +108,8 @@ export default function Header() {
        {/* <Typography level="h4" noWrap>OPEN CRYPTO EXCHANGE</Typography> */}
       
        </div> 
-       <Button variant="plain" size="md">Sell BTC</Button>
-        <Button variant="plain" size="md">Buy BTC</Button> {/* </IconButton> */}
+       <Button variant="plain" size="md">Sell XMR</Button>
+        <Button variant="plain" size="md">Buy XMR</Button> {/* </IconButton> */}
         {/* <Button
           variant="plain"
           color="neutral"
@@ -142,7 +142,7 @@ export default function Header() {
           Files
         </Button>*/}
       </Stack> 
-      <Box sx={{ display: { xs: 'inline-flex', sm: 'none' } }}>
+      {/* <Box sx={{ display: { xs: 'inline-flex', sm: 'none' } }}>
         <IconButton variant="plain" color="neutral" onClick={() => setOpen(true)}>
           <MenuRoundedIcon />
         </IconButton>
@@ -154,22 +154,25 @@ export default function Header() {
           <ModalClose />
           <DialogTitle>Blo9</DialogTitle>
           <Box sx={{ px: 1 }}>
-            {/* <Navigation /> */}
+            <Navigation />
           </Box>
         </Drawer>
-      </Box>
+      </Box> */}
 
       <Box
+        style={{position: 'fixed' ,right:20,top:10,}}
         sx={{
           display: 'flex',
           flexDirection: 'row',
           gap: 1.5,
           alignItems: 'center',
+        
+
         }}
       >
         {/* <Search/> */}
         {/* <Filters /> */}
-
+        <ColorSchemeToggle />
         <Button variant="outlined" size="md">Log in</Button>
         <Button size="md">Sign up</Button>
         
@@ -197,7 +200,7 @@ export default function Header() {
             <NotificationsNoneOutlinedIcon />
           </IconButton> */}
        
-        <ColorSchemeToggle />
+        
         {/* <Dropdown>
           <MenuButton
             variant="plain"

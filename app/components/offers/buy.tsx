@@ -403,10 +403,10 @@ export default function C() {
   return (
     <>
       <Box sx={{ m: 10 }}>
-        <Typography level="h1">BUY BITCOIN</Typography>
+        <Typography level="h1">BUY MONERO</Typography>
 
         <Typography level="body-lg">
-          Buy Bitcoin from other users using any payment method and currency{" "}
+          Buy Monero from other users using any payment method and currency{" "}
           <Link sx={{ m: 5 }} href="#basics">
             How to start?{" "}
           </Link>
@@ -785,15 +785,17 @@ export default function C() {
                                   <Chip
                                     style={{ size: "1rem" }}
                                     key={name}
-                                    variant="plain"
-                                 
-
+                                    // variant="plain"
+                                   
+                                    startDecorator={  <Avatar size="sm" src={option.PaymentMethod1Avatar} />}
                                     // startDecorator={
                                     //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
                                     // }
                                   >
                                     <Radio
+                                                
                                       variant="outlined"
+                                      
                                       color={option.ColorPaymentMethord1}
                                       disableIcon
                                       overlay
@@ -810,6 +812,7 @@ export default function C() {
                                   <Chip
                                     style={{ size: "1rem" }}
                                     key={name}
+                                    startDecorator={<Avatar size="sm" src={option.PaymentMethod2Avatar} />}
                                     variant="plain"
                                     //  color={checked ? "primary" : "neutral"}
                                     // startDecorator={
@@ -835,6 +838,7 @@ export default function C() {
                                   <Chip
                                     style={{ size: "1rem" }}
                                     key={name}
+                                    startDecorator={<Avatar size="sm" src={option.PaymentMethod3Avatar} />}
                                     variant="plain"
                                     //  color={checked ? "primary" : "neutral"}
                                     // startDecorator={
@@ -861,6 +865,7 @@ export default function C() {
                                     style={{ size: "1rem" }}
                                     key={name}
                                     variant="plain"
+                                    startDecorator={<Avatar size="sm" src={option.PaymentMethod4Avatar} />}
                                     //  color={checked ? "primary" : "neutral"}
                                     // startDecorator={
                                     //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
@@ -886,6 +891,7 @@ export default function C() {
                                     style={{ size: "1rem" }}
                                     key={name}
                                     variant="plain"
+                                    startDecorator={<Avatar size="sm" src={option.PaymentMethod5Avatar} />}
                                     //  color={checked ? "primary" : "neutral"}
                                     // startDecorator={
                                     //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
@@ -1479,7 +1485,7 @@ const datatable = [
     trades: 195,
     price: "70507.19 USD",
     limitscurrency: "2,000 - 150,000 USD",
-    limitscrypto: "0.02836590 - 2.12744270 BTC",
+    limitscrypto: "0.02836590 - 2.12744270 XMR",
     PaymentMethod1: "Binance Coin (BNB)",
     PaymentMethod2: "Ethereum",
     PaymentMethod3: "DAI",
@@ -1493,6 +1499,12 @@ const datatable = [
     ColorPaymentMethord4:"success",
     ColorPaymentMethord5:"warning",
     ColorPaymentMethordsNo:"warning",
+    PaymentMethod1Avatar: "/binance.svg",
+    PaymentMethod2Avatar: "/eth.svg",
+    PaymentMethod3Avatar: "/dai.svg",
+    PaymentMethod4Avatar: "/the.svg",
+    PaymentMethod5Avatar: "/binance.svg",
+    
   },{
   id:2 ,
   name: "alexender",
@@ -1500,20 +1512,25 @@ const datatable = [
   trades:64 ,
   price:"69,108.22 USD" ,
   limitscurrency: "1,000 - 67,777 USD",
-  limitscrypto: "0.01447006 - 0.98073710 BTC",
+  limitscrypto: "0.01447006 - 0.98073710 XMR",
   PaymentMethod1: "PayPal",
   PaymentMethod2: "Any national bank",
   PaymentMethod3: "Google pay",
   PaymentMethod4: "Amazon pay",
   PaymentMethod5: "Paytm",
   PaymentMethodsNo: "+6",
-  ColorPaymentMethord1:"warning",
+  ColorPaymentMethord1:"primary",
   ColorPaymentMethord2:"primary",
-  ColorPaymentMethord3:"warning",
-  ColorPaymentMethord4:"success",
-  ColorPaymentMethord5:"warning",
+  ColorPaymentMethord3:"neutral",
+  ColorPaymentMethord4:"neutral",
+  ColorPaymentMethord5:"primary",
   ColorPaymentMethordsNo:"warning",
   offer: "If I don't respond for more than 2 minutes contact me at tg OTCPlatform where I respond instantly. ",
+  PaymentMethod1Avatar: "/paypal.svg",
+  PaymentMethod2Avatar: "/bank.svg",
+  PaymentMethod3Avatar: "/gpay.svg",
+  PaymentMethod4Avatar: "/amazonpay.svg",
+  PaymentMethod5Avatar: "/paytm.svg",
 },{
   id:3 ,
   name: "jajafk",
@@ -1521,12 +1538,12 @@ const datatable = [
   trades: 537,
   price:"69,733.75 USD" ,
   limitscurrency: "700 - 50,000 USD",
-  limitscrypto: "0.01003818 - 0.71701294 BTC",
-  PaymentMethod1: "TRON",
-  PaymentMethod2: "Cardano",
+  limitscrypto: "0.01003818 - 0.71701294 XMR",
+  PaymentMethod1: "Binance",
+  PaymentMethod2: "Ethereum",
   PaymentMethod3: "Bitcoin Cash",
-  PaymentMethod4: "Binance Coin (BNB)",
-  PaymentMethod5: "Dogecoin",
+  PaymentMethod4: "Tether",
+  PaymentMethod5: "Binance USD",
   PaymentMethodsNo: "+9",
   ColorPaymentMethord1:"warning",
   ColorPaymentMethord2:"primary",
@@ -1534,28 +1551,39 @@ const datatable = [
   ColorPaymentMethord4:"success",
   ColorPaymentMethord5:"warning",
   ColorPaymentMethordsNo:"warning",
+  PaymentMethod1Avatar: "/binance.svg",
+  PaymentMethod2Avatar: "/eth.svg",
+  PaymentMethod3Avatar: "/dai.svg",
+  PaymentMethod4Avatar: "/the.svg",
+  PaymentMethod5Avatar: "/binance.svg",
   offer: "XMR ETH SOL USDT USDC and any other coin!!",
-}, {
+},   {
   id: 4,
   name: "chickenwing",
   rate: 100,
   trades: 195,
   price: "70507.19 USD",
   limitscurrency: "2,000 - 150,000 USD",
-  limitscrypto: "0.02836590 - 2.12744270 BTC",
+  limitscrypto: "0.02836590 - 2.12744270 XMR",
   PaymentMethod1: "Binance Coin (BNB)",
   PaymentMethod2: "Ethereum",
   PaymentMethod3: "DAI",
   PaymentMethod4: "Tether",
   PaymentMethod5: "Binance USD (BUSD)",
   PaymentMethodsNo: "+3",
+  offer: "NO KYC‼️Notifications On - 24/7 ✅",
   ColorPaymentMethord1:"warning",
   ColorPaymentMethord2:"primary",
   ColorPaymentMethord3:"warning",
   ColorPaymentMethord4:"success",
   ColorPaymentMethord5:"warning",
   ColorPaymentMethordsNo:"warning",
-  offer: "NO KYC‼️Notifications On - 24/7 ✅",
+  PaymentMethod1Avatar: "/binance.svg",
+  PaymentMethod2Avatar: "/eth.svg",
+  PaymentMethod3Avatar: "/dai.svg",
+  PaymentMethod4Avatar: "/the.svg",
+  PaymentMethod5Avatar: "/binance.svg",
+  
 },{
 id:5 ,
 name: "alexender",
@@ -1563,33 +1591,38 @@ rate:100 ,
 trades:64 ,
 price:"69,108.22 USD" ,
 limitscurrency: "1,000 - 67,777 USD",
-limitscrypto: "0.01447006 - 0.98073710 BTC",
+limitscrypto: "0.01447006 - 0.98073710 XMR",
 PaymentMethod1: "PayPal",
 PaymentMethod2: "Any national bank",
 PaymentMethod3: "Google pay",
 PaymentMethod4: "Amazon pay",
 PaymentMethod5: "Paytm",
 PaymentMethodsNo: "+6",
-ColorPaymentMethord1:"warning",
+ColorPaymentMethord1:"primary",
 ColorPaymentMethord2:"primary",
-ColorPaymentMethord3:"warning",
-ColorPaymentMethord4:"success",
-ColorPaymentMethord5:"warning",
+ColorPaymentMethord3:"neutral",
+ColorPaymentMethord4:"neutral",
+ColorPaymentMethord5:"primary",
 ColorPaymentMethordsNo:"warning",
 offer: "If I don't respond for more than 2 minutes contact me at tg OTCPlatform where I respond instantly. ",
+PaymentMethod1Avatar: "/paypal.svg",
+PaymentMethod2Avatar: "/bank.svg",
+PaymentMethod3Avatar: "/gpay.svg",
+PaymentMethod4Avatar: "/amazonpay.svg",
+PaymentMethod5Avatar: "/paytm.svg",
 },{
-id:6 ,
+id:6,
 name: "jajafk",
 rate:100 ,
 trades: 537,
 price:"69,733.75 USD" ,
 limitscurrency: "700 - 50,000 USD",
-limitscrypto: "0.01003818 - 0.71701294 BTC",
-PaymentMethod1: "TRON",
-PaymentMethod2: "Cardano",
+limitscrypto: "0.01003818 - 0.71701294 XMR",
+PaymentMethod1: "Binance",
+PaymentMethod2: "Ethereum",
 PaymentMethod3: "Bitcoin Cash",
-PaymentMethod4: "Binance Coin (BNB)",
-PaymentMethod5: "Dogecoin",
+PaymentMethod4: "Tether",
+PaymentMethod5: "Binance USD",
 PaymentMethodsNo: "+9",
 ColorPaymentMethord1:"warning",
 ColorPaymentMethord2:"primary",
@@ -1597,8 +1630,13 @@ ColorPaymentMethord3:"warning",
 ColorPaymentMethord4:"success",
 ColorPaymentMethord5:"warning",
 ColorPaymentMethordsNo:"warning",
+PaymentMethod1Avatar: "/binance.svg",
+PaymentMethod2Avatar: "/eth.svg",
+PaymentMethod3Avatar: "/dai.svg",
+PaymentMethod4Avatar: "/the.svg",
+PaymentMethod5Avatar: "/binance.svg",
 offer: "XMR ETH SOL USDT USDC and any other coin!!",
-}
+},
 
 
 ];

@@ -30,7 +30,7 @@ export default function AccordionIndicator() {
       <Accordion >
         <AccordionSummary indicator={<AddIcon />}><Typography sx={{fontSize:33}}  level="title-sm">Which problems are we solving?</Typography></AccordionSummary>
         <AccordionDetails>
-        <Typography sx={{fontSize:33}}  level="body-lg">   Offering fast and easy Bitcoin cash-out without middle-party and verification.</Typography>
+        <Typography sx={{fontSize:33}}  level="body-lg">   Offering fast and easy Monero cash-out without middle-party and verification.</Typography>
         </AccordionDetails>
       </Accordion>
       <Accordion>
@@ -43,13 +43,13 @@ export default function AccordionIndicator() {
       <Accordion>
         <AccordionSummary indicator={<AddIcon />}><Typography sx={{fontSize:33}}  level="title-sm">What cryptocurrencies are available?</Typography></AccordionSummary>
         <AccordionDetails>
-        <Typography  level="body-lg"sx={{fontSize:33}}>   Bitcoin only.</Typography>
+        <Typography  level="body-lg"sx={{fontSize:33}}> Monero, Bitcoin, Ethereum, Litecoin, Nano, Dash.</Typography>
         </AccordionDetails>
       </Accordion>
       <Accordion>
         <AccordionSummary indicator={<AddIcon />}><Typography  level="title-sm" sx={{fontSize:33}}> What do I need to start trading?</Typography></AccordionSummary>
         <AccordionDetails>
-        <Typography sx={{fontSize:33}} level="body-lg">Open Crypto Exchange does not operate any wallets, this means that in order to buy or sell Bitcoin you<br/> need to have a wallet on your own.
+        <Typography sx={{fontSize:33}} level="body-lg">Open Crypto Exchange does not operate any wallets, this means that in order to buy or sell Monero you<br/> need to have a wallet on your own.
         </Typography>
        </AccordionDetails>
       </Accordion>

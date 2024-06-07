@@ -49,13 +49,13 @@ Using any payment system. For any currency.</Typography>
         }}
       >
         <Tab disableIndicator variant="soft" sx={{ flexGrow: 1 }}>
-          Buy BTC
+          Buy XMR
         </Tab>
         {/* <Tab disableIndicator variant="soft" sx={{ flexGrow: 1 }}>
           Pro
         </Tab> */}
         <Tab disableIndicator variant="soft" sx={{ flexGrow: 1 }}>
-          Sell BTC
+          Sell XMR
         </Tab>
       </TabList>
       <TabPanel value={0}>
