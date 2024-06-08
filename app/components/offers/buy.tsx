@@ -1,11 +1,12 @@
 "use client";
+import Link from 'next/link'
 import { useState, useEffect } from "react";
 import * as React from "react";
 import Box from "@mui/joy/Box";
+import Button from '@mui/joy/Button';
 import Sheet from "@mui/joy/Sheet";
 import Typography from "@mui/joy/Typography";
-import Link from "@mui/joy/Link";
-import Button from "@mui/joy/Button";
+// import Link from "@mui/joy/Link";
 import Select from "@mui/joy/Select";
 import Option from "@mui/joy/Option";
 import axios from "axios";
@@ -397,7 +398,7 @@ export default function C() {
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
   // c
 
-  const [currency, setCurrency] = React.useState("inr");
+  const [currency, setCurrency] = React.useState("usd");
   // const [selected, setSelected] = React.useState("");
   const [selected0, setSelected0] = React.useState("");
   return (
@@ -428,8 +429,8 @@ export default function C() {
           //  sx={{ p: 4 }}
         >
           <Grid container spacing={2} sx={{ flexGrow: 1 }}>
-            <Grid xs={1.5}>
-              <Select defaultValue="sfg1">
+            <Grid xs={2}>
+              <Select defaultValue="11">
                 {options.map((option) => {
                   return (
                     <Option value={option.id}>
@@ -451,7 +452,7 @@ export default function C() {
                 <Input
                   placeholder="Amount"
                   startDecorator={
-                    { inr: " ₹", dollar: "$", eur: "€", yen: "¥" }[currency]
+                    { inr: " ₹", usd: "$", eur: "€", yen: "¥" }[currency]
                   }
                   endDecorator={
                     <React.Fragment>
@@ -468,7 +469,7 @@ export default function C() {
                         sx={{ mr: -1.5, "&:hover": { bgcolor: "transparent" } }}
                       >
                         <Option value="inr">INR</Option>
-                        <Option value="dollar">USD</Option>
+                        <Option value="usd">USD</Option>
                         <Option value="eur">EUR</Option>
                         <Option value="yen">YEN</Option>
                       </Select>
@@ -517,10 +518,10 @@ export default function C() {
                 })}
               </Select>
             </Grid>
-            <Grid xs={1.5}>
-              <Select defaultValue="1">
-                <Option value="1">Clear all </Option>
-              </Select>
+            <Grid xs={1}>
+            <Link href="/offers/buy">
+              <Button variant="outlined" color="neutral">Clear all </Button>
+              </Link>
             </Grid>
           </Grid>
 
@@ -685,6 +686,7 @@ export default function C() {
             </tfoot>
           </Table> */}
           {/*  */}
+          <Link href="/offers/buy/select">
           <Table hoverRow>
             <thead>
               <tr>
@@ -714,6 +716,7 @@ export default function C() {
         </tr>
       </thead> */}
             <tbody>
+ 
               
 
 
@@ -959,6 +962,7 @@ export default function C() {
              
             </tbody>
           </Table>
+            </Link>
           <Pig />
         </Sheet>
       </Box>

@@ -1,15 +1,14 @@
 "use client";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
-import { useState, useEffect } from "react";
+import Link from 'next/link'
 import * as React from "react";
 import Box from "@mui/joy/Box";
 import Sheet from "@mui/joy/Sheet";
 import Typography from "@mui/joy/Typography";
-import Link from "@mui/joy/Link";
+// import Link from "@mui/joy/Link";
 import Button from "@mui/joy/Button";
 import Select from "@mui/joy/Select";
 import Option from "@mui/joy/Option";
-import axios from "axios";
 import Stack from "@mui/joy/Stack";
 import Divider from "@mui/joy/Divider";
 import Grid from "@mui/joy/Grid";
@@ -18,17 +17,8 @@ import Table from "@mui/joy/Table";
 import Chip from "@mui/joy/Chip";
 import Radio from "@mui/joy/Radio";
 import RadioGroup from "@mui/joy/RadioGroup";
-import Pig from "../pagination";
-import Checkbox from "@mui/joy/Checkbox";
-import FormControl from "@mui/joy/FormControl";
-import FormLabel from "@mui/joy/FormLabel";
-import IconButton from "@mui/joy/IconButton";
 import StepIndicator from "@mui/joy/StepIndicator";
 import Tooltip from "@mui/joy/Tooltip";
-import DeleteIcon from "@mui/icons-material/Delete";
-import FilterListIcon from "@mui/icons-material/FilterList";
-import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
-import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import { visuallyHidden } from "@mui/utils";
 import { styled } from "@mui/joy/styles";
@@ -102,369 +92,8 @@ const InnerInput = React.forwardRef<
   );
 });
 
-// b
-interface Data {
-  calories: number;
-  carbs: number;
-  fat: number;
-  name: string;
-  protein: number;
-}
-
-function createData(
-  name: string,
-  calories: number,
-  fat: number,
-  carbs: number,
-  protein: number
-): Data {
-  return {
-    name,
-    calories,
-    fat,
-    carbs,
-    protein,
-  };
-}
-
-const rows = [
-  createData("chickenwing", 305, 3.7, 67, 4.3),
-  createData("Donut", 452, 25.0, 51, 4.9),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Gingerbread", 356, 16.0, 49, 3.9),
-  createData("Honeycomb", 408, 3.2, 87, 6.5),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Jelly Bean", 375, 0.0, 94, 0.0),
-  createData("KitKat", 518, 26.0, 65, 7.0),
-  createData("Lollipop", 392, 0.2, 98, 0.0),
-  createData("Marshmallow", 318, 0, 81, 2.0),
-  createData("Nougat", 360, 19.0, 9, 37.0),
-  createData("Oreo", 437, 18.0, 63, 4.0),
-];
-
-function labelDisplayedRows({
-  from,
-  to,
-  count,
-}: {
-  from: number;
-  to: number;
-  count: number;
-}) {
-  return `${from}–${to} of ${count !== -1 ? count : `more than ${to}`}`;
-}
-
-function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
-  if (b[orderBy] < a[orderBy]) {
-    return -1;
-  }
-  if (b[orderBy] > a[orderBy]) {
-    return 1;
-  }
-  return 0;
-}
-
-type Order = "asc" | "desc";
-
-function getComparator<Key extends keyof any>(
-  order: Order,
-  orderBy: Key
-): (
-  a: { [key in Key]: number | string },
-  b: { [key in Key]: number | string }
-) => number {
-  return order === "desc"
-    ? (a, b) => descendingComparator(a, b, orderBy)
-    : (a, b) => -descendingComparator(a, b, orderBy);
-}
-
-// Since 2020 all major browsers ensure sort stability with Array.prototype.sort().
-// stableSort() brings sort stability to non-modern browsers (notably IE11). If you
-// only support modern browsers you can replace stableSort(exampleArray, exampleComparator)
-// with exampleArray.slice().sort(exampleComparator)
-function stableSort<T>(
-  array: readonly T[],
-  comparator: (a: T, b: T) => number
-) {
-  const stabilizedThis = array.map((el, index) => [el, index] as [T, number]);
-  stabilizedThis.sort((a, b) => {
-    const order = comparator(a[0], b[0]);
-    if (order !== 0) {
-      return order;
-    }
-    return a[1] - b[1];
-  });
-  return stabilizedThis.map((el) => el[0]);
-}
-
-interface HeadCell {
-  disablePadding: boolean;
-  id: keyof Data;
-  label: string;
-  numeric: boolean;
-}
-
-const headCells: readonly HeadCell[] = [
-  // {
-  //   id: "name",
-  //   numeric: false,
-  //   disablePadding: true,
-  //   label: "Desser",
-  // },
-  {
-    id: "calories",
-    numeric: true,
-    disablePadding: false,
-    label: "Price",
-  },
-  {
-    id: "fat",
-    numeric: true,
-    disablePadding: false,
-    label: "Limits",
-  },
-  // {
-  //   id: "carbs",
-  //   numeric: false,
-  //   disablePadding: false,
-  //   label: "Carbs (g)",
-  // },
-  // {
-  //   id: "protein",
-  //   numeric: true,
-  //   disablePadding: false,
-  //   label: "Protein (g)",
-  // },
-];
-
-interface EnhancedTableProps {
-  numSelected: number;
-  onRequestSort: (
-    event: React.MouseEvent<unknown>,
-    property: keyof Data
-  ) => void;
-  onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  order: Order;
-  orderBy: string;
-  rowCount: number;
-}
-
-function EnhancedTableHead(props: EnhancedTableProps) {
-  const {
-    onSelectAllClick,
-    order,
-    orderBy,
-    numSelected,
-    rowCount,
-    onRequestSort,
-  } = props;
-  const createSortHandler =
-    (property: keyof Data) => (event: React.MouseEvent<unknown>) => {
-      onRequestSort(event, property);
-    };
-
-  return (
-    <thead>
-      <tr>
-        <th>
-          {/* <Checkbox
-            indeterminate={numSelected > 0 && numSelected < rowCount}
-            checked={rowCount > 0 && numSelected === rowCount}
-            onChange={onSelectAllClick}
-            slotProps={{
-              input: {
-                "aria-label": "select all desserts",
-              },
-            }}
-            sx={{ verticalAlign: "sub" }}
-          /> */}
-        </th>
-        {headCells.map((headCell) => {
-          const active = orderBy === headCell.id;
-
-          return (
-            <th
-              // key={headCell.id}
-              key="Desser"
-              aria-sort={
-                active
-                  ? ({ asc: "ascending", desc: "descending" } as const)[order]
-                  : undefined
-              }
-            >
-              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              <Link
-                underline="none"
-                color="neutral"
-                textColor={active ? "primary.plainColor" : undefined}
-                component="button"
-                onClick={createSortHandler(headCell.id)}
-                fontWeight="lg"
-                startDecorator={
-                  headCell.numeric ? (
-                    <ArrowDownwardIcon sx={{ opacity: active ? 1 : 0 }} />
-                  ) : null
-                }
-                endDecorator={
-                  !headCell.numeric ? (
-                    <ArrowDownwardIcon sx={{ opacity: active ? 1 : 0 }} />
-                  ) : null
-                }
-                sx={{
-                  "& svg": {
-                    transition: "0.2s",
-                    transform:
-                      active && order === "desc"
-                        ? "rotate(0deg)"
-                        : "rotate(180deg)",
-                  },
-                  "&:hover": { "& svg": { opacity: 1 } },
-                }}
-              >
-                {headCell.label}
-                {active ? (
-                  <Box component="span" sx={visuallyHidden}>
-                    {order === "desc"
-                      ? "sorted descending"
-                      : "sorted ascending"}
-                  </Box>
-                ) : null}
-              </Link>
-            </th>
-          );
-        })}
-      </tr>
-    </thead>
-  );
-}
-
-interface EnhancedTableToolbarProps {
-  numSelected: number;
-}
-
-function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
-  const { numSelected } = props;
-
-  return (
-    // <Box
-    //   sx={{
-    //     display: "flex",
-    //     alignItems: "center",
-    //     py: 1,
-    //     pl: { sm: 2 },
-    //     pr: { xs: 1, sm: 1 },
-    //     ...(numSelected > 0 && {
-    //       bgcolor: "background.level1",
-    //     }),
-    //     borderTopLeftRadius: "var(--unstable_actionRadius)",
-    //     borderTopRightRadius: "var(--unstable_actionRadius)",
-    //   }}
-    // >
-    //   {numSelected > 0 ? (
-    //     <Typography sx={{ flex: "1 1 100%" }} component="div">
-    //       {numSelected} selected
-    //     </Typography>
-    //   ) : (
-    //     <Typography
-    //       level="body-lg"
-    //       sx={{ flex: "1 1 100%" }}
-    //       id="tableTitle"
-    //       component="div"
-    //     >
-    //        Nutrition
-    //     </Typography>
-    //   )}
-
-    //   {numSelected > 0 ? (
-    //     <Tooltip title="Delete">
-    //       <IconButton size="sm" color="danger" variant="solid">
-    //         <DeleteIcon />
-    //       </IconButton>
-    //     </Tooltip>
-    //   ) : (
-    //     <Tooltip title="Filter list">
-    //       <IconButton size="sm" variant="outlined" color="neutral">
-    //         <FilterListIcon />
-    //       </IconButton>
-    //     </Tooltip>
-    //   )}
-    // </Box>
-    <></>
-  );
-}
-// b
-
 export default function C() {
-  // c
-  const [order, setOrder] = React.useState<Order>("asc");
-  const [orderBy, setOrderBy] = React.useState<keyof Data>("calories");
-  const [selected, setSelected] = React.useState<readonly string[]>([]);
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
-
-  const handleRequestSort = (
-    event: React.MouseEvent<unknown>,
-    property: keyof Data
-  ) => {
-    const isAsc = orderBy === property && order === "asc";
-    setOrder(isAsc ? "desc" : "asc");
-    setOrderBy(property);
-  };
-
-  const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.checked) {
-      const newSelected = rows.map((n) => n.name);
-      setSelected(newSelected);
-      return;
-    }
-    setSelected([]);
-  };
-
-  const handleClick = (event: React.MouseEvent<unknown>, name: string) => {
-    const selectedIndex = selected.indexOf(name);
-    let newSelected: readonly string[] = [];
-
-    // if (selectedIndex === -1) {
-    //   newSelected = newSelected.concat(selected, name);
-    // } else if (selectedIndex === 0) {
-    //   newSelected = newSelected.concat(selected.slice(1));
-    // } else if (selectedIndex === selected.length - 1) {
-    //   newSelected = newSelected.concat(selected.slice(0, -1));
-    // } else if (selectedIndex > 0) {
-    //   newSelected = newSelected.concat(
-    //     selected.slice(0, selectedIndex),
-    //     selected.slice(selectedIndex + 1)
-    //   );
-    // }
-
-    setSelected(newSelected);
-  };
-
-  const handleChangePage = (newPage: number) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event: any, newValue: number | null) => {
-    setRowsPerPage(parseInt(newValue!.toString(), 10));
-    setPage(0);
-  };
-
-  const getLabelDisplayedRowsTo = () => {
-    if (rows.length === -1) {
-      return (page + 1) * rowsPerPage;
-    }
-    return rowsPerPage === -1
-      ? rows.length
-      : Math.min(rows.length, (page + 1) * rowsPerPage);
-  };
-
-  const isSelected = (name: string) => selected.indexOf(name) !== -1;
-
-  // Avoid a layout jump when reaching the last page with empty rows.
-  const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
-  // c
+  
   const [currency, setCurrency] = React.useState("usd");
   const [currency1, setCurrency1] = React.useState("xmr");
   // const [selected, setSelected] = React.useState("");
@@ -473,20 +102,11 @@ export default function C() {
     <>
       <Box sx={{ m: 10 }}>
         <Typography level="h1">OFFER TO BUY MONERO</Typography>
-
-        {/* <Typography level="body-lg">
-          Buy Bitcoin from other users using any payment method and currency{" "}
-          <Link sx={{ m: 5 }} href="#basics">
-            How to start?{" "}
-          </Link>
-          <Button size="sm">Create offer</Button>
-        </Typography> */}
         <Sheet
-          variant="plain"
+          variant="soft"
           aria-label="Pricing plan"
           defaultValue={0}
           sx={{
-            //    width: 750,
             borderRadius: "lg",
             boxShadow: "xl",
             overflow: "auto",
@@ -494,294 +114,10 @@ export default function C() {
             p: 4,
           }}
           color="neutral"
-          //  sx={{ p: 4 }}
         >
-          {/* <Grid container spacing={2} sx={{ flexGrow: 1 }}>
-            <Grid xs={1.5}>
-              <Select defaultValue="sfg1">
-                {options.map((option) => {
-                  return (
-                    <Option value={option.id}>
-                      {" "}
-                      <Typography level="title-md">
-                        {option.code}
-
-                        <Typography level="body-md" sx={{ fontSize: "xl" }}>
-                          {option.phone}
-                        </Typography>
-                      </Typography>
-                    </Option>
-                  );
-                })}
-              </Select>
-            </Grid>
-            <Grid xs={2}>
-              <Stack spacing={1.5}>
-                <Input
-                  placeholder="Amount"
-                  startDecorator={
-                    { inr: " ₹", dollar: "$", eur: "€", yen: "¥" }[currency]
-                  }
-                  endDecorator={
-                    <React.Fragment>
-                      <Divider orientation="vertical" />
-                      <Select
-                        variant="plain"
-                        value={currency}
-                        onChange={(_, value) => setCurrency(value!)}
-                        slotProps={{
-                          listbox: {
-                            variant: "outlined",
-                          },
-                        }}
-                        sx={{ mr: -1.5, "&:hover": { bgcolor: "transparent" } }}
-                      >
-                        <Option value="inr">INR</Option>
-                        <Option value="dollar">USD</Option>
-                        <Option value="eur">EUR</Option>
-                        <Option value="yen">YEN</Option>
-                      </Select>
-                    </React.Fragment>
-                  }
-                  // sx={{ width: 600 }}
-                />
-              </Stack>
-            </Grid>
-            <Grid xs={2}>
-              <Select defaultValue="1">
-                <Option value="1">All payments types </Option>
-                <Option value="2"> ATM withdrawal</Option>
-                <Option value="3"> Bank wire</Option>
-                <Option value="4"> Cash</Option>
-                <Option value="5"> Cryptocurrency</Option>
-                <Option value="6">Online payment system </Option>
-              </Select>
-            </Grid>
-
-            <Grid xs={2.5}>
-              <Select defaultValue="11">
-                {options2.map((option) => {
-                  return (
-                    <Option value={option.id}>
-                      <Typography level="title-md">
-                        {option.label}
-
-                        <Typography level="body-md" sx={{ fontSize: "xl" }}>
-                          {option.phone}
-                        </Typography>
-                      </Typography>
-                    </Option>
-                  );
-                })}
-              </Select>
-            </Grid>
-            <Grid xs={2.3}>
-              <Select defaultValue="3799986">
-                {options3.map((option) => {
-                  return (
-                    <Option value={option.phone}>
-                      <Typography level="title-md">{option.label}</Typography>
-                    </Option>
-                  );
-                })}
-              </Select>
-            </Grid>
-            <Grid xs={1.5}>
-              <Select defaultValue="1">
-                <Option value="1">Clear all </Option>
-              </Select>
-            </Grid>
-          </Grid> */}
-          {/* ppip */}
-          {/*  */}
-          {/* <EnhancedTableToolbar numSelected={selected.length} />
-          <Table
-            aria-labelledby="tableTitle"
-            hoverRow
-            sx={{
-              "--TableCell-headBackground": "transparent",
-              "--TableCell-selectedBackground": (theme) =>
-                theme.vars.palette.success.softBg,
-              "& thead th:nth-child(1)": {
-                width: "40px",
-              },
-              "& thead th:nth-child(2)": {
-                width: "30%",
-              },
-              "& tr > *:nth-child(n+3)": { textAlign: "right" },
-            }}
-          >
-            <EnhancedTableHead
-              numSelected={selected.length}
-              order={order}
-              orderBy={orderBy}
-              onSelectAllClick={handleSelectAllClick}
-              onRequestSort={handleRequestSort}
-              rowCount={rows.length}
-            />
-            <tbody>
-              {stableSort(rows, getComparator(order, orderBy))
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row, index) => {
-                  const isItemSelected = isSelected(row.name);
-                  const labelId = `enhanced-table-checkbox-${index}`;
-
-                  return (
-                    <tr
-                      onClick={(event) => handleClick(event, row.name)}
-                      role="checkbox"
-                      aria-checked={isItemSelected}
-                      tabIndex={-1}
-                      key={row.name}
-                      selected={isItemSelected}
-                      style={
-                        isItemSelected
-                          ? ({
-                              "--TableCell-dataBackground":
-                                "var(--TableCell-selectedBackground)",
-                              "--TableCell-headBackground":
-                                "var(--TableCell-selectedBackground)",
-                            } as React.CSSProperties)
-                          : {}
-                      }
-                    >
-                      <th scope="row" style={{ width: '40%' }}>
-                        <Checkbox
-                          checked={isItemSelected}
-                          slotProps={{
-                            input: {
-                              "aria-labelledby": labelId,
-                            },
-                          }}
-                          sx={{ verticalAlign: "top" }}
-                        />
-                        
-
-
-                        <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                    <Avatar src="/static/images/avatar/1.jpg" />
-                    <Box sx={{ minWidth: 0 }}>
-           
-                      <Typography sx={{ fontSize: 23 }} level="title-sm" noWrap>
-                        chickenwing
-                      </Typography>
-                     
-                      <Typography level="body-sm" noWrap>
-                        100% rate, 195 trades
-                      </Typography>
-                    </Box>
-                  </Box>        
-                      </th>
-                    <th id={labelId} scope="row">{row.name} </th>
-                     <td>{row.calories}</td>
-                    <td>{row.fat}</td> 
-                     <td>{row.carbs}</td>
-                    <td>{row.protein}</td> 
-                    </tr>
-                  );
-                })}
-              {emptyRows > 0 && (
-                <tr
-                  style={
-                    {
-                      height: `calc(${emptyRows} * 400px)`,
-                      "--TableRow-hoverBackground": "transparent",
-                    } as React.CSSProperties
-                  }
-                >
-                  <td colSpan={6} aria-hidden />
-                </tr>
-              )}
-            </tbody>
-            <tfoot>
-              <tr>
-                <td colSpan={6}>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 2,
-                      justifyContent: "flex-end",
-                    }}
-                  >
-                    <FormControl orientation="horizontal" size="sm">
-                      <FormLabel>Rows per page:</FormLabel>
-                      <Select
-                        onChange={handleChangeRowsPerPage}
-                        value={rowsPerPage}
-                      >
-                        <Option value={5}>5</Option>
-                        <Option value={10}>10</Option>
-                        <Option value={25}>25</Option>
-                      </Select>
-                    </FormControl>
-                    <Typography textAlign="center" sx={{ minWidth: 80 }}>
-                      {labelDisplayedRows({
-                        from: rows.length === 0 ? 0 : page * rowsPerPage + 1,
-                        to: getLabelDisplayedRowsTo(),
-                        count: rows.length === -1 ? -1 : rows.length,
-                      })}
-                    </Typography>
-                    <Box sx={{ display: "flex", gap: 1 }}>
-                      <IconButton
-                        size="sm"
-                        color="neutral"
-                        variant="outlined"
-                        disabled={page === 0}
-                        onClick={() => handleChangePage(page - 1)}
-                        sx={{ bgcolor: "background.surface" }}
-                      >
-                        <KeyboardArrowLeftIcon />
-                      </IconButton>
-                      <IconButton
-                        size="sm"
-                        color="neutral"
-                        variant="outlined"
-                        disabled={
-                          rows.length !== -1
-                            ? page >= Math.ceil(rows.length / rowsPerPage) - 1
-                            : false
-                        }
-                        onClick={() => handleChangePage(page + 1)}
-                        sx={{ bgcolor: "background.surface" }}
-                      >
-                        <KeyboardArrowRightIcon />
-                      </IconButton>
-                    </Box>
-                  </Box>
-                </td>
-              </tr>
-            </tfoot>
-          </Table> */}
-          {/*  */}
+          
           <Table>
-            {/* <thead>
-              <tr>
-                <th>Seller</th>
-                <th>Price</th>
-                <th>Limits</th>
-                <th
-                // style={{ width: '40%' }}
-                >
-                  Payments methods
-                </th>
-                <th>Offer details</th>
-              </tr>
-            </thead> */}
-            {/* </Table>
-      <Table
-      aria-label="table with ellipsis texts"
-      noWrap
-      sx={{ mx: 'auto', width: 400 }}
-    >
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th style={{ width: '10%' }}>
-           hi
-          </th>
-        </tr>
-      </thead> */}
+           
 
             <tbody>
               {datatable.map((option) => {
@@ -886,16 +222,7 @@ export default function C() {
                         <HelpOutlineIcon fontSize="inherit" color="primary" />
                       </Tooltip>
                         </Typography>
-                        {/* <Tooltip
-                          size="sm"
-                          arrow
-                          open
-                          title="The payment window is the time within which  the Buyer must complete the payment. The timeframe must reflect the selected payment method. When the payment window runs out, the Seller can cancel the contract or start the dispute if the payment has been initiated but not received."
-                          variant="solid"
-                          placement="top-end"
-                        >
-                          <HelpOutlineIcon fontSize="inherit" color="primary" />
-                        </Tooltip> */}
+                      
                         {option.paymentwindow} min.
                         <br />
                         <Typography level="body-xs" sx={{ fontSize: 22 }}>
@@ -936,9 +263,6 @@ export default function C() {
                                     variant="plain"
                                  
 
-                                    // startDecorator={
-                                    //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
-                                    // }
                                   >
                                     <Radio
                                       variant="outlined"
@@ -948,21 +272,14 @@ export default function C() {
                                       label={option.PaymentMethod1}
                                       value={name}
 
-                                      // onChange={(event) => {
-                                      //   if (event.target.checked) {
-                                      //     setSelected0(name);
-                                      //   }
-                                      // }}
+                                   
                                     />
                                   </Chip>
                                   <Chip
                                     style={{ size: "1rem" }}
                                     key={name}
                                     variant="plain"
-                                    //  color={checked ? "primary" : "neutral"}
-                                    // startDecorator={
-                                    //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
-                                    // }
+                          
                                   >
                                     <Radio
                                       variant="outlined"
@@ -972,22 +289,14 @@ export default function C() {
                                       color={option.ColorPaymentMethord2}
                                       label={option.PaymentMethod2}
                                       value={name}
-                                      //  checked={checked}
-                                      //  onChange={(event) => {
-                                      //    if (event.target.checked) {
-                                      //      setSelected0(name);
-                                      //    }
-                                      //  }}
+                                 
                                     />
                                   </Chip>
                                   <Chip
                                     style={{ size: "1rem" }}
                                     key={name}
                                     variant="plain"
-                                    //  color={checked ? "primary" : "neutral"}
-                                    // startDecorator={
-                                    //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
-                                    // }
+                               
                                   >
                                     <Radio
                                       variant="outlined"
@@ -997,22 +306,14 @@ export default function C() {
                                       color={option.ColorPaymentMethord3}
                                       label={option.PaymentMethod3}
                                       value={name}
-                                      //  checked={checked}
-                                      //  onChange={(event) => {
-                                      //    if (event.target.checked) {
-                                      //      setSelected0(name);
-                                      //    }
-                                      //  }}
+                               
                                     />
                                   </Chip>
                                   <Chip
                                     style={{ size: "1rem" }}
                                     key={name}
                                     variant="plain"
-                                    //  color={checked ? "primary" : "neutral"}
-                                    // startDecorator={
-                                    //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
-                                    // }
+                          
                                   >
                                     <Radio
                                       variant="outlined"
@@ -1022,22 +323,14 @@ export default function C() {
                                       label={option.PaymentMethod4}
                                       color={option.ColorPaymentMethord4}
                                       value={name}
-                                      //  checked={checked}
-                                      //  onChange={(event) => {
-                                      //    if (event.target.checked) {
-                                      //      setSelected0(name);
-                                      //    }
-                                      //  }}
+                                 
                                     />
                                   </Chip>
                                   <Chip
                                     style={{ size: "1rem" }}
                                     key={name}
                                     variant="plain"
-                                    //  color={checked ? "primary" : "neutral"}
-                                    // startDecorator={
-                                    //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
-                                    // }
+                               
                                   >
                                     <Radio
                                       variant="outlined"
@@ -1047,39 +340,10 @@ export default function C() {
                                       label={option.PaymentMethod5}
                                       color={option.ColorPaymentMethord5}
                                       value={name}
-                                      //  checked={checked}
-                                      //  onChange={(event) => {
-                                      //    if (event.target.checked) {
-                                      //      setSelected0(name);
-                                      //    }
-                                      //  }}
+                                 
                                     />
                                   </Chip>
-                                  {/* <Chip
-                                    style={{ size: "1rem" }}
-                                    key={name}
-                                    variant="plain"
-                                    //  color={checked ? "primary" : "neutral"}
-                                    // startDecorator={
-                                    //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
-                                    // }
-                                  >
-                                    <Radio
-                                      variant="outlined"
-                                      //  color={checked ? "primary" : "neutral"}
-                                      disableIcon
-                                      overlay
-                                      label={option.PaymentMethodsNo}
-                                      color={option.ColorPaymentMethordsNo}
-                                      value={name}
-                                      //  checked={checked}
-                                      //  onChange={(event) => {
-                                      //    if (event.target.checked) {
-                                      //      setSelected0(name);
-                                      //    }
-                                      //  }}
-                                    />
-                                  </Chip> */}
+                           
                                 </>
                               );
                             })}
@@ -1088,7 +352,7 @@ export default function C() {
                       </Box>
                     </td>  
                     <Sheet
-                variant="soft"
+                variant="outlined"
                 aria-label="Pricing plan"
                 defaultValue={0}
                 sx={{
@@ -1117,7 +381,7 @@ export default function C() {
         </Sheet>
 
         <Sheet
-          variant="plain"
+          variant="soft"
           aria-label="Pricing plan"
           defaultValue={0}
           sx={{
@@ -1133,7 +397,7 @@ export default function C() {
         >
           <Grid container  spacing={2} sx={{ flexGrow: 1 }}>
             <Grid xs={6} md={6} lg={6} xl={6}>
-              <Typography level="body-xs">I want to buy XMR for</Typography>
+              <Typography level="body-xs">I want to buy Crypto  for</Typography>
               <Stack spacing={0} direction="row">
               {/* <FormControl
                 sx={{ display: { sm: 'flex-column', md: 'flex-row' }, gap: 2 }}
@@ -1170,12 +434,7 @@ export default function C() {
                         </React.Fragment>
                       }
                     />
-                  {/* </Stack> */}
-               
-                {/* <Grid  xs={0.5} md={0.1} lg={0.1} xl={0.1}>
-            <Typography>=</Typography></Grid> */}
-         
-                  {/* <Stack spacing={1.5}> */}
+      
                   <Typography sx={{m:1}} level="title-sm">=</Typography>
                     <Input
                       placeholder="Amount"
@@ -1218,13 +477,12 @@ export default function C() {
                       }
                       // sx={{ width: 600 }}
                     />
-                  {/* </Stack> */}
-                  {/* </FormControl> */}
+               
                   </Stack>
               <Typography sx={{mt:1}} level="body-xs">
                 Enter the amount you are looking to buy
               </Typography>
-              <Typography sx={{mt:2}} level="body-xs"> Monero address</Typography>
+              <Typography sx={{mt:2}} level="body-xs"> Your Crypto  Currency Address</Typography>
               <Input
                 endDecorator={<CheckCircleOutlined />}
                 slots={{ input: InnerInput }}
@@ -1250,14 +508,15 @@ export default function C() {
                   );
                 })}
               </Select>
+              <Link href="/offers/buy/select/contact">
               <Button sx={{mt:3}} size="lg" fullWidth>
                 Accept offer
-              </Button>
+              </Button></Link>
             </Grid>
 
             <Grid xs={6} md={6} lg={6} xl={6}>
               <Sheet
-                variant="soft"
+                variant="outlined"
                 aria-label="Pricing plan"
                 defaultValue={0}
                 sx={{

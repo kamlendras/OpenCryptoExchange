@@ -1,19 +1,12 @@
 "use client";
-import Link from 'next/link'
-import { Transition } from 'react-transition-group';
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import * as React from "react";
-import Modal from '@mui/joy/Modal';
-import ModalClose from '@mui/joy/ModalClose';
-import ModalDialog, { ModalDialogProps } from '@mui/joy/ModalDialog';
-import DialogTitle from '@mui/joy/DialogTitle';
-import DialogContent from '@mui/joy/DialogContent';
+import { ModalDialogProps } from '@mui/joy/ModalDialog';
 import OpenInNewOutlinedIcon from "@mui/icons-material/OpenInNewOutlined";
 import Box from "@mui/joy/Box";
 import Sheet from "@mui/joy/Sheet";
 import Typography from "@mui/joy/Typography";
-import JoyLink from "@mui/joy/Link";
-import Button from "@mui/joy/Button";
+import Link from "@mui/joy/Link";
 import Stack from "@mui/joy/Stack";
 import Grid from "@mui/joy/Grid";
 import Table from "@mui/joy/Table";
@@ -27,9 +20,12 @@ import Stepper from "@mui/joy/Stepper";
 import Step from "@mui/joy/Step";
 import Footer from "../footer";
 import MyMessages from "./components/MyMessages";
-import RejectButton from "./RejectButton"
+
 export default function C() {
-  const [open, setOpen] = React.useState<boolean>(false);
+  const [selected, setSelected] = React.useState<readonly string[]>([]);
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+
   const [currency, setCurrency] = React.useState("inr");
   const [currency1, setCurrency1] = React.useState("btc");
   // const [selected, setSelected] = React.useState("");
@@ -46,12 +42,10 @@ export default function C() {
     <>
       <Box sx={{ m: 10 }}>
         <Typography level="h1">CONTRACT TO BUY XMR</Typography>
-
-      
         <Grid container spacing={2} sx={{ flexGrow: 1 }} >
           <Grid sm={7} lg={7} xl={7}>
         <Sheet
-          variant="soft"
+          variant="plain"
           aria-label="Pricing plan"
           defaultValue={0}
           sx={{
@@ -65,13 +59,13 @@ export default function C() {
         >
          
           <Table>
-           
+            
 
             <tbody>
               {datatable.map((option) => {
                 return (
                   <tr>
-                    
+                  
                     <td>
                       {" "}
                       <Typography sx={{ fontSize: 22 }} level="title-md">
@@ -93,7 +87,7 @@ export default function C() {
                         </Typography>{" "}
                         {option.Pay}
                       </Typography>
-                    
+                      
                     </td>
 
                     <td>
@@ -151,7 +145,7 @@ export default function C() {
                             />
                           </Tooltip>
                         </Typography>
-     
+                       
                         {option.paymentwindow} min.
                         <br />
                         <Typography level="body-xs" sx={{ fontSize: 22 }}>
@@ -174,7 +168,7 @@ export default function C() {
                     
                     <td>
                       <Sheet
-                        variant="outlined"
+                        variant="soft"
                         aria-label="Pricing plan"
                         defaultValue={0}
                         style={{ whiteSpace: "pre-wrap" }}
@@ -195,8 +189,8 @@ export default function C() {
                         >
                           {" "}
                           Monero release address
-                  
-                          <JoyLink>
+                          {/* {option.offer} */}
+                          <Link>
                             <div
                               style={{
                                 display: "inline-block",
@@ -206,7 +200,7 @@ export default function C() {
                               {option.CryptoCurrencyAddress}{" "}
                             </div>
                             <OpenInNewOutlinedIcon />
-                          </JoyLink>
+                          </Link>
                         </Typography>
                       </Sheet>
                     </td>
@@ -218,7 +212,7 @@ export default function C() {
         </Sheet>
 
         <Sheet
-          variant="soft"
+          variant="plain"
           aria-label="Pricing plan"
           defaultValue={0}
           sx={{
@@ -232,8 +226,8 @@ export default function C() {
           color="neutral"
           //  sx={{ p: 4 }}
         >
-          <Typography level="title-xs">Engaging in contract</Typography>
-              <Typography level="body-md">Generate a multisig escrow address by confirming your payment password.</Typography>
+          <Typography level="title-xs">The Seller has been received your payment successfully.</Typography>
+              <Typography level="body-md">Just a movement, Open Crypto Exchange depositing Monero on your provided address.</Typography>
           
 
 
@@ -262,18 +256,11 @@ export default function C() {
 <Typography level="title-sm">N/A</Typography>
 </Box>
 <Box sx={{m:1}}>
-<Typography level="body-sm">Amount to pay</Typography>
+<Typography level="body-sm">Amount Deposited</Typography>
 <Typography level="title-sm">40,000.01 USD</Typography>
 </Box>
 </Stack>
 </Sheet>
-<Typography level="title-sm">
-<Link href="/offers/buy/select/contact/escrow/">
-<Button  sx={{mt:2}} size="lg">Accept contract</Button>
-</Link>
-<RejectButton/>
-
-</Typography>
 
 
       </Sheet>
@@ -284,7 +271,6 @@ export default function C() {
           aria-label="Pricing plan"
           defaultValue={0}
           sx={{
-            //    width: 750,
             borderRadius: "lg",
             boxShadow: "xl",
             overflow: "auto",
@@ -292,7 +278,6 @@ export default function C() {
             p: 4,
           }}
           color="neutral"
-          //  sx={{ p: 4 }}
         >
 
 
@@ -333,15 +318,17 @@ export default function C() {
             </Step>
             <Step
               orientation="vertical"
-              indicator={<StepIndicator variant="outlined">3</StepIndicator>}
-            >
+              indicator={<StepIndicator variant="solid" color="primary">3</StepIndicator>}
+            > <Typography style={{ color: "#1565c0" }}>
               The Seller deposits Monero in the multisig escrow
+              </Typography>
             </Step>
             <Step
               orientation="vertical"
-              indicator={<StepIndicator variant="outlined">4</StepIndicator>}
-            >
+              indicator={<StepIndicator variant="solid" color="primary">4</StepIndicator>}
+            ><Typography style={{ color: "#1565c0" }}>
               The Buyer sends the payment to the Seller
+              </Typography>
             </Step>
             <Step
               orientation="vertical"

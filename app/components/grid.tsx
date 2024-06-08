@@ -8,7 +8,9 @@ import Intropage from "./intropage"
 import { CssVarsProvider, useColorScheme } from '@mui/joy/styles';
 import FAQ from "./FAQ"
 import Footer from './footer';
-
+import Features from './features'
+import Testimonials from './Testimonials';
+import Highlights from './Highlights';
 export default function C() {
 
   return (
@@ -51,8 +53,43 @@ export default function C() {
 
       </Grid>
       </div>
+      <div id="features">
+      <Grid
+  container
+  spacing={0}
+  direction="column"
+  alignItems="center"
+  justifyContent="center"
+  sx={{ minHeight: '100vh' }}
+>
+     < Features/>
+     </Grid>
+      </div>
 
-
+      <div id="Testimonials">
+      <Grid
+  container
+  spacing={0}
+  direction="column"
+  alignItems="center"
+  justifyContent="center"
+  sx={{ minHeight: '100vh' }}
+>
+     <Testimonials/>
+     </Grid>
+      </div>
+      <div id="Highlights">
+      <Grid
+  container
+  spacing={0}
+  direction="column"
+  alignItems="center"
+  justifyContent="center"
+  sx={{ minHeight: '100vh' }}
+>
+     < Highlights/>
+     </Grid>
+      </div>
 
       <div id="FAQ">
       <Grid

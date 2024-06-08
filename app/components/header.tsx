@@ -36,6 +36,7 @@ import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import Search from "./search"
 import ColorSchemeToggle from './ColorSchemeToggle';
+import Link from 'next/link'
 import Alert from '@mui/joy/Alert';
 import Radio from '@mui/joy/Radio';
 import RadioGroup from '@mui/joy/RadioGroup';
@@ -104,7 +105,8 @@ export default function Header() {
           }}
         > */}
         <div style={{display:"flex"}}>
-       <img src="/icon.svg"  width={169} height={67.6}/>
+        <Link href="/">
+       <img src="/icon.svg"  width={169} height={67.6}/></Link>
        {/* <Typography level="h4" noWrap>OPEN CRYPTO EXCHANGE</Typography> */}
       
        </div> 
