@@ -1,13 +1,13 @@
-import Sell from "../../components/offers/sell"
+import Contact from "../../../../components/offers/contact1"
 export const metadata = {
-  title: "SELL MONERO",
+  title: "BUY MONERO",
   description: "Open Source Crypto Exchange Platform with Zero Transaction Fees.",
 };
 export default function C() {
   return (
     <>
         
-<Sell/>
+<Contact/>
 
 
     

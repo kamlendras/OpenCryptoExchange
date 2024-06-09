@@ -15,6 +15,7 @@ import Grid from '@mui/joy/Grid';
 import Box from '@mui/joy/Box';
 import Radio from '@mui/joy/Radio';
 import RadioGroup from '@mui/joy/RadioGroup';
+import Link from 'next/link'
 
 export default function CountrySelect() {
   const [currency, setCurrency] = React.useState('inr');
@@ -254,8 +255,9 @@ export default function CountrySelect() {
        </Grid>
 
        <Grid xs={12}>
-
+       <Link href="/offers/sell">
        <Button size="lg" fullWidth>View offers</Button>
+       </Link>
     </Grid>
 
 
