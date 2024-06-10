@@ -1,3 +1,5 @@
+"use client";
+import AnimatedNumbers from "react-animated-numbers"
 import * as React from 'react';
 import Box from '@mui/joy/Box';
 import Button from '@mui/joy/Button';
@@ -6,8 +8,11 @@ import ArrowForward from '@mui/icons-material/ArrowForward';
 import Star from '@mui/icons-material/Star';
 import TwoSidedLayout from './TwoSidedLayout';
 import Link from "next/link";
+import AddIcon from '@mui/icons-material/Add';
 
 export default function HeroLeft08() {
+  const [num, setNum] = React.useState(331231);
+  const [num1, setNum1] = React.useState(4.9);
   return (
     <>
    
@@ -72,15 +77,48 @@ export default function HeroLeft08() {
             fontWeight="lg"
             endDecorator={<Star fontSize="xl4" sx={{ color: 'warning.300' }} />}
           >
-            4.9
+            {/* 4.9 */}
+            <div className="container">
+      <AnimatedNumbers
+        includeComma
+        // className={styles.container}
+        transitions={(index) => ({
+          type: "spring",
+          duration: index + 0.1,
+        })}
+        animateToNumber={num1}
+        // fontStyle={{
+        //   fontSize: 40,
+        //   color: "red",
+        // }}
+      />
+   
+    </div>
           </Typography>
           <Typography textColor="text.secondary">
             Rated by <b>5k</b> people on Github.com
           </Typography>
         </div>
         <div>
-          <Typography fontSize="xl4" fontWeight="lg">
-            9.5k+
+          <Typography fontSize="xl4" fontWeight="lg"
+          endDecorator={<AddIcon fontSize="xl4" style={{ fill: '#000000' }} />}>
+            {/* 9.5k+ */}
+            <div className="container">
+      <AnimatedNumbers
+        includeComma
+        // className={styles.container}
+        transitions={(index) => ({
+          type: "spring",
+          duration: index + 0.3,
+        })}
+        animateToNumber={num}
+        // fontStyle={{
+        //   fontSize: 40,
+        //   color: "red",
+        // }}
+      />
+   
+    </div>
           </Typography>
           <Typography textColor="text.secondary">
             Active users from all around the world.

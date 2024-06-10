@@ -1,5 +1,6 @@
 "use client"
 import * as React from 'react';
+import NextLink from 'next/link'
 import { CssVarsProvider, useColorScheme } from '@mui/joy/styles';
 import GlobalStyles from '@mui/joy/GlobalStyles';
 import CssBaseline from '@mui/joy/CssBaseline';
@@ -131,13 +132,15 @@ export default function JoySignInSideTemplate() {
             <Stack gap={4} sx={{ mb: 2 }}>
               <Stack gap={1}>
                 <Typography component="h1" level="h3">
-                  Sign in
+                  Log in
                 </Typography>
                 <Typography level="body-sm">
-                  New to company?{' '}
+                  New User?{' '}
+                  <NextLink href="/signup">
                   <Link href="#replace-with-a-link" level="title-sm">
                     Sign up!
                   </Link>
+                  </NextLink>
                 </Typography>
               </Stack>
               <Button
@@ -193,7 +196,7 @@ export default function JoySignInSideTemplate() {
                     </Link>
                   </Box>
                   <Button type="submit" fullWidth>
-                    Sign in
+                    Log in
                   </Button>
                 </Stack>
               </form>
