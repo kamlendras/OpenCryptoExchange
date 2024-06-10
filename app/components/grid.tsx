@@ -66,7 +66,7 @@ export default function C() {
      </Grid>
       </div>
 
-      <div id="Testimonials">
+      {/* <div id="Testimonials">
       <Grid
   container
   spacing={0}
@@ -77,7 +77,7 @@ export default function C() {
 >
      <Testimonials/>
      </Grid>
-      </div>
+      </div> */}
       <div id="Highlights">
       <Grid
   container

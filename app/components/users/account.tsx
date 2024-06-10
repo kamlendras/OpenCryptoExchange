@@ -38,16 +38,16 @@ import EditorToolbar from './EditorToolbar';
 
 export default function MyProfile() {
   return (
-    <Box sx={{ flex: 1, width: '100%' }}>
+    <Box sx={{ flex: 1, width: '100%', mt:5 }}>
       <Box
         sx={{
-          position: 'sticky',
+          // position: 'sticky',
           top: { sm: -100, md: -110 },
           bgcolor: 'background.body',
-          zIndex: 9995,
+          // zIndex: 9995,
         }}
       >
-        <Box sx={{ px: { xs: 2, md: 6 } }}>
+        {/* <Box sx={{ px: { xs: 2, md: 6 } }}>
           <Breadcrumbs
             size="sm"
             aria-label="breadcrumbs"
@@ -78,8 +78,8 @@ export default function MyProfile() {
           <Typography level="h2" component="h1" sx={{ mt: 1, mb: 2 }}>
             My Account
           </Typography>
-        </Box>
-        <Tabs
+        </Box> */}
+        {/* <Tabs
           defaultValue={0}
           sx={{
             bgcolor: 'transparent',
@@ -110,16 +110,16 @@ export default function MyProfile() {
             User info
             </Tab>
             <Tab sx={{ borderRadius: '6px 6px 0 0' }} indicatorInset value={1}>
-              Team
+              Contribute
             </Tab>
             <Tab sx={{ borderRadius: '6px 6px 0 0' }} indicatorInset value={2}>
-              Plan
+              Donate
             </Tab>
             <Tab sx={{ borderRadius: '6px 6px 0 0' }} indicatorInset value={3}>
-              Billing
+              Report
             </Tab>
           </TabList>
-        </Tabs>
+        </Tabs> */}
       </Box>
       <Stack
         spacing={4}
@@ -144,7 +144,7 @@ export default function MyProfile() {
             spacing={3}
             sx={{ display: { xs: 'none', md: 'flex' }, my: 1 }}
           >
-            <Stack direction="column" spacing={1}>
+            {/* <Stack direction="column" spacing={1}>
               <AspectRatio
                 ratio="1"
                 maxHeight={200}
@@ -174,7 +174,7 @@ export default function MyProfile() {
               >
                 <EditRoundedIcon />
               </IconButton>
-            </Stack>
+            </Stack> */}
             <Stack spacing={2} sx={{ flexGrow: 1 }}>
               <Stack spacing={1}>
                 <FormLabel>Name</FormLabel>
@@ -188,7 +188,7 @@ export default function MyProfile() {
               <Stack direction="row" spacing={2}>
                 <FormControl>
                   <FormLabel>Role</FormLabel>
-                  <Input size="sm" defaultValue="UI Developer" />
+                  <Input size="sm" defaultValue="SELLER" />
                 </FormControl>
                 <FormControl sx={{ flexGrow: 1 }}>
                   <FormLabel>Email</FormLabel>
@@ -196,8 +196,8 @@ export default function MyProfile() {
                     size="sm"
                     type="email"
                     startDecorator={<EmailRoundedIcon />}
-                    placeholder="email"
-                    defaultValue="siriwatk@test.com"
+                    placeholder="your email"
+                    defaultValue="you@email.com"
                     sx={{ flexGrow: 1 }}
                   />
                 </FormControl>
@@ -350,7 +350,7 @@ export default function MyProfile() {
               size="sm"
               minRows={4}
               sx={{ mt: 1.5 }}
-              defaultValue="I'm a software developer based in Bangkok, Thailand. My goal is to solve UI problems with neat CSS without using too much JavaScript."
+              defaultValue="Experienced Monero seller offering secure and confidential transactions on decentralized exchanges (DEX). With a proven track record of reliability and discretion, I specialize in facilitating private transactions in the Monero cryptocurrency, ensuring anonymity and privacy for buyers. Committed to maintaining the integrity of your financial transactions, I prioritize security measures and adhere to best practices in cryptocurrency trading. Whether you're seeking to purchase Monero for investment or privacy reasons, trust in my expertise to deliver seamless transactions with the utmost confidentiality."
             />
             <FormHelperText sx={{ mt: 0.75, fontSize: 'xs' }}>
               275 characters left
@@ -369,9 +369,9 @@ export default function MyProfile() {
         </Card>
         <Card>
           <Box sx={{ mb: 1 }}>
-            <Typography level="title-md">Portfolio projects</Typography>
+            <Typography level="title-md">Trust Documents (optional)</Typography>
             <Typography level="body-sm">
-              Share a few snippets of your work.
+             Uploading documents will provide trust to buyers, it's going to validate your identity and will reflect search engine ranking.
             </Typography>
           </Box>
           <Divider />
@@ -379,13 +379,13 @@ export default function MyProfile() {
             <DropZone />
             <FileUpload
               icon={<InsertDriveFileRoundedIcon />}
-              fileName="Tech design requirements.pdf"
+              fileName="driving_license.pdf"
               fileSize="200 kB"
               progress={100}
             />
             <FileUpload
               icon={<VideocamRoundedIcon />}
-              fileName="Dashboard prototype recording.mp4"
+              fileName="take_2minute_video_of yourself.mp4"
               fileSize="16 MB"
               progress={40}
             />

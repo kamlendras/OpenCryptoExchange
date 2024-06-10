@@ -11,43 +11,48 @@ import QueryStatsRoundedIcon from '@mui/icons-material/QueryStatsRounded';
 import SettingsSuggestRoundedIcon from '@mui/icons-material/SettingsSuggestRounded';
 import SupportAgentRoundedIcon from '@mui/icons-material/SupportAgentRounded';
 import ThumbUpAltRoundedIcon from '@mui/icons-material/ThumbUpAltRounded';
-
+import SecurityIcon from '@mui/icons-material/Security';
+import KeyIcon from '@mui/icons-material/Key';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import GppGoodIcon from '@mui/icons-material/GppGood';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import Diversity3Icon from '@mui/icons-material/Diversity3';
 const items = [
   {
-    icon: <SettingsSuggestRoundedIcon />,
-    title: 'Adaptable performance',
+    icon: <SecurityIcon />,
+    title: 'SECURE',
     description:
-      'Our product effortlessly adjusts to your needs, boosting efficiency and simplifying your tasks.',
+      'Multisig (P2SH) contracts.',
   },
   {
-    icon: <ConstructionRoundedIcon />,
-    title: 'Built to last',
+    icon: <KeyIcon />,
+    title: 'NON-CUSTODIAL',
     description:
-      'Experience unmatched durability that goes above and beyond with lasting investment.',
+      'You control the keys to the funds in escrow.',
   },
   {
-    icon: <ThumbUpAltRoundedIcon />,
-    title: 'Great user experience',
+    icon: <VisibilityOffIcon />,
+    title: 'ANONYMOUS',
     description:
-      'Integrate our product into your routine with an intuitive and easy-to-use interface.',
+      'No verification required.',
   },
   {
-    icon: <AutoFixHighRoundedIcon />,
-    title: 'Innovative functionality',
+    icon: <Diversity3Icon />,
+    title: 'DECENTRALIZED ',
     description:
-      'Stay ahead with features that set new standards, addressing your evolving needs better than the rest.',
+      'No single entity controls Open Crypto Exchange.',
   },
   {
-    icon: <SupportAgentRoundedIcon />,
-    title: 'Reliable support',
+    icon: <GppGoodIcon />,
+    title: 'SECURED BY ESCROW',
     description:
-      'Count on our responsive customer support, offering assistance that goes beyond the purchase.',
+      'Control the keys to the funds in escrow through out the whole deal.',
   },
   {
-    icon: <QueryStatsRoundedIcon />,
-    title: 'Precision in every detail',
+    icon: <GitHubIcon />,
+    title: 'OPEN SOURCE',
     description:
-      'Enjoy a meticulously crafted product where small touches make a significant impact on your overall experience.',
+      'Open Crypto Exchange is an Free and Open Source Software Licenced under GPL-3.0.',
   },
 ];
 
@@ -81,9 +86,7 @@ export default function Highlights() {
             Highlights
           </Typography>
           <Typography level="body-lg">
-            Explore why our product stands out: adaptability, durability,
-            user-friendly design, and innovation. Enjoy reliable customer support and
-            precision in every detail.
+          OPEN CRYPTO EXCHANGE. AN OPEN SOURCE DECENTRALIZED MONERO TRADING PLATFORM.
           </Typography>
         </Box>
         <Grid container spacing={2.5}>
@@ -95,14 +98,28 @@ export default function Highlights() {
                 component={Card}
                 spacing={1}
                 useFlexGap
-                sx={{
+                sx={(theme) => ({
+
                   p: 3,
                   height: '100%',
                   // border: '1px solid',
                   // borderColor: 'grey.800',
                   // background: 'transparent',
                   // backgroundColor: 'grey.900',
-                }}
+                  // width: 300,
+                  gridColumn: 'span 2',
+                  flexDirection: 'row',
+                  flexWrap: 'wrap',
+                  resize: 'horizontal',
+                  overflow: 'hidden',
+                  gap: 'clamp(0px, (100% - 360px + 32px) * 999, 16px)',
+                  transition: 'transform 0.3s, border 0.3s',
+                  '&:hover': {
+                    borderColor: theme.vars.palette.primary.outlinedHoverBorder,
+                    transform: 'translateY(-2px)',
+                  },
+                  '& > *': { minWidth: 'clamp(0px, (360px - 100%) * 999,100%)' },
+                })}
               >
                 <Box 
                 // sx={{ opacity: '50%' }}

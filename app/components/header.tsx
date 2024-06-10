@@ -42,6 +42,11 @@ import Radio from '@mui/joy/Radio';
 import RadioGroup from '@mui/joy/RadioGroup';
 import Sheet from '@mui/joy/Sheet';
 import { VariantProp } from '@mui/joy/styles';
+const items = [
+  {imageLight: 'url("/icon.svg")',
+    imageDark: 'url("/icon_black.svg")',
+  },
+]
 // import Navigation from './Navigation';
 
 // function ColorSchemeToggle() {
@@ -76,6 +81,15 @@ import { VariantProp } from '@mui/joy/styles';
 // }
 
 export default function Header() {
+  const [selectedItemIndex, setSelectedItemIndex] = React.useState(0);
+
+  const handleItemClick = (index: number) => {
+    setSelectedItemIndex(index);
+  };
+
+  const selectedFeature = items[selectedItemIndex];
+  const [mode, setMode] = React.useState<PaletteMode>('light');
+  const [showCustomTheme, setShowCustomTheme] = React.useState(true);
   const [open, setOpen] = React.useState(false);
   return (
     <Box
@@ -106,7 +120,24 @@ export default function Header() {
         > */}
         <div style={{display:"flex"}}>
         <Link href="/">
-       <img src="/icon.svg"  width={169} height={67.6}/></Link>
+       {/* <img src="/icon.svg"  width={169} height={67.6}/> */}
+       <Box
+              sx={{
+                // m: 'auto',
+                // mt:5,
+                width: 100,
+                height: 100,
+                backgroundSize: 'contain',
+                backgroundImage: (theme) =>
+                  theme.palette.mode === 'light'
+                    ? items[selectedItemIndex].imageLight
+                    : items[selectedItemIndex].imageDark,
+              }}
+            />
+       
+       
+       
+       </Link>
        {/* <Typography level="h4" noWrap>OPEN CRYPTO EXCHANGE</Typography> */}
       
        </div> 

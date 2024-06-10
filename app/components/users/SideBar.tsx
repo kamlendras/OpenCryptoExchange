@@ -15,6 +15,12 @@ import AssignmentIndRoundedIcon from '@mui/icons-material/AssignmentIndRounded';
 import ArticleRoundedIcon from '@mui/icons-material/ArticleRounded';
 import AccountTreeRoundedIcon from '@mui/icons-material/AccountTreeRounded';
 import TodayRoundedIcon from '@mui/icons-material/TodayRounded';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
+import HistoryIcon from '@mui/icons-material/History';
+import SettingsIcon from '@mui/icons-material/Settings';
+import CampaignIcon from '@mui/icons-material/Campaign';
 
 export default function Navigation() {
   return (
@@ -27,8 +33,9 @@ export default function Navigation() {
         md: 'none',
       },
       transition: 'transform 0.4s, width 0.4s',
-      zIndex: 10000,
-      height: '100dvh',
+      // zIndex: 10000,
+      mt:5,
+      // height: '100dvh',
       width: 'var(--Sidebar-width)',
       top: 0,
       p: 2,
@@ -36,7 +43,7 @@ export default function Navigation() {
       display: 'flex',
       flexDirection: 'column',
       gap: 2,
-      borderRight: '1px solid',
+      // borderRight: '1px solid',
       borderColor: 'divider',
     }}
   >
@@ -106,7 +113,7 @@ export default function Navigation() {
           <ListItem>
             <ListItemButton selected>
               <ListItemDecorator>
-                <PeopleRoundedIcon fontSize="small" />
+                <AccountCircleIcon fontSize="small" />
               </ListItemDecorator>
               <ListItemContent>Account</ListItemContent>
             </ListItemButton>
@@ -114,7 +121,7 @@ export default function Navigation() {
           <ListItem>
             <ListItemButton>
               <ListItemDecorator sx={{ color: 'neutral.500' }}>
-                <AssignmentIndRoundedIcon fontSize="small" />
+                <NotificationsActiveIcon fontSize="small" />
               </ListItemDecorator>
               <ListItemContent>Notifications</ListItemContent>
             </ListItemButton>
@@ -122,7 +129,7 @@ export default function Navigation() {
           <ListItem>
             <ListItemButton>
               <ListItemDecorator sx={{ color: 'neutral.500' }}>
-                <AccountTreeRoundedIcon fontSize="small" />
+                <HistoryIcon fontSize="small" />
               </ListItemDecorator>
               <ListItemContent>History</ListItemContent>
             </ListItemButton>
@@ -130,7 +137,7 @@ export default function Navigation() {
           <ListItem>
             <ListItemButton>
               <ListItemDecorator sx={{ color: 'neutral.500' }}>
-                <TodayRoundedIcon fontSize="small" />
+                <SettingsIcon fontSize="small" />
               </ListItemDecorator>
               <ListItemContent>Settings</ListItemContent>
             </ListItemButton>
@@ -138,9 +145,9 @@ export default function Navigation() {
           <ListItem>
             <ListItemButton>
               <ListItemDecorator sx={{ color: 'neutral.500' }}>
-                <ArticleRoundedIcon fontSize="small" />
+                <CampaignIcon fontSize="small" />
               </ListItemDecorator>
-              <ListItemContent>Policies</ListItemContent>
+              <ListItemContent>Broadcast</ListItemContent>
               <Chip variant="soft" color="warning" size="sm">
                 2
               </Chip>

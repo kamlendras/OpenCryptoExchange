@@ -75,7 +75,7 @@ export default function HeroLeft08() {
             4.9
           </Typography>
           <Typography textColor="text.secondary">
-            Rated by <b>5k</b> people on trustpilot.com
+            Rated by <b>5k</b> people on Github.com
           </Typography>
         </div>
         <div>
@@ -83,7 +83,7 @@ export default function HeroLeft08() {
             9.5k+
           </Typography>
           <Typography textColor="text.secondary">
-            Active users from the top world companies.
+            Active users from all around the world.
           </Typography>
         </div>
       </Box>

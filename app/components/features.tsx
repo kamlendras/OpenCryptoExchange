@@ -27,24 +27,24 @@ const items = [
     title: 'Security',
     description:
       'Users must be able to trust Open Crypto Exchange with their transactions, without risk of error or attack. ',
-    imageLight: 'url("https://etimg.etb2bimg.com/photo/104637257.cms")',
-    imageDark: 'url("https://etimg.etb2bimg.com/photo/104637257.cms")',
+    imageLight: 'url("/security.png")',
+    imageDark: 'url("/security_black.png")',
   },
   {
     icon: <LockOutlinedIcon />,
     title: 'Privacy',
     description:
       'Open Crypto Exchange takes privacy seriously. This level of privacy must be completely accessible to all users. ',
-    imageLight: 'url("https://cryptoslate.com/wp-content/uploads/2024/04/monero-privacy-768x403.jpg")',
-    imageDark: 'url("https://cryptoslate.com/wp-content/uploads/2024/04/monero-privacy-768x403.jpg")',
+    imageLight: 'url("/privacy.png")',
+    imageDark: 'url("/privacy_black.png")',
   },
   {
     icon: <PublicOutlinedIcon />,
     title: 'Decentralization',
     description:
       'Open Crypto Exchange is committed to providing the highest degree of decentralization in both network security and code development. ',
-    imageLight: 'url("https://media.licdn.com/dms/image/C5612AQHJ1A6uNz1Syw/article-cover_image-shrink_720_1280/0/1534935247774?e=2147483647&v=beta&t=ZqrgryboEliGFPYFRWz287lJ6-Gfe6eXrHAx7IlRKco")',
-    imageDark: 'url("https://media.licdn.com/dms/image/C5612AQHJ1A6uNz1Syw/article-cover_image-shrink_720_1280/0/1534935247774?e=2147483647&v=beta&t=ZqrgryboEliGFPYFRWz287lJ6-Gfe6eXrHAx7IlRKco")',
+    imageLight: 'url("/decentralization.png")',
+    imageDark: 'url("/decentralization_black.png")',
   },
 ];
 
@@ -161,27 +161,47 @@ export default function Features() {
             sx={{ width: '100%', display: { xs: 'none', sm: 'flex' } }}
           >
             {items.map(({ icon, title, description }, index) => (
+              <div id='pointer'>
               <Card
                 key={index}
                 variant="outlined"
-                component={Button}
+               
+                // color="primary"
+                // component={Button}
                 onClick={() => handleItemClick(index)}
-                sx={{
-                  p: 3,
-                  height: 'fit-content',
-                  width: '100%',
-                  background: 'none',
-                  backgroundColor:
-                    selectedItemIndex === index ? 'action.selected' : undefined,
-                  borderColor: (theme) => {
-                    if (theme.palette.mode === 'light') {
-                      return selectedItemIndex === index
-                        ? 'primary.light'
-                        : 'grey.200';
-                    }
-                    return selectedItemIndex === index ? 'primary.dark' : 'grey.800';
+                // sx={{
+                //   p: 3,
+                //   height: 'fit-content',
+                //   width: '100%',
+                //   background: 'none',
+                //   backgroundColor:
+                //     selectedItemIndex === index ? 'action.selected' : undefined,
+                //   borderColor: (theme) => {
+                //     if (theme.palette.mode === 'light') {
+                //       return selectedItemIndex === index
+                //         ? 'primary.light'
+                //         : 'grey.200';
+                //     }
+                //     return selectedItemIndex === index ? 'primary.dark' : 'grey.800';
+                //   },
+                // }}
+
+                sx={(theme) => ({
+                  // width: 300,
+                  gridColumn: 'span 2',
+                  flexDirection: 'row',
+                  flexWrap: 'wrap',
+                  resize: 'horizontal',
+                  overflow: 'hidden',
+                  gap: 'clamp(0px, (100% - 360px + 32px) * 999, 16px)',
+                  transition: 'transform 0.3s, border 0.3s',
+                  '&:hover': {
+                    borderColor: theme.vars.palette.primary.outlinedHoverBorder,
+                    transform: 'translateY(-2px)',
+                    color:'primary',
                   },
-                }}
+                  '& > *': { minWidth: 'clamp(0px, (360px - 100%) * 999,100%)' },
+                })}
               >
                 <Box
                   sx={{
@@ -211,7 +231,7 @@ export default function Features() {
                   </Box>
                   <Box sx={{ textTransform: 'none' }}>
                     <Typography
-                level="body-sm"
+                level="title-md"
                       // fontWeight="bold"
                     >
                       {title}
@@ -245,6 +265,7 @@ export default function Features() {
                   </Box>
                 </Box>
               </Card>
+              </div>
             ))}
           </Stack>
         </Grid>
@@ -266,8 +287,8 @@ export default function Features() {
             <Box
               sx={{
                 m: 'auto',
-                width: 400,
-                height: 500,
+                width: 500,
+                height: 700,
                 backgroundSize: 'contain',
                 backgroundImage: (theme) =>
                   theme.palette.mode === 'light'

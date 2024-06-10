@@ -18,7 +18,7 @@ import RadioGroup from '@mui/joy/RadioGroup';
 import Link from 'next/link'
 
 export default function CountrySelect() {
-  const [currency, setCurrency] = React.useState('inr');
+  const [currency, setCurrency] = React.useState('dollar');
   const [selected, setSelected] = React.useState('');
   const [selected0, setSelected0] = React.useState('');
   return (

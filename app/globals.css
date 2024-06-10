@@ -163,3 +163,9 @@ a {
   --mui-palette-primary-contrastText: #6c4d4d;
   /* ...other variables */
 }
+
+
+
+#pointer {
+  cursor: pointer;
+}
