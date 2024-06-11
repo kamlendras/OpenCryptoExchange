@@ -9,9 +9,9 @@ import Grid from '@mui/joy/Grid';
 import Link from '@mui/joy/Link';
 import Stack from '@mui/joy/Stack';
 import getLPTheme from './getLPTheme';
-import { PaletteMode } from '@mui/joy';
+// import { PaletteMode } from '@mui/joy';
 import CssBaseline from '@mui/joy/CssBaseline';
-import { ThemeProvider, createTheme } from '@mui/joy/styles';
+import { ThemeProvider} from '@mui/joy/styles';
 import Typography from '@mui/joy/Typography';
 import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
 import DevicesRoundedIcon from '@mui/icons-material/DevicesRounded';
@@ -56,7 +56,6 @@ export default function Features() {
   };
 
   const selectedFeature = items[selectedItemIndex];
-  const [mode, setMode] = React.useState<PaletteMode>('light');
   const [showCustomTheme, setShowCustomTheme] = React.useState(true);
   // const LPtheme = createTheme(getLPTheme(mode));
   // const defaultTheme = createTheme({ palette: { mode } });
@@ -82,26 +81,26 @@ export default function Features() {
             {items.map(({ title }, index) => (
               <Chip
                 key={index}
-                label={title}
-                onClick={() => handleItemClick(index)}
-                sx={{
-                  borderColor: (theme) => {
-                    if (theme.palette.mode === 'light') {
-                      return selectedItemIndex === index ? 'primary.light' : '';
-                    }
-                    return selectedItemIndex === index ? 'primary.light' : '';
-                  },
-                  background: (theme) => {
-                    if (theme.palette.mode === 'light') {
-                      return selectedItemIndex === index ? 'none' : '';
-                    }
-                    return selectedItemIndex === index ? 'none' : '';
-                  },
-                  backgroundColor: selectedItemIndex === index ? 'primary.main' : '',
-                  '& .MuiChip-label': {
-                    color: selectedItemIndex === index ? '#fff' : '',
-                  },
-                }}
+                // label={title}
+                // onClick={() => handleItemClick(index)}
+                // sx={{
+                //   borderColor: (theme) => {
+                //     if (theme.palette.mode === 'light') {
+                //       return selectedItemIndex === index ? 'primary.light' : '';
+                //     }
+                //     return selectedItemIndex === index ? 'primary.light' : '';
+                //   },
+                //   background: (theme) => {
+                //     if (theme.palette.mode === 'light') {
+                //       return selectedItemIndex === index ? 'none' : '';
+                //     }
+                //     return selectedItemIndex === index ? 'none' : '';
+                //   },
+                //   backgroundColor: selectedItemIndex === index ? 'primary.main' : '',
+                //   '& .MuiChip-label': {
+                //     color: selectedItemIndex === index ? '#fff' : '',
+                //   },
+                // }}
               />
             ))}
           </Grid>
@@ -270,7 +269,7 @@ export default function Features() {
           </Stack>
         </Grid>
         <Grid
-          item
+          
           xs={12}
           md={6}
           sx={{ display: { xs: 'none', sm: 'flex' }, width: '100%' }}

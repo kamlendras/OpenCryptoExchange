@@ -44,7 +44,7 @@ export default function HeroLeft08() {
         </Button>
         </Link>
         <Link href="#exchange">
-        <Button size="lg" endDecorator={<ArrowForward fontSize="xl" />}>
+        <Button size="lg" endDecorator={<ArrowForward />}>
           Get Started
         </Button>
         </Link>
@@ -75,7 +75,7 @@ export default function HeroLeft08() {
           <Typography
             fontSize="xl4"
             fontWeight="lg"
-            endDecorator={<Star fontSize="xl4" sx={{ color: 'warning.300' }} />}
+            endDecorator={<Star  sx={{ color: 'warning.300' }} />}
           >
             {/* 4.9 */}
             <div className="container">
@@ -101,7 +101,7 @@ export default function HeroLeft08() {
         </div>
         <div>
           <Typography fontSize="xl4" fontWeight="lg"
-          endDecorator={<AddIcon fontSize="xl4" style={{ fill: '#000000' }} />}>
+          endDecorator={<AddIcon  style={{ fill: '#000000' }} />}>
             {/* 9.5k+ */}
             <div className="container">
       <AnimatedNumbers

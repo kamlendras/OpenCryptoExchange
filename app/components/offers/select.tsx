@@ -234,122 +234,72 @@ export default function C() {
                  
                     </td>
                     <td>
-                      <Box
-                        sx={{
-                          display: "flex",
-                          mt: 2,
-                          gap: 1,
-                          alignItems: "center",
-                        }}
-                      >
-                        <div>
-                          <Typography level="body-xs" sx={{ fontSize: 22 }}>
-                            {" "}
-                            Payment methods{" "}
-                          </Typography>
-                          <RadioGroup
-                            name="best-movie"
-                            aria-labelledby="best-movie"
-                            orientation="horizontal"
-                            sx={{ flexWrap: "wrap", gap: 1 }}
-                          >
-                            {["Binance Coin (BNB)"].map((name) => {
-                              // const checked = selected0 === name;
-                              return (
-                                <>
-                                  <Chip
-                                    style={{ size: "1rem" }}
-                                    key={name}
-                                    variant="plain"
-                                 
-
-                                  >
-                                    <Radio
-                                      variant="outlined"
-                                      color={option.ColorPaymentMethord1}
-                                      disableIcon
-                                      overlay
-                                      label={option.PaymentMethod1}
-                                      value={name}
-
-                                   
-                                    />
-                                  </Chip>
-                                  <Chip
-                                    style={{ size: "1rem" }}
-                                    key={name}
-                                    variant="plain"
-                          
-                                  >
-                                    <Radio
-                                      variant="outlined"
-                                      //  color={checked ? "primary" : "neutral"}
-                                      disableIcon
-                                      overlay
-                                      color={option.ColorPaymentMethord2}
-                                      label={option.PaymentMethod2}
-                                      value={name}
-                                 
-                                    />
-                                  </Chip>
-                                  <Chip
-                                    style={{ size: "1rem" }}
-                                    key={name}
-                                    variant="plain"
-                               
-                                  >
-                                    <Radio
-                                      variant="outlined"
-                                      //  color={checked ? "primary" : "neutral"}
-                                      disableIcon
-                                      overlay
-                                      color={option.ColorPaymentMethord3}
-                                      label={option.PaymentMethod3}
-                                      value={name}
-                               
-                                    />
-                                  </Chip>
-                                  <Chip
-                                    style={{ size: "1rem" }}
-                                    key={name}
-                                    variant="plain"
-                          
-                                  >
-                                    <Radio
-                                      variant="outlined"
-                                      //  color={checked ? "primary" : "neutral"}
-                                      disableIcon
-                                      overlay
-                                      label={option.PaymentMethod4}
-                                      color={option.ColorPaymentMethord4}
-                                      value={name}
-                                 
-                                    />
-                                  </Chip>
-                                  <Chip
-                                    style={{ size: "1rem" }}
-                                    key={name}
-                                    variant="plain"
-                               
-                                  >
-                                    <Radio
-                                      variant="outlined"
-                                      //  color={checked ? "primary" : "neutral"}
-                                      disableIcon
-                                      overlay
-                                      label={option.PaymentMethod5}
-                                      color={option.ColorPaymentMethord5}
-                                      value={name}
-                                 
-                                    />
-                                  </Chip>
-                           
-                                </>
-                              );
-                            })}
-                          </RadioGroup>
-                        </div>
-                      </Box>
+                    <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
+      <div>
+        <Chip
+          variant="outlined"
+          // color={option.ColorPaymentMethord1}
+          size="lg"
+          sx={{ m: 0.5 }}
+          startDecorator={
+            <Avatar size="sm" src={option.PaymentMethod1Avatar} />
+          }
+          onClick={() => console.log("hello")}
+        >
+          {option.PaymentMethod1}
+        </Chip>
+        <Chip
+          variant="outlined"
+          // color={option.ColorPaymentMethord2}
+          size="lg"
+          sx={{ m: 0.5 }}
+          startDecorator={
+            <Avatar size="sm" src={option.PaymentMethod2Avatar} />
+          }
+          onClick={() => console.log("hello")}
+        >
+          {option.PaymentMethod2}
+        </Chip>
+        <Chip
+          variant="outlined"
+          // color={option.ColorPaymentMethord3}
+          size="lg"
+          sx={{ m: 0.5 }}
+          startDecorator={
+            <Avatar size="sm" src={option.PaymentMethod3Avatar} />
+          }
+          onClick={() => console.log("hello")}
+        >
+          {option.PaymentMethod3}
+        </Chip>
+        <Chip
+          variant="outlined"
+          // color={option.ColorPaymentMethord4}
+          size="lg"
+          sx={{ m: 0.5 }}
+          startDecorator={
+            <Avatar size="sm" src={option.PaymentMethod4Avatar} />
+          }
+          onClick={() => console.log("hello")}
+        >
+          {option.PaymentMethod4}
+        </Chip>
+        <Chip
+          variant="outlined"
+          // color={option.ColorPaymentMethord5}
+          size="lg"
+          sx={{ m: 0.5 }}
+          startDecorator={
+            <Avatar size="sm" src={option.PaymentMethod5Avatar} />
+          }
+          onClick={() => console.log("hello")}
+        >
+          {option.PaymentMethod5}
+        </Chip>
+       
+      
+      </div>
+    </Box>
                     </td>  
                     <Sheet
                 variant="outlined"
@@ -1147,20 +1097,25 @@ const datatable = [
     limitscurrency: "2,000 - 150,000 USD",
     limitscrypto: "0.02836590 - 2.12744270 XMR",
     PaymentMethod1: "Binance Coin (BNB)",
-    ColorPaymentMethord1:"warning",
-    ColorPaymentMethord2:"primary",
-    ColorPaymentMethord3:"warning",
-    ColorPaymentMethord4:"success",
-    ColorPaymentMethord5:"warning",
-    ColorPaymentMethordsNo:"warning",
     PaymentMethod2: "Ethereum",
     PaymentMethod3: "DAI",
     PaymentMethod4: "Tether",
     PaymentMethod5: "Binance USD (BUSD)",
     PaymentMethodsNo: "+3",
     offer: "NO KYC‼️Notifications On - 24/7 ✅",
-    Location: "Global",
-    paymentwindow: 80,
+    ColorPaymentMethord1:"warning",
+    ColorPaymentMethord2:"primary",
+    ColorPaymentMethord3:"warning",
+    ColorPaymentMethord4:"success",
+    ColorPaymentMethord5:"warning",
+    ColorPaymentMethordsNo:"warning",
+    PaymentMethod1Avatar: "/binance.svg",
+    PaymentMethod2Avatar: "/eth.svg",
+    PaymentMethod3Avatar: "/dai.svg",
+    PaymentMethod4Avatar: "/the.svg",
+    PaymentMethod5Avatar: "/binance.svg",
+    Location:"Global",
+    paymentwindow:"30",
   },
   //   },{
   //   id:2 ,

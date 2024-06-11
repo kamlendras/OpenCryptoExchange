@@ -164,7 +164,7 @@ export default function C() {
                           Payment method{" "}
                           <Chip
                             variant="outlined"
-                            color={option.ColorPaymentMethodSelected}
+                            // color={option.ColorPaymentMethodSelected}
                           >
                             {option.PaymentMethodSelected}
                           </Chip>
@@ -232,7 +232,7 @@ export default function C() {
           color="neutral"
           //  sx={{ p: 4 }}
         >
-          <Typography level="title-xs">Engaging in contract</Typography>
+          <Typography level="title-sm">Engaging in contract</Typography>
               <Typography level="body-md">Generate a multisig escrow address by confirming your payment password.</Typography>
           
 

@@ -162,7 +162,7 @@ export default function C() {
                           Payment method{" "}
                           <Chip
                             variant="outlined"
-                            color={option.ColorPaymentMethodSelected}
+                            // color={option.ColorPaymentMethodSelected}
                           >
                             {option.PaymentMethodSelected}
                           </Chip>
@@ -230,7 +230,7 @@ export default function C() {
           color="neutral"
           //  sx={{ p: 4 }}
         >
-          <Typography level="title-xs">The Seller has been deposited the Monero on Open Crypto Exchange Server  (multisig escrow) </Typography>
+          <Typography level="title-sm">The Seller has been deposited the Monero on Open Crypto Exchange Server  (multisig escrow) </Typography>
               <Typography level="body-md">Now you can safely sends the payment to the Seller.</Typography>
           
 

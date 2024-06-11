@@ -156,7 +156,7 @@ export default function C() {
                           Payment method{" "}
                           <Chip
                             variant="outlined"
-                            color={option.ColorPaymentMethodSelected}
+                            // color={option.ColorPaymentMethodSelected}
                           >
                             {option.PaymentMethodSelected}
                           </Chip>
@@ -224,7 +224,7 @@ export default function C() {
           color="neutral"
           //  sx={{ p: 4 }}
         >
-          <Typography level="title-xs">You have successfully received your payment.</Typography>
+          <Typography level="title-sm">You have successfully received your payment.</Typography>
               <Typography level="body-md">The Contract has been Completed. <br/>Thanks for choosing us !</Typography>
           
 

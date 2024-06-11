@@ -86,7 +86,6 @@ export default function Header() {
   };
 
   const selectedFeature = items[selectedItemIndex];
-  const [mode, setMode] = React.useState<PaletteMode>("light");
   const [showCustomTheme, setShowCustomTheme] = React.useState(true);
   const [open, setOpen] = React.useState(false);
   return (

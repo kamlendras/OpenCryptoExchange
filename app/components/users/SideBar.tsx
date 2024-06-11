@@ -74,7 +74,7 @@ export default function Navigation() {
           lg: 'translateX(-100%)',
         },
       }}
-      onClick={() => closeSidebar()}
+      // onClick={() => closeSidebar()}
     />
     <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
     </Box>

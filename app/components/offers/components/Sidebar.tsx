@@ -31,7 +31,7 @@ import BrightnessAutoRoundedIcon from '@mui/icons-material/BrightnessAutoRounded
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 import ColorSchemeToggle from './ColorSchemeToggle';
-import { closeSidebar } from '../utils';
+import { closeSidebar } from '../utlis';
 
 function Toggler(props: {
   defaultExpanded?: boolean;

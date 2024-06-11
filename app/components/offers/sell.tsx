@@ -6,7 +6,7 @@ import Box from "@mui/joy/Box";
 import Button from '@mui/joy/Button';
 import Sheet from "@mui/joy/Sheet";
 import Typography from "@mui/joy/Typography";
-// import Link from "@mui/joy/Link";
+import JoyLink from "@mui/joy/Link";
 import Select from "@mui/joy/Select";
 import Option from "@mui/joy/Option";
 import axios from "axios";
@@ -226,7 +226,7 @@ function EnhancedTableHead(props: EnhancedTableProps) {
               }
             >
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              <Link
+              <JoyLink
                 underline="none"
                 color="neutral"
                 textColor={active ? "primary.plainColor" : undefined}
@@ -262,7 +262,7 @@ function EnhancedTableHead(props: EnhancedTableProps) {
                       : "sorted ascending"}
                   </Box>
                 ) : null}
-              </Link>
+              </JoyLink>
             </th>
           );
         })}
@@ -408,9 +408,9 @@ export default function C() {
 
         <Typography level="body-lg">
           Sell Monero from other users using any payment method and currency{" "}
-          <Link sx={{ m: 5 }} href="#basics">
+          <JoyLink sx={{ m: 5 }} href="#basics">
             How to start?{" "}
-          </Link>
+          </JoyLink>
           <Button size="sm">Create offer</Button>
         </Typography>
         <Sheet
@@ -519,7 +519,7 @@ export default function C() {
               </Select>
             </Grid>
             <Grid xs={1}>
-            <Link href="/offers/sell">
+            <Link href="/offers/sell/select">
               <Button variant="outlined" color="neutral">Clear all </Button>
               </Link>
             </Grid>
@@ -686,7 +686,7 @@ export default function C() {
             </tfoot>
           </Table> */}
           {/*  */}
-          <Link href="/offers/sell/select">
+          <Link href="/offers/sell/">
           <Table hoverRow>
             <thead>
               <tr>
@@ -763,190 +763,81 @@ export default function C() {
                       </Typography>
                     </td>
                     <td>
-                      <Box
-                        sx={{
-                          display: "flex",
-                          mt: 2,
-                          gap: 1,
-                          alignItems: "center",
-                        }}
-                      >
-                        <div>
-                          <RadioGroup
-                            name="best-movie"
-                            aria-labelledby="best-movie"
-                            orientation="horizontal"
-                            sx={{ flexWrap: "wrap", gap: 1 }}
-                          >
-                            {[
-                              "Binance Coin (BNB)",
-                           
-                            ].map((name) => {
-                              // const checked = selected0 === name;
-                              return (
-                                <>
-                                  <Chip
-                                    style={{ size: "1rem" }}
-                                    key={name}
-                                    // variant="plain"
-                                   
-                                    startDecorator={  <Avatar size="sm" src={option.PaymentMethod1Avatar} />}
-                                    // startDecorator={
-                                    //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
-                                    // }
-                                  >
-                                    <Radio
-                                                
-                                      variant="outlined"
-                                      
-                                      color={option.ColorPaymentMethord1}
-                                      disableIcon
-                                      overlay
-                                      label={option.PaymentMethod1}
-                                      value={name}
-
-                                      // onChange={(event) => {
-                                      //   if (event.target.checked) {
-                                      //     setSelected0(name);
-                                      //   }
-                                      // }}
-                                    />
-                                  </Chip>
-                                  <Chip
-                                    style={{ size: "1rem" }}
-                                    key={name}
-                                    startDecorator={<Avatar size="sm" src={option.PaymentMethod2Avatar} />}
-                                    variant="plain"
-                                    //  color={checked ? "primary" : "neutral"}
-                                    // startDecorator={
-                                    //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
-                                    // }
-                                  >
-                                    <Radio
-                                      variant="outlined"
-                                      //  color={checked ? "primary" : "neutral"}
-                                      disableIcon
-                                      overlay
-                                      color={option.ColorPaymentMethord2}
-                                      label={option.PaymentMethod2}
-                                      value={name}
-                                      //  checked={checked}
-                                      //  onChange={(event) => {
-                                      //    if (event.target.checked) {
-                                      //      setSelected0(name);
-                                      //    }
-                                      //  }}
-                                    />
-                                  </Chip>
-                                  <Chip
-                                    style={{ size: "1rem" }}
-                                    key={name}
-                                    startDecorator={<Avatar size="sm" src={option.PaymentMethod3Avatar} />}
-                                    variant="plain"
-                                    //  color={checked ? "primary" : "neutral"}
-                                    // startDecorator={
-                                    //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
-                                    // }
-                                  >
-                                    <Radio
-                                      variant="outlined"
-                                      //  color={checked ? "primary" : "neutral"}
-                                      disableIcon
-                                      overlay
-                                      color={option.ColorPaymentMethord3}
-                                      label={option.PaymentMethod3}
-                                      value={name}
-                                      //  checked={checked}
-                                      //  onChange={(event) => {
-                                      //    if (event.target.checked) {
-                                      //      setSelected0(name);
-                                      //    }
-                                      //  }}
-                                    />
-                                  </Chip>
-                                  <Chip
-                                    style={{ size: "1rem" }}
-                                    key={name}
-                                    variant="plain"
-                                    startDecorator={<Avatar size="sm" src={option.PaymentMethod4Avatar} />}
-                                    //  color={checked ? "primary" : "neutral"}
-                                    // startDecorator={
-                                    //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
-                                    // }
-                                  >
-                                    <Radio
-                                      variant="outlined"
-                                      //  color={checked ? "primary" : "neutral"}
-                                      disableIcon
-                                      overlay
-                                      label={option.PaymentMethod4}
-                                      color={option.ColorPaymentMethord4}
-                                      value={name}
-                                      //  checked={checked}
-                                      //  onChange={(event) => {
-                                      //    if (event.target.checked) {
-                                      //      setSelected0(name);
-                                      //    }
-                                      //  }}
-                                    />
-                                  </Chip>
-                                  <Chip
-                                    style={{ size: "1rem" }}
-                                    key={name}
-                                    variant="plain"
-                                    startDecorator={<Avatar size="sm" src={option.PaymentMethod5Avatar} />}
-                                    //  color={checked ? "primary" : "neutral"}
-                                    // startDecorator={
-                                    //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
-                                    // }
-                                  >
-                                    <Radio
-                                      variant="outlined"
-                                      //  color={checked ? "primary" : "neutral"}
-                                      disableIcon
-                                      overlay
-                                      label={option.PaymentMethod5}
-                                      color={option.ColorPaymentMethord5}
-                                      value={name}
-                                      //  checked={checked}
-                                      //  onChange={(event) => {
-                                      //    if (event.target.checked) {
-                                      //      setSelected0(name);
-                                      //    }
-                                      //  }}
-                                    />
-                                  </Chip>
-                                  <Chip
-                                    style={{ size: "1rem" }}
-                                    key={name}
-                                    variant="plain"
-                                    //  color={checked ? "primary" : "neutral"}
-                                    // startDecorator={
-                                    //   checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
-                                    // }
-                                  >
-                                    <Radio
-                                      variant="outlined"
-                                      //  color={checked ? "primary" : "neutral"}
-                                      disableIcon
-                                      overlay
-                                      label={option.PaymentMethodsNo}
-                                      color={option.ColorPaymentMethordsNo}
-                                      value={name}
-                                      //  checked={checked}
-                                      //  onChange={(event) => {
-                                      //    if (event.target.checked) {
-                                      //      setSelected0(name);
-                                      //    }
-                                      //  }}
-                                    />
-                                  </Chip>
-                                </>
-                              );
-                            })}
-                          </RadioGroup>
-                        </div>
-                      </Box>
+                    <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
+      <div>
+        <Chip
+          variant="outlined"
+          // color={option.ColorPaymentMethord1}
+          size="lg"
+          sx={{ m: 0.5 }}
+          startDecorator={
+            <Avatar size="sm" src={option.PaymentMethod1Avatar} />
+          }
+          onClick={() => console.log("hello")}
+        >
+          {option.PaymentMethod1}
+        </Chip>
+        <Chip
+          variant="outlined"
+          // color={option.ColorPaymentMethord2}
+          size="lg"
+          sx={{ m: 0.5 }}
+          startDecorator={
+            <Avatar size="sm" src={option.PaymentMethod2Avatar} />
+          }
+          onClick={() => console.log("hello")}
+        >
+          {option.PaymentMethod2}
+        </Chip>
+        <Chip
+          variant="outlined"
+          // color={option.ColorPaymentMethord3}
+          size="lg"
+          sx={{ m: 0.5 }}
+          startDecorator={
+            <Avatar size="sm" src={option.PaymentMethod3Avatar} />
+          }
+          onClick={() => console.log("hello")}
+        >
+          {option.PaymentMethod3}
+        </Chip>
+        <Chip
+          variant="outlined"
+          // color={option.ColorPaymentMethord4}
+          size="lg"
+          sx={{ m: 0.5 }}
+          startDecorator={
+            <Avatar size="sm" src={option.PaymentMethod4Avatar} />
+          }
+          onClick={() => console.log("hello")}
+        >
+          {option.PaymentMethod4}
+        </Chip>
+        <Chip
+          variant="outlined"
+          // color={option.ColorPaymentMethord5}
+          size="lg"
+          sx={{ m: 0.5 }}
+          startDecorator={
+            <Avatar size="sm" src={option.PaymentMethod5Avatar} />
+          }
+          onClick={() => console.log("hello")}
+        >
+          {option.PaymentMethod5}
+        </Chip>
+        <Chip
+          variant="outlined"
+          // color={option.ColorPaymentMethordsNo}
+          size="lg"
+          sx={{ m: 0.5 }}
+          onClick={() => console.log("hello")}
+        >
+          {option.PaymentMethodsNo}
+        </Chip>
+      
+      </div>
+    </Box>
+                      
                     </td>
                     <td>
                       {" "}
@@ -1628,7 +1519,7 @@ PaymentMethod3: "Bitcoin Cash",
 PaymentMethod4: "Tether",
 PaymentMethod5: "Binance USD",
 PaymentMethodsNo: "+9",
-ColorPaymentMethord1:"warning",
+ColorPaymentMethord1: "warning",
 ColorPaymentMethord2:"primary",
 ColorPaymentMethord3:"warning",
 ColorPaymentMethord4:"success",

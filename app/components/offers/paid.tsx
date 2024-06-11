@@ -158,7 +158,7 @@ export default function C() {
                           Payment method{" "}
                           <Chip
                             variant="outlined"
-                            color={option.ColorPaymentMethodSelected}
+                            // color={option.ColorPaymentMethodSelected}
                           >
                             {option.PaymentMethodSelected}
                           </Chip>
@@ -226,7 +226,7 @@ export default function C() {
           color="neutral"
           //  sx={{ p: 4 }}
         >
-          <Typography level="title-xs">The Seller has been received your payment successfully.</Typography>
+          <Typography level="title-sm">The Seller has been received your payment successfully.</Typography>
               <Typography level="body-md">Just a movement, Open Crypto Exchange depositing Monero on your provided address.</Typography>
           
 

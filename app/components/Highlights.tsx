@@ -5,12 +5,6 @@ import Container from '@mui/joy/Container';
 import Grid from '@mui/joy/Grid';
 import Stack from '@mui/joy/Stack';
 import Typography from '@mui/joy/Typography';
-import AutoFixHighRoundedIcon from '@mui/icons-material/AutoFixHighRounded';
-import ConstructionRoundedIcon from '@mui/icons-material/ConstructionRounded';
-import QueryStatsRoundedIcon from '@mui/icons-material/QueryStatsRounded';
-import SettingsSuggestRoundedIcon from '@mui/icons-material/SettingsSuggestRounded';
-import SupportAgentRoundedIcon from '@mui/icons-material/SupportAgentRounded';
-import ThumbUpAltRoundedIcon from '@mui/icons-material/ThumbUpAltRounded';
 import SecurityIcon from '@mui/icons-material/Security';
 import KeyIcon from '@mui/icons-material/Key';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
@@ -82,7 +76,7 @@ export default function Highlights() {
             textAlign: { sm: 'left', md: 'center' },
           }}
         >
-          <Typography component="h2" variant="h4">
+          <Typography level="title-lg" >
             Highlights
           </Typography>
           <Typography level="body-lg">

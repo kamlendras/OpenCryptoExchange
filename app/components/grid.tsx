@@ -9,7 +9,6 @@ import { CssVarsProvider, useColorScheme } from '@mui/joy/styles';
 import FAQ from "./FAQ"
 import Footer from './footer';
 import Features from './features'
-import Testimonials from './Testimonials';
 import Highlights from './Highlights';
 export default function C() {
 

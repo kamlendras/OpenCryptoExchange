@@ -7,8 +7,8 @@ import CssBaseline from "@mui/joy/CssBaseline";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Blo9",
-  description: "Blogging | Uncensored Internet Space | Dark Web News | Critical Security Vulnerability | Hacker Leaks |",
+  title: "OpenCryptoExchange",
+  description: "Open Source Crypto Exchange Platform with Zero Transaction Fees.",
 };
 
 export default function RootLayout({

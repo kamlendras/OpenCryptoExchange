@@ -1,4 +1,3 @@
-// "use client"
 import Buy from "../../components/offers/buy"
 export const metadata = {
   title: "BUY MONERO",

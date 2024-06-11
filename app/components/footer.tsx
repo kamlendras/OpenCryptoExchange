@@ -4,9 +4,7 @@ import Box from '@mui/joy/Box';
 import Link from '@mui/joy/Link';
 import Grid from '@mui/joy/Grid';
 import Stack from "@mui/joy/Stack";
-import IconButton, { IconButtonProps } from '@mui/joy/IconButton';
 import Typography from "@mui/joy/Typography";
-import BadgeRoundedIcon from '@mui/icons-material/BadgeRounded';
 const items = [
   {imageLight1: 'url("/icon.svg")',
     imageDark1: 'url("/icon_black.svg")',
@@ -69,7 +67,6 @@ const handleItemClick4 = (index: number) => {
 
 // 
   const selectedFeature = items[selectedItemIndex];
-  const [mode, setMode] = React.useState<PaletteMode>('light');
   const [showCustomTheme, setShowCustomTheme] = React.useState(true);
   return (
     <>
