@@ -26,7 +26,7 @@ import { styled } from "@mui/joy/styles";
 import Stepper from "@mui/joy/Stepper";
 import Step from "@mui/joy/Step";
 import Footer from "../footer";
-import MyMessages from "./components/MyMessages";
+import MyMessages from "./chatbox/MyMessages";
 import RejectButton from "./RejectButton"
 export default function C() {
   const [open, setOpen] = React.useState<boolean>(false);

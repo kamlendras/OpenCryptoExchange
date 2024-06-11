@@ -16,7 +16,7 @@ import Tooltip from "@mui/joy/Tooltip";
 import Stepper from "@mui/joy/Stepper";
 import Step from "@mui/joy/Step";
 import Footer from "../footer";
-import MyMessages from "./components/MyMessages";
+import MyMessages from "./chatbox/MyMessages";
 
 export default function C() {
   const [selected, setSelected] = React.useState<readonly string[]>([]);
