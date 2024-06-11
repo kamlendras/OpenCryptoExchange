@@ -29,8 +29,8 @@ export default function C() {
   
   const [selected0, setSelected0] = React.useState("");
   
-  const [size, setSize] = React.useState<ModalDialogProps['size'] | undefined>(
-    undefined,
+  const [size, setSize] = React.useState<ModalDialogProps['size'] | null>(
+    null,
   );
   const [italic, setItalic] = React.useState(false);
   const [fontWeight, setFontWeight] = React.useState('normal');

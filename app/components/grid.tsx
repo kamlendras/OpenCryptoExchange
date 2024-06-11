@@ -5,7 +5,7 @@ import Box from '@mui/joy/Box';
 import CssBaseline from '@mui/joy/CssBaseline';
 import framesxTheme from './theme';
 import Intropage from "./intropage"
-import { CssVarsProvider, useColorScheme } from '@mui/joy/styles';
+import { CssVarsProvider} from '@mui/joy/styles';
 import FAQ from "./FAQ"
 import Footer from './footer';
 import Features from './features'

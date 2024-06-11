@@ -133,12 +133,12 @@ export default function Header() {
           </Link>
           {/* <Typography level="h4" noWrap>OPEN CRYPTO EXCHANGE</Typography> */}
         </div>
-        <Link href="/offers/buy">
+        <Link href="/offers/sell">
           <Button variant="plain" size="md">
             Sell XMR
           </Button>
         </Link>
-        <Link href="/offers/sell">
+        <Link href="/offers/buy">
           <Button variant="plain" size="md">
             Buy XMR
           </Button>{" "}

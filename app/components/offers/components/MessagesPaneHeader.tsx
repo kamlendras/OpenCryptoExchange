@@ -65,7 +65,7 @@ export default function MessagesPaneHeader(props: MessagesPaneHeaderProps) {
                 >
                   Online
                 </Chip>
-              ) : undefined
+              ) : null
             }
           >
             {sender.name}

@@ -174,7 +174,7 @@ export default function Features() {
                 //   width: '100%',
                 //   background: 'none',
                 //   backgroundColor:
-                //     selectedItemIndex === index ? 'action.selected' : undefined,
+                //     selectedItemIndex === index ? 'action.selected' : null,
                 //   borderColor: (theme) => {
                 //     if (theme.palette.mode === 'light') {
                 //       return selectedItemIndex === index

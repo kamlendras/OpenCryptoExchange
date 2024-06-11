@@ -4,10 +4,12 @@ import CssBaseline from '@mui/joy/CssBaseline';
 import Box from '@mui/joy/Box';
 import Sidebar from '../../components/users/SideBar';
 import MyProfile from '../../components/users/account';
-export const metadata = {
-    title: "Account",
-    description: "Open Source Crypto Exchange Platform with Zero Transaction Fees.",
-  };
+import type { Metadata } from 'next'
+ 
+export const metadata: Metadata = {
+  title: 'Account',
+  description: 'Open Source Crypto Exchange Platform with Zero Transaction Fees.',
+}
 export default function JoyOrderDashboardTemplate() {
   return (
     <CssVarsProvider disableTransitionOnChange>
