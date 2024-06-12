@@ -9,7 +9,11 @@ This project provides a transparent and user-friendly platform for secure tradin
 
 * <big><bold>Open Source</bold></big>: The codebase is publicly available, promoting transparency and fostering community contributions.
 
-* <big><bold>Secure Trading</bold></big>: Implement robust security measures to safeguard user funds and transactions. (Be sure to elaborate on specific security features later in the README.)
+* <big><bold>Secure Trading</bold></big>: Implement robust security measures to safeguard user funds and transactions.
+<br/>
+* <bold>SECURE</bold>:  Multisig (P2SH) contracts. 
+* <bold>SECURED BY ESCROW</bold>:
+Control the keys to the funds in escrow through out the whole deal.
 
 * <big><bold>Monero (XMR) Focus:</bold></big> Cater to the privacy-conscious community by focusing on secure and anonymous Monero trading.
 ## Getting Started
