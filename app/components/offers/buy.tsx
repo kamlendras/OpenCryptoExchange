@@ -9,7 +9,6 @@ import Typography from "@mui/joy/Typography";
 import JoyLink from "@mui/joy/Link";
 import Select from "@mui/joy/Select";
 import Option from "@mui/joy/Option";
-import axios from "axios";
 import Stack from "@mui/joy/Stack";
 import Divider from "@mui/joy/Divider";
 import Input from "@mui/joy/Input";
