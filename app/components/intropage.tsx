@@ -1,5 +1,4 @@
 "use client";
-import AnimatedNumbers from "react-animated-numbers"
 import * as React from 'react';
 import Box from '@mui/joy/Box';
 import Button from '@mui/joy/Button';
@@ -9,6 +8,10 @@ import Star from '@mui/icons-material/Star';
 import TwoSidedLayout from './TwoSidedLayout';
 import Link from "next/link";
 import AddIcon from '@mui/icons-material/Add';
+import dynamic from "next/dynamic";
+const AnimatedNumbers = dynamic(() => import("react-animated-numbers"), {
+  ssr: false,
+});
 
 export default function HeroLeft08() {
   const [num, setNum] = React.useState(331231);
