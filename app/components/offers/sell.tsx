@@ -35,29 +35,30 @@ import { visuallyHidden } from "@mui/utils";
 
 
 export default function C() {
-  
+ 
 
   const [currency, setCurrency] = React.useState("usd");
   // const [selected, setSelected] = React.useState("");
   const [selected0, setSelected0] = React.useState("");
   return (
     <>
-      <Box sx={{ m: 10 }}>
+      <Box sx={{ m: 10 }} align = "center" justify = "center" alignItems = "center">
         <Typography level="h1">SELL MONERO</Typography>
-
         <Typography level="body-lg">
           Sell Monero from other users using any payment method and currency{" "}
-          <JoyLink sx={{ m: 5 }} href="#basics">
+          <JoyLink sx={{ mr: 1}} href="#basics">
             How to start?{" "}
           </JoyLink>
-          <Button size="sm">Create offer</Button>
+          <Button size="md">Create offer</Button>
         </Typography>
+
         <Sheet
+      
           variant="soft"
           aria-label="Pricing plan"
           defaultValue={0}
           sx={{
-            //    width: 750,
+               maxWidth: 1300,
             borderRadius: "lg",
             boxShadow: "xl",
             overflow: "auto",
@@ -67,6 +68,7 @@ export default function C() {
           color="neutral"
           //  sx={{ p: 4 }}
         >
+             <Table style={{ width: 1200}} >
           <Grid container spacing={2} sx={{ flexGrow: 1 }}>
             <Grid xs={2}>
               <Select defaultValue="11">
@@ -158,12 +160,12 @@ export default function C() {
               </Select>
             </Grid>
             <Grid xs={1}>
-            <Link href="/offers/sell/select">
-              <Button variant="outlined" color="neutral">Clear all </Button>
+            <Link href="/offers/buy">
+              <Button variant="outlined"  color="neutral"><Typography noWrap>Clear all </Typography></Button>
               </Link>
             </Grid>
           </Grid>
-
+          </Table>
           {/*  */}
           {/* <EnhancedTableToolbar numSelected={selected.length} />
           <Table
@@ -233,11 +235,11 @@ export default function C() {
                     <Avatar src="/static/images/avatar/1.jpg" />
                     <Box sx={{ minWidth: 0 }}>
            
-                      <Typography sx={{ fontSize: 23 }} level="title-sm" noWrap>
+                      <Typography sx={{ fontSize: 23 }} level="title-md" noWrap>
                         chickenwing
                       </Typography>
                      
-                      <Typography level="body-sm" noWrap>
+                      <Typography level="body-md" noWrap>
                         100% rate, 195 trades
                       </Typography>
                     </Box>
@@ -275,7 +277,7 @@ export default function C() {
                       justifyContent: "flex-end",
                     }}
                   >
-                    <FormControl orientation="horizontal" size="sm">
+                    <FormControl orientation="horizontal" size="md">
                       <FormLabel>Rows per page:</FormLabel>
                       <Select
                         onChange={handleChangeRowsPerPage}
@@ -295,7 +297,7 @@ export default function C() {
                     </Typography>
                     <Box sx={{ display: "flex", gap: 1 }}>
                       <IconButton
-                        size="sm"
+                        size="md"
                         color="neutral"
                         variant="outlined"
                         disabled={page === 0}
@@ -305,7 +307,7 @@ export default function C() {
                         <KeyboardArrowLeftIcon />
                       </IconButton>
                       <IconButton
-                        size="sm"
+                        size="md"
                         color="neutral"
                         variant="outlined"
                         disabled={
@@ -325,8 +327,8 @@ export default function C() {
             </tfoot>
           </Table> */}
           {/*  */}
-          <Link href="/offers/sell/">
-          <Table hoverRow>
+          <Link href="/offers/sell/select">
+          <Table style={{ width: 1200}} hoverRow>
             <thead>
               <tr>
                 <th>Seller</th>
@@ -373,13 +375,13 @@ export default function C() {
                           {/* <Typography noWrap fontWeight="lg" level="title-lg"> */}
                           <Typography
                             sx={{ fontSize: 23 }}
-                            level="title-sm"
+                            level="title-md"
                             noWrap
                           >
                             {option.name}
                           </Typography>
-                          {/* <Typography noWrap level="body-sm"> */}
-                          <Typography level="body-sm" noWrap>
+                          {/* <Typography noWrap level="body-md"> */}
+                          <Typography level="body-md" noWrap>
                             {option.rate}% rate, {option.trades} trades
                           </Typography>
                         </Box>
@@ -392,7 +394,7 @@ export default function C() {
                       </Typography>
                     </td>
                     <td>
-                      <Typography sx={{ fontSize: 23 }} level="title-sm">
+                      <Typography sx={{ fontSize: 23 }} level="title-md">
                         {" "}
                         {option.limitscurrency} {" "}
                       </Typography>
@@ -407,10 +409,10 @@ export default function C() {
         <Chip
           variant="outlined"
           // color={option.ColorPaymentMethord1}
-          size="lg"
+          size="md"
           sx={{ m: 0.5 }}
           startDecorator={
-            <Avatar size="sm" src={option.PaymentMethod1Avatar} />
+            <Avatar size="md" src={option.PaymentMethod1Avatar} />
           }
           onClick={() => console.log("hello")}
         >
@@ -419,10 +421,10 @@ export default function C() {
         <Chip
           variant="outlined"
           // color={option.ColorPaymentMethord2}
-          size="lg"
+          size="md"
           sx={{ m: 0.5 }}
           startDecorator={
-            <Avatar size="sm" src={option.PaymentMethod2Avatar} />
+            <Avatar size="md" src={option.PaymentMethod2Avatar} />
           }
           onClick={() => console.log("hello")}
         >
@@ -431,10 +433,10 @@ export default function C() {
         <Chip
           variant="outlined"
           // color={option.ColorPaymentMethord3}
-          size="lg"
+          size="md"
           sx={{ m: 0.5 }}
           startDecorator={
-            <Avatar size="sm" src={option.PaymentMethod3Avatar} />
+            <Avatar size="md" src={option.PaymentMethod3Avatar} />
           }
           onClick={() => console.log("hello")}
         >
@@ -443,10 +445,10 @@ export default function C() {
         <Chip
           variant="outlined"
           // color={option.ColorPaymentMethord4}
-          size="lg"
+          size="md"
           sx={{ m: 0.5 }}
           startDecorator={
-            <Avatar size="sm" src={option.PaymentMethod4Avatar} />
+            <Avatar size="md" src={option.PaymentMethod4Avatar} />
           }
           onClick={() => console.log("hello")}
         >
@@ -455,10 +457,10 @@ export default function C() {
         <Chip
           variant="outlined"
           // color={option.ColorPaymentMethord5}
-          size="lg"
+          size="md"
           sx={{ m: 0.5 }}
           startDecorator={
-            <Avatar size="sm" src={option.PaymentMethod5Avatar} />
+            <Avatar size="md" src={option.PaymentMethod5Avatar} />
           }
           onClick={() => console.log("hello")}
         >
@@ -467,7 +469,7 @@ export default function C() {
         <Chip
           variant="outlined"
           // color={option.ColorPaymentMethordsNo}
-          size="lg"
+          size="md"
           sx={{ m: 0.5 }}
           onClick={() => console.log("hello")}
         >
@@ -476,7 +478,6 @@ export default function C() {
       
       </div>
     </Box>
-                      
                     </td>
                     <td>
                       {" "}
@@ -494,6 +495,7 @@ export default function C() {
           </Table>
             </Link>
           <Pig />
+        
         </Sheet>
       </Box>
     </>
@@ -818,7 +820,7 @@ const options3 = [
   { code: "MA", label: "Morocco", phone: "212" },
   { code: "MC", label: "Monaco", phone: "377" },
   {
-    code: "MD",
+    code: "md",
     label: "Moldova, Republic of",
     phone: "373",
   },
@@ -910,7 +912,7 @@ const options3 = [
   },
   { code: "SK", label: "Slovakia", phone: "421" },
   { code: "SL", label: "Sierra Leone", phone: "232" },
-  { code: "SM", label: "San Marino", phone: "378" },
+  { code: "md", label: "San Marino", phone: "378" },
   { code: "SN", label: "Senegal", phone: "221" },
   { code: "SO", label: "Somalia", phone: "252" },
   { code: "SR", label: "Suriname", phone: "597" },
@@ -1024,7 +1026,7 @@ const datatable = [
     PaymentMethod2: "Ethereum",
     PaymentMethod3: "DAI",
     PaymentMethod4: "Tether",
-    PaymentMethod5: "Binance USD (BUSD)",
+    PaymentMethod5: "Talwabdi, Kota",
     PaymentMethodsNo: "+3",
     offer: "NO KYC‼️Notifications On - 24/7 ✅",
     ColorPaymentMethord1:"warning",
@@ -1037,7 +1039,7 @@ const datatable = [
     PaymentMethod2Avatar: "/eth.svg",
     PaymentMethod3Avatar: "/dai.svg",
     PaymentMethod4Avatar: "/the.svg",
-    PaymentMethod5Avatar: "/binance.svg",
+    PaymentMethod5Avatar: "/map.svg",
     
   },{
   id:2 ,
@@ -1158,7 +1160,165 @@ PaymentMethod3: "Bitcoin Cash",
 PaymentMethod4: "Tether",
 PaymentMethod5: "Binance USD",
 PaymentMethodsNo: "+9",
-ColorPaymentMethord1: "warning",
+ColorPaymentMethord1:"warning",
+ColorPaymentMethord2:"primary",
+ColorPaymentMethord3:"warning",
+ColorPaymentMethord4:"success",
+ColorPaymentMethord5:"warning",
+ColorPaymentMethordsNo:"warning",
+PaymentMethod1Avatar: "/binance.svg",
+PaymentMethod2Avatar: "/eth.svg",
+PaymentMethod3Avatar: "/dai.svg",
+PaymentMethod4Avatar: "/the.svg",
+PaymentMethod5Avatar: "/binance.svg",
+offer: "XMR ETH SOL USDT USDC and any other coin!!",
+}, {
+  id: 1,
+  name: "chickenwing",
+  rate: 100,
+  trades: 195,
+  price: "70507.19 USD",
+  limitscurrency: "2,000 - 150,000 USD",
+  limitscrypto: "0.02836590 - 2.12744270 XMR",
+  PaymentMethod1: "Binance Coin (BNB)",
+  PaymentMethod2: "Ethereum",
+  PaymentMethod3: "DAI",
+  PaymentMethod4: "Tether",
+  PaymentMethod5: "Talwabdi, Kota",
+  PaymentMethodsNo: "+3",
+  offer: "NO KYC‼️Notifications On - 24/7 ✅",
+  ColorPaymentMethord1:"warning",
+  ColorPaymentMethord2:"primary",
+  ColorPaymentMethord3:"warning",
+  ColorPaymentMethord4:"success",
+  ColorPaymentMethord5:"warning",
+  ColorPaymentMethordsNo:"warning",
+  PaymentMethod1Avatar: "/binance.svg",
+  PaymentMethod2Avatar: "/eth.svg",
+  PaymentMethod3Avatar: "/dai.svg",
+  PaymentMethod4Avatar: "/the.svg",
+  PaymentMethod5Avatar: "/map.svg",
+  
+},{
+id:2 ,
+name: "alexender",
+rate:100 ,
+trades:64 ,
+price:"69,108.22 USD" ,
+limitscurrency: "1,000 - 67,777 USD",
+limitscrypto: "0.01447006 - 0.98073710 XMR",
+PaymentMethod1: "PayPal",
+PaymentMethod2: "Any national bank",
+PaymentMethod3: "Google pay",
+PaymentMethod4: "Amazon pay",
+PaymentMethod5: "Paytm",
+PaymentMethodsNo: "+6",
+ColorPaymentMethord1:"primary",
+ColorPaymentMethord2:"primary",
+ColorPaymentMethord3:"neutral",
+ColorPaymentMethord4:"neutral",
+ColorPaymentMethord5:"primary",
+ColorPaymentMethordsNo:"warning",
+offer: "If I don't respond for more than 2 minutes contact me at tg OTCPlatform where I respond instantly. ",
+PaymentMethod1Avatar: "/paypal.svg",
+PaymentMethod2Avatar: "/bank.svg",
+PaymentMethod3Avatar: "/gpay.svg",
+PaymentMethod4Avatar: "/amazonpay.svg",
+PaymentMethod5Avatar: "/paytm.svg",
+},{
+id:3 ,
+name: "jajafk",
+rate:100 ,
+trades: 537,
+price:"69,733.75 USD" ,
+limitscurrency: "700 - 50,000 USD",
+limitscrypto: "0.01003818 - 0.71701294 XMR",
+PaymentMethod1: "Binance",
+PaymentMethod2: "Ethereum",
+PaymentMethod3: "Bitcoin Cash",
+PaymentMethod4: "Tether",
+PaymentMethod5: "Binance USD",
+PaymentMethodsNo: "+9",
+ColorPaymentMethord1:"warning",
+ColorPaymentMethord2:"primary",
+ColorPaymentMethord3:"warning",
+ColorPaymentMethord4:"success",
+ColorPaymentMethord5:"warning",
+ColorPaymentMethordsNo:"warning",
+PaymentMethod1Avatar: "/binance.svg",
+PaymentMethod2Avatar: "/eth.svg",
+PaymentMethod3Avatar: "/dai.svg",
+PaymentMethod4Avatar: "/the.svg",
+PaymentMethod5Avatar: "/binance.svg",
+offer: "XMR ETH SOL USDT USDC and any other coin!!",
+},   {
+id: 4,
+name: "chickenwing",
+rate: 100,
+trades: 195,
+price: "70507.19 USD",
+limitscurrency: "2,000 - 150,000 USD",
+limitscrypto: "0.02836590 - 2.12744270 XMR",
+PaymentMethod1: "Binance Coin (BNB)",
+PaymentMethod2: "Ethereum",
+PaymentMethod3: "DAI",
+PaymentMethod4: "Tether",
+PaymentMethod5: "Binance USD (BUSD)",
+PaymentMethodsNo: "+3",
+offer: "NO KYC‼️Notifications On - 24/7 ✅",
+ColorPaymentMethord1:"warning",
+ColorPaymentMethord2:"primary",
+ColorPaymentMethord3:"warning",
+ColorPaymentMethord4:"success",
+ColorPaymentMethord5:"warning",
+ColorPaymentMethordsNo:"warning",
+PaymentMethod1Avatar: "/binance.svg",
+PaymentMethod2Avatar: "/eth.svg",
+PaymentMethod3Avatar: "/dai.svg",
+PaymentMethod4Avatar: "/the.svg",
+PaymentMethod5Avatar: "/binance.svg",
+
+},{
+id:5 ,
+name: "alexender",
+rate:100 ,
+trades:64 ,
+price:"69,108.22 USD" ,
+limitscurrency: "1,000 - 67,777 USD",
+limitscrypto: "0.01447006 - 0.98073710 XMR",
+PaymentMethod1: "PayPal",
+PaymentMethod2: "Any national bank",
+PaymentMethod3: "Google pay",
+PaymentMethod4: "Amazon pay",
+PaymentMethod5: "Paytm",
+PaymentMethodsNo: "+6",
+ColorPaymentMethord1:"primary",
+ColorPaymentMethord2:"primary",
+ColorPaymentMethord3:"neutral",
+ColorPaymentMethord4:"neutral",
+ColorPaymentMethord5:"primary",
+ColorPaymentMethordsNo:"warning",
+offer: "If I don't respond for more than 2 minutes contact me at tg OTCPlatform where I respond instantly. ",
+PaymentMethod1Avatar: "/paypal.svg",
+PaymentMethod2Avatar: "/bank.svg",
+PaymentMethod3Avatar: "/gpay.svg",
+PaymentMethod4Avatar: "/amazonpay.svg",
+PaymentMethod5Avatar: "/paytm.svg",
+},{
+id:6,
+name: "jajafk",
+rate:100 ,
+trades: 537,
+price:"69,733.75 USD" ,
+limitscurrency: "700 - 50,000 USD",
+limitscrypto: "0.01003818 - 0.71701294 XMR",
+PaymentMethod1: "Binance",
+PaymentMethod2: "Ethereum",
+PaymentMethod3: "Bitcoin Cash",
+PaymentMethod4: "Tether",
+PaymentMethod5: "Binance USD",
+PaymentMethodsNo: "+9",
+ColorPaymentMethord1:"warning",
 ColorPaymentMethord2:"primary",
 ColorPaymentMethord3:"warning",
 ColorPaymentMethord4:"success",

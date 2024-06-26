@@ -169,3 +169,48 @@ a {
 #pointer {
   cursor: pointer;
 }
+
+/* General */
+.main {
+  border: 3px solid #236AB9;
+  background-color: #D4E4F7;
+  height: 400px;
+  width: 400px;
+}
+
+.container {
+  margin: 5px;
+  width: 1300;
+  height: 100%;
+  border: 2px solid #341C09;
+  white-space: nowrap;
+}
+
+.item {
+  border: 2px solid #B85B14;
+  background-color: #FC7307;
+  width: 120px;
+}
+
+/* Inline-block */
+.inline {
+  vertical-align: middle;
+  overflow-x: scroll; 
+}
+.inline-item {
+  display: inline-block;
+  vertical-align: middle;
+  height: 96px;
+  margin-right: -4px;
+}
+
+
+/* Flex */
+.flex {
+  display: flex;
+  flex-wrap: nowrap; 
+  overflow: auto;
+}
+.flex-item {
+  flex: 0 0 auto;
+}
